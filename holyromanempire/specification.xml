@@ -32,6 +32,144 @@
         </goods-type>
     </goods-types>
 
+    <roles>
+        <role id="model.role.scout"
+            expert-unit="model.unit.seasonedScout">
+            <required-ability id="model.ability.canBeEquipped"
+                              value="true"/>
+            <required-ability id="model.ability.native"
+                              value="false"/>
+            <required-ability id="model.ability.refUnit"
+                              value="false"/>
+            <required-goods id="model.goods.horses"
+                            value="50"/>
+
+            <ability id="model.ability.armed"
+                     value="true"/>
+            <ability id="model.ability.canBeCaptured"
+                     value="false"/>
+            <ability id="model.ability.captureUnits"
+                     value="true"/>
+            <ability id="model.ability.demandTribute"
+                     value="true"/>
+            <ability id="model.ability.disposeOnCombatLoss"
+                     value="true"/>
+            <ability id="model.ability.mounted"
+                     value="true"/>
+            <ability id="model.ability.negotiate"
+                     value="true"/>
+            <ability id="model.ability.speakWithChief"
+                     value="true"/>
+            <ability id="model.ability.spyOnColony"
+                     value="true"/>
+            <modifier id="model.modifier.defence" index="30"
+                      type="additive" value="1"/>
+            <modifier id="model.modifier.offence" index="30"
+                      type="additive" value="1"/>
+            <modifier id="model.modifier.lineOfSightBonus"
+                      type="additive" value="1"/>
+            <modifier id="model.modifier.movementBonus"
+                      type="additive" value="9"/>
+        </role>
+
+        <role id="model.role.soldier"
+            expert-unit="model.unit.veteranSoldier">
+            <required-ability id="model.ability.canBeEquipped"
+                              value="true"/>
+            <required-ability id="model.ability.native"
+                              value="false"/>
+            <required-ability id="model.ability.refUnit"
+                              value="false"/>
+            <required-goods id="model.goods.muskets"
+                            value="50"/>
+
+            <ability id="model.ability.armed"
+                     value="true"/>
+            <ability id="model.ability.canBeCaptured"
+                     value="false"/>
+            <ability id="model.ability.captureUnits"
+                     value="true"/>
+            <ability id="model.ability.demandTribute"
+                     value="true"/>
+            <modifier id="model.modifier.defence" index="30"
+                      type="additive" value="1"/>
+            <modifier id="model.modifier.offence" index="30"
+                      type="additive" value="2"/>
+        </role>
+
+        <role id="model.role.dragoon" downgrade="model.role.soldier"
+              expert-unit="model.unit.veteranSoldier">
+            <required-ability id="model.ability.canBeEquipped"
+                              value="true"/>
+            <required-ability id="model.ability.native"
+                              value="false"/>
+            <required-ability id="model.ability.refUnit"
+                              value="false"/>
+            <required-goods id="model.goods.muskets"
+                            value="50"/>
+            <required-goods id="model.goods.horses"
+                            value="50"/>
+
+            <ability id="model.ability.armed"
+                     value="true"/>
+            <ability id="model.ability.canBeCaptured"
+                     value="false"/>
+            <ability id="model.ability.captureUnits"
+                     value="true"/>
+            <ability id="model.ability.demandTribue"
+                     value="true"/>
+            <ability id="model.ability.mounted"
+                     value="true"/>
+            <modifier id="model.modifier.defence" index="30"
+                      type="additive" value="2"/>
+            <modifier id="model.modifier.offence" index="30"
+                      type="additive" value="3"/>
+            <modifier id="model.modifier.movementBonus"
+                      type="additive" value="9"/>
+        </role>
+
+        <role id="model.role.pioneer"
+              expert-unit="model.unit.hardyPioneer" maximum-count="5">
+            <required-ability id="model.ability.canBeEquipped"
+                              value="true"/>
+            <required-ability id="model.ability.native"
+                              value="false"/>
+            <required-ability id="model.ability.refUnit"
+                              value="false"/>
+            <required-goods id="model.goods.tools"
+                            value="20"/>
+
+            <ability id="model.ability.disposeOnCombatLoss"
+                     value="true"/>
+            <ability id="model.ability.improveTerrain"
+                     value="true"/>
+        </role>
+
+        <role id="model.role.missionary"
+                expert-unit="model.unit.jesuitMissionary">
+            <required-ability id="model.ability.canBeEquipped"
+                              value="true"/>
+            <required-ability id="model.ability.dressMissionary"
+                              value="true"/>
+            <required-ability id="model.ability.native"
+                              value="false"/>
+            <required-ability id="model.ability.refUnit"
+                              value="false"/>
+
+            <ability id="model.ability.denounceHeresy"
+                     value="true"/>
+            <ability id="model.ability.establishMission"
+                     value="true"/>
+            <ability id="model.ability.inciteNatives"
+                     value="true"/>
+            <modifier id="model.modifier.missionaryTradeBonus"
+                      type="percentage" value="10"/>
+            <modifier id="model.modifier.movementBonus"
+                      type="additive" value="3"/>
+        </role>
+
+  </roles>
+
     <unit-change-types>
         <unit-change-type id="model.unitChange.clearSkill">
             <unit-type-change id="model.unitChange.clearSkill.expertFarmer"
@@ -213,6 +351,36 @@
     </unit-change-types>
 
     <unit-types>
+        <unit-type id="colonist" abstract="true"
+                   offence="0" defence="1" movement="3" line-of-sight="1"
+                   priority="1000">
+            <ability id="model.ability.person"
+                     value="true"/>
+            <ability id="model.ability.foundColony"
+                     value="true"/>
+            <ability id="model.ability.canBeEquipped"
+                     value="true"/>
+            <ability id="model.ability.canBeCaptured"
+                     value="true"/>
+            <modifier id="model.modifier.conversionSkill"
+                      type="additive" value="6"/>
+            <modifier id="model.modifier.conversionAlarmRate"
+                      type="percentage" value="2"/>
+            <consumes id="model.goods.food" value="2" />
+            <consumes id="model.goods.bells" value="1" />
+        </unit-type>
+
+        <unit-type id="model.unit.freeColonist" extends="colonist"
+                   default-unit="true" score-value="3" skill="0"
+                   recruit-probability="20" maximum-experience="200">
+            <ability id="model.ability.bornInColony"
+                     value="true"/>
+            <ability id="model.ability.foundInLostCity"
+                     value="true"/>
+            <required-goods id="model.goods.food"
+                            value="200"/>
+        </unit-type>
+
         <unit-type id="model.unit.masterMinter"
                    extends="colonist"
                    price="2000"
@@ -236,13 +404,14 @@
                 <output goods-type="model.goods.silvercoin"
                         value="3"/>
             </production>
+            <required-goods id="model.goods.hammers" value="64" />
         </building-type>
 
         <building-type id="model.building.mintShop"
-                           extends="model.building.mintHouse"
-                           upgrades-from="model.building.mintHouse"
-                           competence-factor="2"
-                           upkeep="5">
+                       extends="model.building.mintHouse"
+                       upgrades-from="model.building.mintHouse"
+                       competence-factor="2"
+                       upkeep="5">
             <production>
                 <input goods-type="model.goods.silver"
                        value="6"/>
@@ -256,16 +425,16 @@
         </building-type>
 
         <building-type id="model.building.mintWorks"
-                    extends="model.building.mintShop"
-                    upgrades-from="model.building.mintShop"
-                    experts-with-connections-production="4"
-                    competence-factor="3"
-                    rebel-factor="1.5"
-                    required-population="8"
-                    upkeep="15">
+                       extends="model.building.mintShop"
+                       upgrades-from="model.building.mintShop"
+                       experts-with-connections-production="4"
+                       competence-factor="3"
+                       rebel-factor="1.5"
+                       required-population="8"
+                       upkeep="15">
             <production>
                 <input goods-type="model.goods.silver"
-                        value="6"/>
+                       value="6"/>
                 <output goods-type="model.goods.silvercoin"
                         value="9"/>
             </production>
@@ -275,7 +444,7 @@
                             value="100"/>
             <required-ability id="model.ability.buildFactory"/>
             <ability id="model.ability.expertsUseConnections"
-                        value="true"/>
+                     value="true"/>
         </building-type>
 
     </building-types>
