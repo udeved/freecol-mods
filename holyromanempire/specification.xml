@@ -63,55 +63,55 @@
         </unit-type>
     </unit-types>
 
-  <building-types>
+    <building-types>
 
-    <building-type id="model.building.mintHouse">
-        <production>
-            <input goods-type="model.goods.silver"
-                   value="3"/>
-            <output goods-type="model.goods.silvercoin"
-                    value="3"/>
-        </production>
-    </building-type>
+        <building-type id="model.building.mintHouse">
+            <production>
+                <input goods-type="model.goods.silver"
+                       value="3"/>
+                <output goods-type="model.goods.silvercoin"
+                        value="3"/>
+            </production>
+        </building-type>
 
-    <building-type id="model.building.mintShop"
-                   extends="model.building.mintHouse"
-                   upgrades-from="model.building.mintHouse"
-                   competence-factor="2"
-                   upkeep="5">
-        <production>
-            <input goods-type="model.goods.silver"
-                   value="6"/>
-            <output goods-type="model.goods.silvercoin"
-                    value="6"/>
-        </production>
-        <required-goods id="model.goods.hammers"
-                        value="64"/>
-        <required-goods id="model.goods.tools"
-                        value="20"/>
-    </building-type>
-
-    <building-type id="model.building.mintWorks"
-                   extends="model.building.mintShop"
-                   upgrades-from="model.building.mintShop"
-                   experts-with-connections-production="4"
-                   competence-factor="3"
-                   rebel-factor="1.5"
-                   required-population="8"
-                   upkeep="15">
+            <building-type id="model.building.mintShop"
+                           extends="model.building.mintHouse"
+                           upgrades-from="model.building.mintHouse"
+                           competence-factor="2"
+                           upkeep="5">
             <production>
                 <input goods-type="model.goods.silver"
                        value="6"/>
                 <output goods-type="model.goods.silvercoin"
-                        value="9"/>
+                        value="6"/>
             </production>
             <required-goods id="model.goods.hammers"
-                            value="240"/>
+                            value="64"/>
             <required-goods id="model.goods.tools"
-                            value="100"/>
-            <required-ability id="model.ability.buildFactory"/>
-            <ability id="model.ability.expertsUseConnections"
-                     value="true"/>
+                            value="20"/>
+        </building-type>
+
+        <building-type id="model.building.mintWorks"
+                    extends="model.building.mintShop"
+                    upgrades-from="model.building.mintShop"
+                    experts-with-connections-production="4"
+                    competence-factor="3"
+                    rebel-factor="1.5"
+                    required-population="8"
+                    upkeep="15">
+                <production>
+                    <input goods-type="model.goods.silver"
+                           value="6"/>
+                    <output goods-type="model.goods.silvercoin"
+                            value="9"/>
+                </production>
+                <required-goods id="model.goods.hammers"
+                                value="240"/>
+                <required-goods id="model.goods.tools"
+                                value="100"/>
+                <required-ability id="model.ability.buildFactory"/>
+                <ability id="model.ability.expertsUseConnections"
+                         value="true"/>
         </building-type>
 
     </building-types>
