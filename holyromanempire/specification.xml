@@ -140,8 +140,16 @@
     </european-nation-types>
 
     <nations>
-        <nation id="model.nation.holyromanempire" color="0xc4a022" nation-type="model.nationType.guild" selectable="true" preferred-latitude="-30" starts-on-east-coast="false" ref="model.nation.holyromanempireREF"/>
-        <nation id="model.nation.holyromanempireREF" color="0x68228b" nation-type="model.nationType.ref"/>
+        <nation id="model.nation.holyromanempire"
+                color="0xc4a022"
+                nation-type="model.nationType.guild"
+                selectable="true"
+                preferred-latitude="-30"
+                starts-on-east-coast="false"
+                ref="model.nation.holyromanempireREF"/>
+        <nation id="model.nation.holyromanempireREF"
+                color="0x68228b"
+                nation-type="model.nationType.ref"/>
     </nations>
 
 </freecol-specification>
