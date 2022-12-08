@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    *  Copyright (C) 2002-2015  The FreeCol Team
+    *
+    *  This file is part of FreeCol.
+    *
+    *  FreeCol is free software: you can redistribute it and/or modify
+    *  it under the terms of the GNU General Public License as published by
+    *  the Free Software Foundation, either version 2 of the License, or
+    *  (at your option) any later version.
+    *
+    *  FreeCol is distributed in the hope that it will be useful,
+    *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+    *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    *  GNU General Public License for more details.
+    *
+    *  You should have received a copy of the GNU General Public License
+    *  along with FreeCol.  If not, see <http://www.gnu.org/licenses/>.
+
+    In case of incompatible changes, please update version number and
+    XSD schema for validation.
+-->
+<freecol-specification id="hre" version="0.1">
+
+     <goods-types>
+        <goods-type id="model.goods.silvercoin"
+                    is-farmed="false"
+                    made-from="model.goods.silver">
+            <market initial-amount="500"
+                    initial-price="32"
+                    price-difference="3"/>
+        </goods-type>
+    </goods-types>
+
+    <unit-change-types>
+        <unit-change-type id="model.unitChange.clearSkill">
+            <unit-type-change id="model.unitChange.clearSkill.masterMinter"
+                              from="model.unit.masterMinter"
+                              to="model.unit.freeColonist"
+                              probability="100"/>
+        </unit-change-type>
+
+        <unit-change-type id="model.unitChange.education">
+            <unit-type-change id="model.unitChange.education.masterMinter"
+                              from="model.unit.freeColonist"
+                              to="model.unit.masterMinter"
+                              probability="100" turns="6"/>
+        </unit-change-type>
+    </unit-change-types>
+
+    <unit-types>
+        <unit-type id="model.unit.masterMinter"
+                   extends="colonist"
+                   price="2000"
+                   skill="2"
+                   expert-production="model.goods.silvercoin"
+                   recruit-probability="1"
+                   score-value="5">
+            <modifier id="model.goods.silvercoin"
+                      index="30"
+                      type="multiplicative"
+                      value="2"/>
+        </unit-type>
+    </unit-types>
+
+  <building-types>
+
+    <building-type id="model.building.mintHouse">
+        <production>
+            <input goods-type="model.goods.silver"
+                   value="3"/>
+            <output goods-type="model.goods.silvercoin"
+                    value="3"/>
+        </production>
+    </building-type>
+
+    <building-type id="model.building.mintShop"
+                   extends="model.building.mintHouse"
+                   upgrades-from="model.building.mintHouse"
+                   competence-factor="2"
+                   upkeep="5">
+        <production>
+            <input goods-type="model.goods.silver"
+                   value="6"/>
+            <output goods-type="model.goods.silvercoin"
+                    value="6"/>
+        </production>
+        <required-goods id="model.goods.hammers"
+                        value="64"/>
+        <required-goods id="model.goods.tools"
+                        value="20"/>
+    </building-type>
+
+    <building-type id="model.building.mintWorks"
+                   extends="model.building.mintShop"
+                   upgrades-from="model.building.mintShop"
+                   experts-with-connections-production="4"
+                   competence-factor="3"
+                   rebel-factor="1.5"
+                   required-population="8"
+                   upkeep="15">
+            <production>
+                <input goods-type="model.goods.silver"
+                       value="6"/>
+                <output goods-type="model.goods.silvercoin"
+                        value="9"/>
+            </production>
+            <required-goods id="model.goods.hammers"
+                            value="240"/>
+            <required-goods id="model.goods.tools"
+                            value="100"/>
+            <required-ability id="model.ability.buildFactory"/>
+            <ability id="model.ability.expertsUseConnections"
+                     value="true"/>
+        </building-type>
+
+    </building-types>
+
+    <european-nation-types>
+
+        <european-nation-type id="model.nationType.guild"
+                              extends="model.nationType.default">
+            <unit id="soldier"
+                  type="model.unit.expertSilverMiner"
+                  role="model.role.soldier"/>
+            <unit id="pioneer"
+                  type="model.unit.masterMinter"
+                  role="model.role.pioneer"/>
+            <unit id="scout"
+                  type="model.unit.seasonedScout"
+                  role="model.role.scout"/>
+            <unit id="ship"
+                  type="model.unit.galleon"/>
+            <modifier id="model.goods.silvercoin"
+                      index="80"
+                      type="additive"
+                      value="2"/>
+        </european-nation-type>
+
+    </european-nation-types>
+
+    <nations>
+        <nation id="model.nation.holyromanempire" color="0xc4a022" nation-type="model.nationType.guild" selectable="true" preferred-latitude="-30" starts-on-east-coast="false" ref="model.nation.holyromanempireREF"/>
+        <nation id="model.nation.holyromanempireREF" color="0x68228b" nation-type="model.nationType.ref"/>
+    </nations>
+
+</freecol-specification>
