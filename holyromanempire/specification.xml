@@ -400,9 +400,9 @@
         <building-type id="model.building.mintHouse">
             <production>
                 <input goods-type="model.goods.silver"
-                       value="3"/>
+                       value="2"/>
                 <output goods-type="model.goods.silvercoin"
-                        value="3"/>
+                        value="2"/>
             </production>
             <required-goods id="model.goods.hammers" value="64" />
         </building-type>
@@ -414,9 +414,9 @@
                        upkeep="5">
             <production>
                 <input goods-type="model.goods.silver"
-                       value="6"/>
+                       value="3"/>
                 <output goods-type="model.goods.silvercoin"
-                        value="6"/>
+                        value="3"/>
             </production>
             <required-goods id="model.goods.hammers"
                             value="64"/>
@@ -434,9 +434,9 @@
                        upkeep="15">
             <production>
                 <input goods-type="model.goods.silver"
-                       value="6"/>
+                       value="4"/>
                 <output goods-type="model.goods.silvercoin"
-                        value="9"/>
+                        value="7"/>
             </production>
             <required-goods id="model.goods.hammers"
                             value="240"/>
