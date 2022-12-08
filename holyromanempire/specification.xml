@@ -23,12 +23,18 @@
 <freecol-specification id="hre" version="0.2">
 
      <goods-types>
+        <goods-type id="model.goods.silver" is-farmed="true"
+                    production-weight="3.0">
+            <market initial-amount="500"
+                    initial-price="12"
+                    price-difference="2"/>
+        </goods-type>
         <goods-type id="model.goods.silvercoin"
                     is-farmed="false"
                     made-from="model.goods.silver">
             <market initial-amount="500"
-                    initial-price="32"
-                    price-difference="3"/>
+                    initial-price="20"
+                    price-difference="4"/>
         </goods-type>
     </goods-types>
 
@@ -459,11 +465,15 @@
             <unit id="pioneer"
                   type="model.unit.masterMinter"
                   role="model.role.pioneer"/>
-            <unit id="scout"
+           <!-- <unit id="scout"
                   type="model.unit.seasonedScout"
-                  role="model.role.scout"/>
+                  role="model.role.scout"/>-->
             <unit id="ship"
-                  type="model.unit.galleon"/>
+                  type="model.unit.merchantman"/>
+            <modifier id="model.goods.silver"
+                      index="80"
+                      type="additive"
+                      value="2"/>
             <modifier id="model.goods.silvercoin"
                       index="80"
                       type="additive"
