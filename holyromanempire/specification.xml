@@ -74,7 +74,7 @@
             </production>
         </building-type>
 
-            <building-type id="model.building.mintShop"
+        <building-type id="model.building.mintShop"
                            extends="model.building.mintHouse"
                            upgrades-from="model.building.mintHouse"
                            competence-factor="2"
@@ -99,26 +99,26 @@
                     rebel-factor="1.5"
                     required-population="8"
                     upkeep="15">
-                <production>
-                    <input goods-type="model.goods.silver"
-                           value="6"/>
-                    <output goods-type="model.goods.silvercoin"
-                            value="9"/>
-                </production>
-                <required-goods id="model.goods.hammers"
-                                value="240"/>
-                <required-goods id="model.goods.tools"
-                                value="100"/>
-                <required-ability id="model.ability.buildFactory"/>
-                <ability id="model.ability.expertsUseConnections"
-                         value="true"/>
+            <production>
+                <input goods-type="model.goods.silver"
+                        value="6"/>
+                <output goods-type="model.goods.silvercoin"
+                        value="9"/>
+            </production>
+            <required-goods id="model.goods.hammers"
+                            value="240"/>
+            <required-goods id="model.goods.tools"
+                            value="100"/>
+            <required-ability id="model.ability.buildFactory"/>
+            <ability id="model.ability.expertsUseConnections"
+                        value="true"/>
         </building-type>
 
     </building-types>
 
     <european-nation-types>
 
-        <european-nation-type id="model.nationType.guild"
+        <european-nation-type id="model.nationType.guilds"
                               extends="model.nationType.default">
             <unit id="soldier"
                   type="model.unit.expertSilverMiner"
@@ -142,7 +142,7 @@
     <nations>
         <nation id="model.nation.holyromanempire"
                 color="0xc4a022"
-                nation-type="model.nationType.guild"
+                nation-type="model.nationType.guilds"
                 selectable="true"
                 preferred-latitude="-30"
                 starts-on-east-coast="false"
