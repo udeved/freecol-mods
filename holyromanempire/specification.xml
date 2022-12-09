@@ -23,12 +23,14 @@
 <freecol-specification id="hre" version="0.2">
 
      <goods-types>
+
         <goods-type id="model.goods.silver" is-farmed="true"
                     production-weight="3.0">
             <market initial-amount="500"
                     initial-price="12"
                     price-difference="2"/>
         </goods-type>
+
         <goods-type id="model.goods.silvercoin"
                     is-farmed="false"
                     made-from="model.goods.silver">
@@ -36,9 +38,11 @@
                     initial-price="20"
                     price-difference="4"/>
         </goods-type>
+
     </goods-types>
 
     <roles>
+
         <role id="model.role.scout"
             expert-unit="model.unit.seasonedScout">
             <required-ability id="model.ability.canBeEquipped"
@@ -174,9 +178,10 @@
                       type="additive" value="3"/>
         </role>
 
-  </roles>
+    </roles>
 
     <unit-change-types>
+
         <unit-change-type id="model.unitChange.clearSkill">
             <unit-type-change id="model.unitChange.clearSkill.expertFarmer"
                               from="model.unit.expertFarmer"
@@ -354,9 +359,11 @@
                               to="model.unit.masterMinter"
                               probability="100" turns="6"/>
         </unit-change-type>
+
     </unit-change-types>
 
     <unit-types>
+
         <unit-type id="colonist" abstract="true"
                    offence="0" defence="1" movement="3" line-of-sight="1"
                    priority="1000">
@@ -399,6 +406,7 @@
                       type="multiplicative"
                       value="2"/>
         </unit-type>
+
     </unit-types>
 
     <building-types>
@@ -459,12 +467,12 @@
 
         <european-nation-type id="model.nationType.guilds"
                               extends="model.nationType.default">
-            <unit id="soldier"
-                  type="model.unit.expertSilverMiner"
-                  role="model.role.soldier"/>
             <unit id="pioneer"
-                  type="model.unit.masterMinter"
+                  type="model.unit.expertSilverMiner"
                   role="model.role.pioneer"/>
+            <unit id="soldier"
+                  type="model.unit.masterMinter"
+                  role="model.role.soldier"/>
            <!-- <unit id="scout"
                   type="model.unit.seasonedScout"
                   role="model.role.scout"/>-->
@@ -478,11 +486,16 @@
                       index="80"
                       type="additive"
                       value="2"/>
+            <modifier id="model.modifier.buildingPriceBonus"
+                      type="percentage" value="-50">
+                <scope type="model.building.docks"/>
+            </modifier>
         </european-nation-type>
 
     </european-nation-types>
 
     <nations>
+
         <nation id="model.nation.holyromanempire"
                 color="0xc4a022"
                 nation-type="model.nationType.guilds"
@@ -490,9 +503,11 @@
                 preferred-latitude="-30"
                 starts-on-east-coast="false"
                 ref="model.nation.holyromanempireREF"/>
+
         <nation id="model.nation.holyromanempireREF"
                 color="0x68228b"
                 nation-type="model.nationType.ref"/>
+
     </nations>
 
 </freecol-specification>
