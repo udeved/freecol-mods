@@ -35,6 +35,7 @@
       <consumes id="model.goods.cigars" value="1"/>
       <consumes id="model.goods.coats" value="1"/>
       <consumes id="model.goods.cloth" value="1"/>
+      <consumes id="model.goods.silvercoin" value="1"/>
       <ability id="model.ability.person"
                value="true"/>
       <ability id="model.ability.carryGoods"
@@ -150,7 +151,8 @@
   </roles>
 
   <indian-nation-types>
-    <indian-nation-type id="defaultPirate" abstract="true" aggression="high" number-of-settlements="low">
+    <indian-nation-type id="defaultPirate" abstract="true"
+                        aggression="high" number-of-settlements="low">
       <ability id="model.ability.ambushBonus"
                value="true"/>
       <ability id="model.ability.foundsColonies"
@@ -161,101 +163,31 @@
         <scope type="model.role.armedPirate"/>
       </ability>
       <ability id="model.ability.native"/>
+      <settlement id="model.settlement.colony.pirateNest" capital="false"
+                  claimable-radius="1" extra-claimable-radius="2"
+                  minimum-size="3" maximum-size="12"
+                  minimum-growth="4" maximum-growth="14"
+                  trade-bonus="4" convert-threshold="0">
+        <gifts probability="100" minimum="5" maximum="10" factor="300" />
+        <modifier id="model.modifier.defence" index="50"
+                  type="percentage" value="200"/>
+      </settlement>
     </indian-nation-type>
-<!--    <indian-nation-type id="pirateNest" abstract="true" extends="defaultPirate">
-      <skill id="model.unit.masterCarpenter" probability="20"/>
-
-    </indian-nation-type>
-    <indian-nation-type id="pirateTown" abstract="true" extends="pirateNest">
-      <skill id="model.unit.masterBlacksmith" probability="20"/>
-
-
-    </indian-nation-type>-->
     <indian-nation-type id="model.nationType.buccaneers" extends="defaultPirate">
-      <skill id="model.unit.masterCarpenter" probability="20"/>
-      <skill id="model.unit.masterBlacksmith" probability="20"/>
-      <skill id="model.unit.masterDistiller" probability="20"/>
+      <skill id="model.unit.masterCarpenter" probability="10"/>
+      <skill id="model.unit.masterBlacksmith" probability="10"/>
+      <skill id="model.unit.masterDistiller" probability="10"/>
       <skill id="model.unit.masterGunsmith" probability="3"/>
       <region id="model.region.center"/>
-      <settlement id="model.settlement.pirates.nest" capital="false"
-                  claimable-radius="1" extra-claimable-radius="1"
-                  minimum-size="3" maximum-size="7"
-                  minimum-growth="1" maximum-growth="8"
-                  trade-bonus="2" convert-threshold="0">
-<!--        <plunder id="plunder.pirates" probability="100"
-                 minimum="5" maximum="9" factor="1000">
-          <scope ability-id="model.ability.plunderNatives"
-                 ability-value="false"/>
-        </plunder>
-        <plunder id="plunder.pirates.extra" probability="100"
-                 minimum="11" maximum="15" factor="1000">
-          <scope ability-id="model.ability.plunderNatives"
-                 ability-value="true"/>
-        </plunder>-->
-        <gifts probability="100" minimum="4" maximum="8" factor="200" />
-        <modifier id="model.modifier.defence" index="50"
-                  type="percentage" value="100"/>
-      </settlement>
-
-      <settlement id="model.settlement.pirates.town" capital="false"
-                  claimable-radius="2" extra-claimable-radius="2"
-                  minimum-size="8" maximum-size="12"
-                  minimum-growth="3" maximum-growth="12"
-                  trade-bonus="3" convert-threshold="0">
-<!--        <plunder id="plunder.pirates" probability="100"
-                 minimum="5" maximum="9" factor="1000">
-          <scope ability-id="model.ability.plunderNatives"
-                 ability-value="false"/>
-        </plunder>-->
-<!--        <plunder id="plunder.pirates.extra" probability="100"
-                 minimum="11" maximum="15" factor="1000">
-          <scope ability-id="model.ability.plunderNatives"
-                 ability-value="true"/>
-        </plunder>-->
-        <gifts probability="100" minimum="4" maximum="8" factor="200" />
-        <modifier id="model.modifier.defence" index="50"
-                  type="percentage" value="100"/>
-      </settlement>
-      <settlement id="model.settlement.pirates" capital="false"
-                  claimable-radius="3" extra-claimable-radius="3"
-                  minimum-size="10" maximum-size="12"
+      <settlement id="model.settlement.colony.pirateCapital" capital="true"
+                  claimable-radius="2" extra-claimable-radius="3"
+                  minimum-size="3" maximum-size="12"
                   minimum-growth="4" maximum-growth="14"
                   trade-bonus="4" convert-threshold="0">
-        <!--<plunder id="plunder.pirates.capital" probability="100"
-                 minimum="7" maximum="12" factor="1000">
-          <scope ability-id="model.ability.plunderNatives"
-                 ability-value="false"/>
-        </plunder>-->
-<!--        <plunder id="plunder.pirates.capital.extra" probability="100"
-                 minimum="16" maximum="19" factor="1000">
-          <scope ability-id="model.ability.plunderNatives"
-                 ability-value="true"/>
-        </plunder>-->
         <gifts probability="100" minimum="5" maximum="10" factor="300" />
         <modifier id="model.modifier.defence" index="50"
                   type="percentage" value="200"/>
       </settlement>
-      <settlement id="model.settlement.pirates.capital" capital="true"
-                  claimable-radius="3" extra-claimable-radius="3"
-                  minimum-size="10" maximum-size="12"
-                  minimum-growth="4" maximum-growth="14"
-                  trade-bonus="4" convert-threshold="0">
-        <!--<plunder id="plunder.pirates.capital" probability="100"
-                 minimum="7" maximum="12" factor="1000">
-          <scope ability-id="model.ability.plunderNatives"
-                 ability-value="false"/>
-        </plunder>-->
-<!--        <plunder id="plunder.pirates.capital.extra" probability="100"
-                 minimum="16" maximum="19" factor="1000">
-          <scope ability-id="model.ability.plunderNatives"
-                 ability-value="true"/>
-        </plunder>-->
-        <gifts probability="100" minimum="5" maximum="10" factor="300" />
-        <modifier id="model.modifier.defence" index="50"
-                  type="percentage" value="200"/>
-      </settlement>
-      <!--<unit id="ship"
-                  type="model.unit.pirateSloop"/>-->
     </indian-nation-type>
   </indian-nation-types>
 
