@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    *  Copyright (C) 2002-2015  The FreeCol Team
+    *
+    *  This file is part of FreeCol.
+    *
+    *  FreeCol is free software: you can redistribute it and/or modify
+    *  it under the terms of the GNU General Public License as published by
+    *  the Free Software Foundation, either version 2 of the License, or
+    *  (at your option) any later version.
+    *
+    *  FreeCol is distributed in the hope that it will be useful,
+    *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+    *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    *  GNU General Public License for more details.
+    *
+    *  You should have received a copy of the GNU General Public License
+    *  along with FreeCol.  If not, see <http://www.gnu.org/licenses/>.
+
+    In case of incompatible changes, please update version number and
+    XSD schema for validation.
+-->
+<freecol-specification id="pirates" version="0.1">
+
+  <unit-types>
+    <unit-type id="model.unit.pirate"
+               offence="1" defence="1"
+               default-unit="true" movement="3" line-of-sight="1" space="1">
+      <required-ability id="model.ability.native"/>
+      <consumes id="model.goods.food" value="2"/>
+      <consumes id="model.goods.rum" value="1"/>
+      <consumes id="model.goods.tradeGoods" value="1"/>
+      <consumes id="model.goods.ore" value="1"/>
+      <consumes id="model.goods.silver" value="1"/>
+      <consumes id="model.goods.cigars" value="1"/>
+      <consumes id="model.goods.coats" value="1"/>
+      <consumes id="model.goods.cloth" value="1"/>
+      <ability id="model.ability.person"
+               value="true"/>
+      <ability id="model.ability.carryGoods"
+               value="true"/>
+      <ability id="model.ability.bornInIndianSettlement"
+               value="true"/>
+      <ability id="model.ability.pillageUnprotectedColony"
+               value="true"/>
+      <ability id="model.ability.disposeOnCombatLoss"
+               value="false"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.captureEquipment"
+               value="true"/>
+      <ability id="model.ability.canBeEquipped"
+               value="true"/>
+      <ability id="model.ability.foundColony"
+               value="true"/>
+    </unit-type>
+    <unit-type id="model.unit.pirateSloop" extends="ship" price="1500"
+               offence="8" defence="8" movement="24"
+               line-of-sight="2" space="2" spaceTaken="24" hit-points="6"
+               score-value="4">
+      <required-goods id="model.goods.tools"
+                      value="80"/>
+      <ability id="model.ability.captureGoods"
+               value="true"/>
+      <ability id="model.ability.piracy"
+               value="true"/>
+      <required-ability id="model.ability.native"
+                        value="true"/>
+    </unit-type>
+  </unit-types>
+  <roles>
+
+    <role id="model.role.mountedPirate">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="true"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.horses"
+                      value="25"/>
+
+      <ability id="model.ability.disposeOnCombatLoss"
+               value="false"/>
+      <ability id="model.ability.mounted"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="9"/>
+      <role-change from="model.role.default" capture="model.role.scout"/>
+      <role-change from="model.role.default" capture="model.role.dragoon"/>
+      <role-change from="model.role.default" capture="model.role.cavalry"/>
+    </role>
+
+    <role id="model.role.armedPirate">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="true"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.muskets"
+                      value="25"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.disposeOnCombatLoss"
+               value="false"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="2"/>
+      <role-change from="model.role.default" capture="model.role.soldier"/>
+      <role-change from="model.role.default" capture="model.role.infantry"/>
+    </role>
+
+    <role id="model.role.pirateDragoon" downgrade="model.role.armedPirate">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="true"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.muskets"
+                      value="25"/>
+      <required-goods id="model.goods.horses"
+                      value="25"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.mounted"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="2"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="3"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="9"/>
+      <role-change from="model.role.mountedPirate"
+                   capture="model.role.soldier"/>
+      <role-change from="model.role.mountedPirate"
+                   capture="model.role.infantry"/>
+      <role-change from="model.role.armedPirate" capture="model.role.scout"/>
+      <role-change from="model.role.armedPirate" capture="model.role.dragoon"/>
+      <role-change from="model.role.armedPirate" capture="model.role.cavalry"/>
+    </role>
+  </roles>
+
+  <indian-nation-types>
+    <indian-nation-type id="defaultPirate" abstract="true" aggression="high" number-of-settlements="low">
+      <ability id="model.ability.ambushBonus"
+               value="true"/>
+      <ability id="model.ability.foundsColonies"
+               value="true"/>
+      <ability id="model.ability.automaticEquipment"
+               value="true">
+        <scope type="model.role.pirateDragoon"/>
+        <scope type="model.role.armedPirate"/>
+      </ability>
+      <ability id="model.ability.native"/>
+    </indian-nation-type>
+<!--    <indian-nation-type id="pirateNest" abstract="true" extends="defaultPirate">
+      <skill id="model.unit.masterCarpenter" probability="20"/>
+
+    </indian-nation-type>
+    <indian-nation-type id="pirateTown" abstract="true" extends="pirateNest">
+      <skill id="model.unit.masterBlacksmith" probability="20"/>
+
+
+    </indian-nation-type>-->
+    <indian-nation-type id="model.nationType.buccaneers" extends="defaultPirate">
+      <skill id="model.unit.masterCarpenter" probability="20"/>
+      <skill id="model.unit.masterBlacksmith" probability="20"/>
+      <skill id="model.unit.masterDistiller" probability="20"/>
+      <skill id="model.unit.masterGunsmith" probability="3"/>
+      <region id="model.region.center"/>
+      <settlement id="model.settlement.pirates.nest" capital="false"
+                  claimable-radius="1" extra-claimable-radius="1"
+                  minimum-size="3" maximum-size="7"
+                  minimum-growth="1" maximum-growth="8"
+                  trade-bonus="2" convert-threshold="0">
+<!--        <plunder id="plunder.pirates" probability="100"
+                 minimum="5" maximum="9" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="false"/>
+        </plunder>
+        <plunder id="plunder.pirates.extra" probability="100"
+                 minimum="11" maximum="15" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="true"/>
+        </plunder>-->
+        <gifts probability="100" minimum="4" maximum="8" factor="200" />
+        <modifier id="model.modifier.defence" index="50"
+                  type="percentage" value="100"/>
+      </settlement>
+
+      <settlement id="model.settlement.pirates.town" capital="false"
+                  claimable-radius="2" extra-claimable-radius="2"
+                  minimum-size="8" maximum-size="12"
+                  minimum-growth="3" maximum-growth="12"
+                  trade-bonus="3" convert-threshold="0">
+<!--        <plunder id="plunder.pirates" probability="100"
+                 minimum="5" maximum="9" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="false"/>
+        </plunder>-->
+<!--        <plunder id="plunder.pirates.extra" probability="100"
+                 minimum="11" maximum="15" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="true"/>
+        </plunder>-->
+        <gifts probability="100" minimum="4" maximum="8" factor="200" />
+        <modifier id="model.modifier.defence" index="50"
+                  type="percentage" value="100"/>
+      </settlement>
+      <settlement id="model.settlement.pirates" capital="false"
+                  claimable-radius="3" extra-claimable-radius="3"
+                  minimum-size="10" maximum-size="12"
+                  minimum-growth="4" maximum-growth="14"
+                  trade-bonus="4" convert-threshold="0">
+        <!--<plunder id="plunder.pirates.capital" probability="100"
+                 minimum="7" maximum="12" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="false"/>
+        </plunder>-->
+<!--        <plunder id="plunder.pirates.capital.extra" probability="100"
+                 minimum="16" maximum="19" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="true"/>
+        </plunder>-->
+        <gifts probability="100" minimum="5" maximum="10" factor="300" />
+        <modifier id="model.modifier.defence" index="50"
+                  type="percentage" value="200"/>
+      </settlement>
+      <settlement id="model.settlement.pirates.capital" capital="true"
+                  claimable-radius="3" extra-claimable-radius="3"
+                  minimum-size="10" maximum-size="12"
+                  minimum-growth="4" maximum-growth="14"
+                  trade-bonus="4" convert-threshold="0">
+        <!--<plunder id="plunder.pirates.capital" probability="100"
+                 minimum="7" maximum="12" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="false"/>
+        </plunder>-->
+<!--        <plunder id="plunder.pirates.capital.extra" probability="100"
+                 minimum="16" maximum="19" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="true"/>
+        </plunder>-->
+        <gifts probability="100" minimum="5" maximum="10" factor="300" />
+        <modifier id="model.modifier.defence" index="50"
+                  type="percentage" value="200"/>
+      </settlement>
+      <!--<unit id="ship"
+                  type="model.unit.pirateSloop"/>-->
+    </indian-nation-type>
+  </indian-nation-types>
+
+  <nations>
+    <nation id="model.nation.pirates" color="0x000000"
+            nation-type="model.nationType.buccaneers"/>
+  </nations>
+</freecol-specification>
