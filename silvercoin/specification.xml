@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    *  Copyright (C) 2002-2015  The FreeCol Team
+    *
+    *  This file is part of FreeCol.
+    *
+    *  FreeCol is free software: you can redistribute it and/or modify
+    *  it under the terms of the GNU General Public License as published by
+    *  the Free Software Foundation, either version 2 of the License, or
+    *  (at your option) any later version.
+    *
+    *  FreeCol is distributed in the hope that it will be useful,
+    *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+    *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    *  GNU General Public License for more details.
+    *
+    *  You should have received a copy of the GNU General Public License
+    *  along with FreeCol.  If not, see <http://www.gnu.org/licenses/>.
+
+    In case of incompatible changes, please update version number and
+    XSD schema for validation.
+-->
+<freecol-specification id="silverCoin" version="0.2">
+
+     <goods-types>
+
+        <goods-type id="model.goods.silver" is-farmed="true"
+                    production-weight="3.0">
+            <market initial-amount="500"
+                    initial-price="12"
+                    price-difference="2"/>
+        </goods-type>
+
+        <goods-type id="model.goods.silvercoin"
+                    is-farmed="false"
+                    made-from="model.goods.silver">
+            <market initial-amount="500"
+                    initial-price="20"
+                    price-difference="4"/>
+        </goods-type>
+
+    </goods-types>
+
+    <roles>
+
+        <role id="model.role.scout"
+            expert-unit="model.unit.seasonedScout">
+            <required-ability id="model.ability.canBeEquipped"
+                              value="true"/>
+            <required-ability id="model.ability.native"
+                              value="false"/>
+            <required-ability id="model.ability.refUnit"
+                              value="false"/>
+            <required-goods id="model.goods.horses"
+                            value="50"/>
+
+            <ability id="model.ability.armed"
+                     value="true"/>
+            <ability id="model.ability.canBeCaptured"
+                     value="false"/>
+            <ability id="model.ability.captureUnits"
+                     value="true"/>
+            <ability id="model.ability.demandTribute"
+                     value="true"/>
+            <ability id="model.ability.disposeOnCombatLoss"
+                     value="true"/>
+            <ability id="model.ability.mounted"
+                     value="true"/>
+            <ability id="model.ability.negotiate"
+                     value="true"/>
+            <ability id="model.ability.speakWithChief"
+                     value="true"/>
+            <ability id="model.ability.spyOnColony"
+                     value="true"/>
+            <modifier id="model.modifier.defence" index="30"
+                      type="additive" value="1"/>
+            <modifier id="model.modifier.offence" index="30"
+                      type="additive" value="1"/>
+            <modifier id="model.modifier.lineOfSightBonus"
+                      type="additive" value="1"/>
+            <modifier id="model.modifier.movementBonus"
+                      type="additive" value="9"/>
+        </role>
+
+        <role id="model.role.soldier"
+            expert-unit="model.unit.veteranSoldier">
+            <required-ability id="model.ability.canBeEquipped"
+                              value="true"/>
+            <required-ability id="model.ability.native"
+                              value="false"/>
+            <required-ability id="model.ability.refUnit"
+                              value="false"/>
+            <required-goods id="model.goods.muskets"
+                            value="50"/>
+
+            <ability id="model.ability.armed"
+                     value="true"/>
+            <ability id="model.ability.canBeCaptured"
+                     value="false"/>
+            <ability id="model.ability.captureUnits"
+                     value="true"/>
+            <ability id="model.ability.demandTribute"
+                     value="true"/>
+            <modifier id="model.modifier.defence" index="30"
+                      type="additive" value="1"/>
+            <modifier id="model.modifier.offence" index="30"
+                      type="additive" value="2"/>
+        </role>
+
+        <role id="model.role.dragoon" downgrade="model.role.soldier"
+              expert-unit="model.unit.veteranSoldier">
+            <required-ability id="model.ability.canBeEquipped"
+                              value="true"/>
+            <required-ability id="model.ability.native"
+                              value="false"/>
+            <required-ability id="model.ability.refUnit"
+                              value="false"/>
+            <required-goods id="model.goods.muskets"
+                            value="50"/>
+            <required-goods id="model.goods.horses"
+                            value="50"/>
+
+            <ability id="model.ability.armed"
+                     value="true"/>
+            <ability id="model.ability.canBeCaptured"
+                     value="false"/>
+            <ability id="model.ability.captureUnits"
+                     value="true"/>
+            <ability id="model.ability.demandTribue"
+                     value="true"/>
+            <ability id="model.ability.mounted"
+                     value="true"/>
+            <modifier id="model.modifier.defence" index="30"
+                      type="additive" value="2"/>
+            <modifier id="model.modifier.offence" index="30"
+                      type="additive" value="3"/>
+            <modifier id="model.modifier.movementBonus"
+                      type="additive" value="9"/>
+        </role>
+
+        <role id="model.role.pioneer"
+              expert-unit="model.unit.hardyPioneer" maximum-count="5">
+            <required-ability id="model.ability.canBeEquipped"
+                              value="true"/>
+            <required-ability id="model.ability.native"
+                              value="false"/>
+            <required-ability id="model.ability.refUnit"
+                              value="false"/>
+            <required-goods id="model.goods.tools"
+                            value="20"/>
+
+            <ability id="model.ability.disposeOnCombatLoss"
+                     value="true"/>
+            <ability id="model.ability.improveTerrain"
+                     value="true"/>
+        </role>
+
+        <role id="model.role.missionary"
+                expert-unit="model.unit.jesuitMissionary">
+            <required-ability id="model.ability.canBeEquipped"
+                              value="true"/>
+            <required-ability id="model.ability.dressMissionary"
+                              value="true"/>
+            <required-ability id="model.ability.native"
+                              value="false"/>
+            <required-ability id="model.ability.refUnit"
+                              value="false"/>
+
+            <ability id="model.ability.denounceHeresy"
+                     value="true"/>
+            <ability id="model.ability.establishMission"
+                     value="true"/>
+            <ability id="model.ability.inciteNatives"
+                     value="true"/>
+            <modifier id="model.modifier.missionaryTradeBonus"
+                      type="percentage" value="10"/>
+            <modifier id="model.modifier.movementBonus"
+                      type="additive" value="3"/>
+        </role>
+
+    </roles>
+
+    <unit-change-types>
+
+        <unit-change-type id="model.unitChange.clearSkill">
+            <unit-type-change id="model.unitChange.clearSkill.expertFarmer"
+                              from="model.unit.expertFarmer"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.expertFisherman"
+                              from="model.unit.expertFisherman"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.expertFurTrapper"
+                              from="model.unit.expertFurTrapper"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.expertSilverMiner"
+                              from="model.unit.expertSilverMiner"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.expertLumberJack"
+                              from="model.unit.expertLumberJack"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.expertOreMiner"
+                              from="model.unit.expertOreMiner"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.masterSugarPlanter"
+                              from="model.unit.masterSugarPlanter"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.masterCottonPlanter"
+                              from="model.unit.masterCottonPlanter"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.masterTobaccoPlanter"
+                              from="model.unit.masterTobaccoPlanter"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.firebrandPreacher"
+                              from="model.unit.firebrandPreacher"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.elderStatesman"
+                              from="model.unit.elderStatesman"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.masterCarpenter"
+                              from="model.unit.masterCarpenter"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.masterDistiller"
+                              from="model.unit.masterDistiller"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.masterWeaver"
+                              from="model.unit.masterWeaver"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.masterTobacconist"
+                              from="model.unit.masterTobacconist"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.masterFurTrader"
+                              from="model.unit.masterFurTrader"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.masterBlacksmith"
+                              from="model.unit.masterBlacksmith"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.masterGunsmith"
+                              from="model.unit.masterGunsmith"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.seasonedScout"
+                              from="model.unit.seasonedScout"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.hardyPioneer"
+                              from="model.unit.hardyPioneer"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.veteranSoldier"
+                              from="model.unit.veteranSoldier"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.jesuitMissionary"
+                              from="model.unit.jesuitMissionary"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.colonialRegular"
+                              from="model.unit.colonialRegular"
+                              to="model.unit.freeColonist" probability="100"/>
+            <unit-type-change id="model.unitChange.clearSkill.masterMinter"
+                              from="model.unit.masterMinter"
+                              to="model.unit.freeColonist" probability="100"/>
+        </unit-change-type>
+
+        <unit-change-type id="model.unitChange.education">
+            <unit-type-change id="model.unitChange.education.indenturedServant"
+                              from="model.unit.pettyCriminal"
+                              to="model.unit.indenturedServant"
+                              probability="100" turns="4"/>
+            <unit-type-change id="model.unitChange.education.freeColonist"
+                              from="model.unit.indenturedServant"
+                              to="model.unit.freeColonist"
+                              probability="100" turns="4"/>
+            <unit-type-change id="model.unitChange.education.expertFarmer"
+                              from="model.unit.freeColonist"
+                              to="model.unit.expertFarmer"
+                              probability="100" turns="4"/>
+            <unit-type-change id="model.unitChange.education.expertFisherman"
+                              from="model.unit.freeColonist"
+                              to="model.unit.expertFisherman"
+                              probability="100" turns="4"/>
+            <unit-type-change id="model.unitChange.education.expertFurTrapper"
+                              from="model.unit.freeColonist"
+                              to="model.unit.expertFurTrapper"
+                              probability="100" turns="4"/>
+            <unit-type-change id="model.unitChange.education.expertSilverMiner"
+                              from="model.unit.freeColonist"
+                              to="model.unit.expertSilverMiner"
+                              probability="100" turns="4"/>
+            <unit-type-change id="model.unitChange.education.expertLumberJack"
+                              from="model.unit.freeColonist"
+                              to="model.unit.expertLumberJack"
+                              probability="100" turns="4"/>
+            <unit-type-change id="model.unitChange.education.expertOreMiner"
+                              from="model.unit.freeColonist"
+                              to="model.unit.expertOreMiner"
+                              probability="100" turns="4"/>
+            <unit-type-change id="model.unitChange.education.masterCottonPlanter"
+                              from="model.unit.freeColonist"
+                              to="model.unit.masterCottonPlanter"
+                              probability="100" turns="6"/>
+            <unit-type-change id="model.unitChange.education.masterSugarPlanter"
+                              from="model.unit.freeColonist"
+                              to="model.unit.masterSugarPlanter"
+                              probability="100" turns="6"/>
+            <unit-type-change id="model.unitChange.education.masterTobaccoPlanter"
+                              from="model.unit.freeColonist"
+                              to="model.unit.masterTobaccoPlanter"
+                              probability="100" turns="6"/>
+            <unit-type-change id="model.unitChange.education.firebrandPreacher"
+                              from="model.unit.freeColonist"
+                              to="model.unit.firebrandPreacher"
+                              probability="100" turns="8"/>
+            <unit-type-change id="model.unitChange.education.elderStatesman"
+                              from="model.unit.freeColonist"
+                              to="model.unit.elderStatesman"
+                              probability="100" turns="8"/>
+            <unit-type-change id="model.unitChange.education.masterCarpenter"
+                              from="model.unit.freeColonist"
+                              to="model.unit.masterCarpenter"
+                              probability="100" turns="4"/>
+            <unit-type-change id="model.unitChange.education.masterDistiller"
+                              from="model.unit.freeColonist"
+                              to="model.unit.masterDistiller"
+                              probability="100" turns="6"/>
+            <unit-type-change id="model.unitChange.education.masterWeaver"
+                              from="model.unit.freeColonist"
+                              to="model.unit.masterWeaver"
+                              probability="100" turns="6"/>
+            <unit-type-change id="model.unitChange.education.masterTobacconist"
+                              from="model.unit.freeColonist"
+                              to="model.unit.masterTobacconist"
+                              probability="100" turns="6"/>
+            <unit-type-change id="model.unitChange.education.masterFurTrader"
+                              from="model.unit.freeColonist"
+                              to="model.unit.masterFurTrader"
+                              probability="100" turns="6"/>
+            <unit-type-change id="model.unitChange.education.masterBlacksmith"
+                              from="model.unit.freeColonist"
+                              to="model.unit.masterBlacksmith"
+                              probability="100" turns="6"/>
+            <unit-type-change id="model.unitChange.education.masterGunsmith"
+                              from="model.unit.freeColonist"
+                              to="model.unit.masterGunsmith"
+                              probability="100" turns="6"/>
+            <unit-type-change id="model.unitChange.education.seasonedScout"
+                              from="model.unit.freeColonist"
+                              to="model.unit.seasonedScout"
+                              probability="100" turns="4"/>
+            <unit-type-change id="model.unitChange.education.hardyPioneer"
+                              from="model.unit.freeColonist"
+                              to="model.unit.hardyPioneer"
+                              probability="100" turns="4"/>
+            <unit-type-change id="model.unitChange.education.veteranSoldier"
+                              from="model.unit.freeColonist"
+                              to="model.unit.veteranSoldier"
+                              probability="100" turns="6"/>
+            <unit-type-change id="model.unitChange.education.jesuitMissionary"
+                              from="model.unit.freeColonist"
+                              to="model.unit.jesuitMissionary"
+                              probability="100" turns="8"/>
+            <unit-type-change id="model.unitChange.education.masterMinter"
+                              from="model.unit.freeColonist"
+                              to="model.unit.masterMinter"
+                              probability="100" turns="6"/>
+        </unit-change-type>
+
+        <unit-change-type id="model.unitChange.natives">
+            <unit-type-change id="model.unitChange.natives.indenturedServant-expertFarmer"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.expertFarmer" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-expertFarmer"
+                                from="model.unit.freeColonist"
+                                to="model.unit.expertFarmer" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.indenturedServant-expertFisherman"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.expertFisherman" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-expertFisherman"
+                                from="model.unit.freeColonist"
+                                to="model.unit.expertFisherman" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.indenturedServant-expertFurTrapper"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.expertFurTrapper" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-expertFurTrapper"
+                                from="model.unit.freeColonist"
+                                to="model.unit.expertFurTrapper" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.indenturedServant-expertSilverMiner"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.expertSilverMiner" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-expertSilverMiner"
+                                from="model.unit.freeColonist"
+                                to="model.unit.expertSilverMiner" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.indenturedServant-expertLumberJack"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.expertLumberJack" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-expertLumberJack"
+                                from="model.unit.freeColonist"
+                                to="model.unit.expertLumberJack" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.indenturedServant-expertOreMiner"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.expertOreMiner" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-expertOreMiner"
+                                from="model.unit.freeColonist"
+                                to="model.unit.expertOreMiner" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.indenturedServant-masterCottonPlanter"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.masterCottonPlanter" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-masterCottonPlanter"
+                                from="model.unit.freeColonist"
+                                to="model.unit.masterCottonPlanter" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.indenturedServant-masterFurTrader"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.masterFurTrader" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-masterFurTrader"
+                                from="model.unit.freeColonist"
+                                to="model.unit.masterFurTrader" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.indenturedServant-masterSugarPlanter"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.masterSugarPlanter" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-masterSugarPlanter"
+                                from="model.unit.freeColonist"
+                                to="model.unit.masterSugarPlanter" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.indenturedServant-masterTobaccoPlanter"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.masterTobaccoPlanter" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-masterTobaccoPlanter"
+                                from="model.unit.freeColonist"
+                                to="model.unit.masterTobaccoPlanter" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.indenturedServant-masterWeaver"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.masterWeaver" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-masterWeaver"
+                                from="model.unit.freeColonist"
+                                to="model.unit.masterWeaver" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.indenturedServant-seasonedScout"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.seasonedScout" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-seasonedScout"
+                                from="model.unit.freeColonist"
+                                to="model.unit.seasonedScout" probability="100"/>
+            <unit-type-change id="model.unitChange.natives.freeColonist-masterMinter"
+                                from="model.unit.freeColonist"
+                                to="model.unit.masterMinter" probability="100"/>
+        </unit-change-type>
+
+         <unit-change-type id="model.unitChange.undead" owner-change="true">
+            <unit-type-change id="model.unitChange.undead.pettyCriminal"
+                                from="model.unit.pettyCriminal"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.indenturedServant"
+                                from="model.unit.indenturedServant"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.freeColonist"
+                                from="model.unit.freeColonist"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.expertFarmer"
+                                from="model.unit.expertFarmer"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.expertFisherman"
+                                from="model.unit.expertFisherman"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.expertFurTrapper"
+                                from="model.unit.expertFurTrapper"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.expertSilverMiner"
+                                from="model.unit.expertSilverMiner"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.expertLumberJack"
+                                from="model.unit.expertLumberJack"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.expertOreMiner"
+                                from="model.unit.expertOreMiner"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.masterSugarPlanter"
+                                from="model.unit.masterSugarPlanter"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.masterCottonPlanter"
+                                from="model.unit.masterCottonPlanter"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.masterTobaccoPlanter"
+                                from="model.unit.masterTobaccoPlanter"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.firebrandPreacher"
+                                from="model.unit.firebrandPreacher"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.elderStatesman"
+                                from="model.unit.elderStatesman"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.masterCarpenter"
+                                from="model.unit.masterCarpenter"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.masterDistiller"
+                                from="model.unit.masterDistiller"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.masterWeaver"
+                                from="model.unit.masterWeaver"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.masterTobacconist"
+                                from="model.unit.masterTobacconist"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.masterFurTrader"
+                                from="model.unit.masterFurTrader"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.masterBlacksmith"
+                                from="model.unit.masterBlacksmith"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.masterGunsmith"
+                                from="model.unit.masterGunsmith"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.seasonedScout"
+                                from="model.unit.seasonedScout"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.hardyPioneer"
+                                from="model.unit.hardyPioneer"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.veteranSoldier"
+                                from="model.unit.veteranSoldier"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.jesuitMissionary"
+                                from="model.unit.jesuitMissionary"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.kingsRegular"
+                                from="model.unit.kingsRegular"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.indianConvert"
+                                from="model.unit.indianConvert"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.brave"
+                                from="model.unit.brave"
+                                to="model.unit.undead" probability="100"/>
+            <unit-type-change id="model.unitChange.undead.masterMinter"
+                                from="model.unit.masterMinter"
+                                to="model.unit.undead" probability="100"/>
+        </unit-change-type>
+
+    </unit-change-types>
+
+    <unit-types>
+
+        <unit-type id="colonist" abstract="true"
+                   offence="0" defence="1" movement="3" line-of-sight="1"
+                   priority="1000">
+            <ability id="model.ability.person"
+                     value="true"/>
+            <ability id="model.ability.foundColony"
+                     value="true"/>
+            <ability id="model.ability.canBeEquipped"
+                     value="true"/>
+            <ability id="model.ability.canBeCaptured"
+                     value="true"/>
+            <modifier id="model.modifier.conversionSkill"
+                      type="additive" value="6"/>
+            <modifier id="model.modifier.conversionAlarmRate"
+                      type="percentage" value="2"/>
+            <consumes id="model.goods.food" value="2" />
+            <consumes id="model.goods.bells" value="1" />
+        </unit-type>
+
+        <unit-type id="model.unit.freeColonist" extends="colonist"
+                   default-unit="true" score-value="3" skill="0"
+                   recruit-probability="20" maximum-experience="200">
+            <ability id="model.ability.bornInColony"
+                     value="true"/>
+            <ability id="model.ability.foundInLostCity"
+                     value="true"/>
+            <required-goods id="model.goods.food"
+                            value="200"/>
+        </unit-type>
+
+        <unit-type id="model.unit.masterMinter" extends="colonist"
+                   price="2000" skill="3" expert-production="model.goods.silvercoin"
+                   recruit-probability="1" score-value="5">
+            <modifier id="model.goods.silvercoin" index="30"
+                      type="multiplicative" value="2"/>
+        </unit-type>
+
+        <unit-type id="model.unit.galleon" extends="ship" price="3000"
+               offence="0" defence="10" movement="18"
+               line-of-sight="4" space="6" spaceTaken="64" hit-points="6"
+               score-value="5">
+            <required-goods id="model.goods.hammers"
+                      value="320"/>
+            <required-goods id="model.goods.tools"
+                      value="100"/>
+        </unit-type>
+
+    </unit-types>
+
+    <building-types>
+
+        <building-type id="model.building.mintHouse">
+            <production>
+                <input goods-type="model.goods.silver"
+                       value="1"/>
+                <output goods-type="model.goods.silvercoin"
+                        value="1"/>
+            </production>
+            <required-goods id="model.goods.hammers" value="64" />
+        </building-type>
+
+        <building-type id="model.building.mintShop"
+                       extends="model.building.mintHouse"
+                       upgrades-from="model.building.mintHouse"
+                       competence-factor="2"
+                       upkeep="5">
+            <production>
+                <input goods-type="model.goods.silver"
+                       value="2"/>
+                <output goods-type="model.goods.silvercoin"
+                        value="2"/>
+            </production>
+            <required-goods id="model.goods.hammers"
+                            value="64"/>
+            <required-goods id="model.goods.tools"
+                            value="20"/>
+        </building-type>
+
+        <building-type id="model.building.mintWorks"
+                       extends="model.building.mintShop"
+                       upgrades-from="model.building.mintShop"
+                       experts-with-connections-production="4"
+                       competence-factor="3"
+                       rebel-factor="1.5"
+                       required-population="8"
+                       upkeep="15">
+            <production>
+                <input goods-type="model.goods.silver"
+                       value="3"/>
+                <output goods-type="model.goods.silvercoin"
+                        value="6"/>
+            </production>
+            <required-goods id="model.goods.hammers"
+                            value="240"/>
+            <required-goods id="model.goods.tools"
+                            value="100"/>
+            <required-ability id="model.ability.buildFactory"/>
+            <ability id="model.ability.expertsUseConnections"
+                     value="true"/>
+        </building-type>
+
+    </building-types>
+
+</freecol-specification>
