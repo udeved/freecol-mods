@@ -20,9 +20,9 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="silverCoin" version="0.2">
+<freecol-specification id="silverCoin" version="0.1">
 
-     <goods-types>
+    <goods-types>
 
         <goods-type id="model.goods.silver" is-farmed="true"
                     production-weight="3.0">
@@ -568,15 +568,15 @@
             <modifier id="model.goods.silvercoin" index="30"
                       type="multiplicative" value="2"/>
         </unit-type>
-
+        
         <unit-type id="model.unit.galleon" extends="ship" price="3000"
-               offence="0" defence="10" movement="18"
-               line-of-sight="4" space="6" spaceTaken="64" hit-points="6"
-               score-value="5">
-            <required-goods id="model.goods.hammers"
-                      value="320"/>
-            <required-goods id="model.goods.tools"
-                      value="100"/>
+                   offence="0" defence="10" movement="18"
+                   line-of-sight="5" space="6" spaceTaken="64" hit-points="6"
+                   score-value="5">
+          <required-goods id="model.goods.hammers"
+                          value="320"/>
+          <required-goods id="model.goods.tools"
+                          value="100"/>
         </unit-type>
 
     </unit-types>
