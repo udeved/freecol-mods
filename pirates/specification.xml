@@ -687,59 +687,7 @@
                 type="multiplicative" value="2"/>
     </unit-type>
   </unit-types>
-  
-  <indian-nation-types>
-    <indian-nation-type id="defaultPirate" abstract="true">
-      <ability id="model.ability.ambushBonus"
-               value="true"/>
-      <ability id="model.ability.foundsColonies"
-               value="false"/>
-      <ability id="model.ability.automaticEquipment"
-               value="true">
-        <scope type="model.role.nativeDragoon"/>
-        <scope type="model.role.armedBrave"/>
-      </ability>
-      <ability id="model.ability.native"/>
-    </indian-nation-type>
-    <indian-nation-type id="pirates" abstract="true" extends="defaultPirate"
-                        aggression="high" number-of-settlements="low">
-      <settlement id="model.settlement.pirates.nest" capital="false"
-                  claimable-radius="1" extra-claimable-radius="2"
-                  minimum-size="3" maximum-size="6"
-                  minimum-growth="3" maximum-growth="10"
-                  trade-bonus="4" convert-threshold="0">
-        <gifts probability="50" minimum="5" maximum="10" factor="300" />
-        <modifier id="model.modifier.defence" index="50"
-                  type="percentage" value="50"/>
-      </settlement>
-      <settlement id="model.settlement.pirates.town" capital="false"
-                  claimable-radius="1" extra-claimable-radius="2"
-                  minimum-size="6" maximum-size="8"
-                  minimum-growth="4" maximum-growth="12"
-                  trade-bonus="3" convert-threshold="0">
-        <gifts probability="50" minimum="5" maximum="10" factor="300" />
-        <modifier id="model.modifier.defence" index="50"
-                  type="percentage" value="100"/>
-      </settlement>
-      <settlement id="model.settlement.pirates.capital" capital="true"
-                  claimable-radius="2" extra-claimable-radius="3"
-                  minimum-size="8" maximum-size="12"
-                  minimum-growth="4" maximum-growth="14"
-                  trade-bonus="4" convert-threshold="0">
-        <gifts probability="50" minimum="5" maximum="10" factor="300" />
-        <modifier id="model.modifier.defence" index="50"
-                  type="percentage" value="150"/>
-      </settlement>
-    </indian-nation-type>
-    <indian-nation-type id="model.nationType.letterOfMarque" extends="pirates">
-      <skill id="model.unit.privateer" probability="3"/>
-      <skill id="model.unit.pirate" probability="3"/>
-      <region id="model.region.center"/>
-      <region id="model.region.east"/>
-      <region id="model.region.west"/>
-    </indian-nation-type>
-  </indian-nation-types>
-
+    
   <building-types>
     <building-type id="model.building.mintHouse">
       <production>
@@ -788,8 +736,68 @@
       <ability id="model.ability.expertsUseConnections"
                value="true"/>
     </building-type>
+    
+    <building-type id="model.building.tavern"
+                   workplaces="1" minimum-skill="-2" maximum-skill="0"
+                   required-population="4" upkeep="5">
+      <required-goods id="model.goods.hammers"
+                      value="64"/>
+      <ability id="model.ability.teach" value="true"/>
+    </building-type>
   </building-types>
   
+  <indian-nation-types>
+    <indian-nation-type id="defaultPirate" abstract="true">
+      <ability id="model.ability.ambushBonus"
+               value="true"/>
+      <ability id="model.ability.foundsColonies"
+               value="false"/>
+      <ability id="model.ability.automaticEquipment"
+               value="true">
+        <scope type="model.role.nativeDragoon"/>
+        <scope type="model.role.armedBrave"/>
+      </ability>
+      <ability id="model.ability.native"/>
+    </indian-nation-type>
+    <indian-nation-type id="pirates" abstract="true" extends="defaultPirate"
+                        aggression="high" number-of-settlements="low">
+      <settlement id="model.settlement.pirates.nest" capital="false"
+                  claimable-radius="1" extra-claimable-radius="2"
+                  minimum-size="3" maximum-size="6"
+                  minimum-growth="3" maximum-growth="10"
+                  trade-bonus="4" convert-threshold="0">
+        <gifts probability="50" minimum="5" maximum="10" factor="300" />
+        <modifier id="model.modifier.defence" index="50"
+                  type="percentage" value="50"/>
+      </settlement>
+      <settlement id="model.settlement.pirates.town" capital="false"
+                  claimable-radius="1" extra-claimable-radius="2"
+                  minimum-size="6" maximum-size="8"
+                  minimum-growth="4" maximum-growth="12"
+                  trade-bonus="3" convert-threshold="0">
+        <gifts probability="50" minimum="5" maximum="10" factor="300" />
+        <modifier id="model.modifier.defence" index="50"
+                  type="percentage" value="100"/>
+      </settlement>
+      <settlement id="model.settlement.pirates.capital" capital="true"
+                  claimable-radius="2" extra-claimable-radius="3"
+                  minimum-size="8" maximum-size="12"
+                  minimum-growth="4" maximum-growth="14"
+                  trade-bonus="4" convert-threshold="0">
+        <gifts probability="50" minimum="5" maximum="10" factor="300" />
+        <modifier id="model.modifier.defence" index="50"
+                  type="percentage" value="150"/>
+      </settlement>
+    </indian-nation-type>
+    <indian-nation-type id="model.nationType.letterOfMarque" extends="pirates">
+<!--       <skill id="model.unit.courtesan" probability="3"/> -->
+      <skill id="model.unit.pirate" probability="3"/>
+      <region id="model.region.center"/>
+      <region id="model.region.east"/>
+      <region id="model.region.west"/>
+    </indian-nation-type>
+  </indian-nation-types>
+
   <nations>
     <nation id="model.nation.pirates" color="0x545454"
             nation-type="model.nationType.letterOfMarque"/>
