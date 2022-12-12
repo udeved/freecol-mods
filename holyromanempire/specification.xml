@@ -22,6 +22,17 @@
 -->
 <freecol-specification id="hre" version="0.3">
 
+    <unit-types>
+        <unit-type id="model.unit.galleon" extends="ship" price="3000"
+               offence="0" defence="15" movement="27"
+               line-of-sight="10" space="6" spaceTaken="64" hit-points="6"
+               score-value="5">
+            <required-goods id="model.goods.hammers"
+                      value="320"/>
+            <required-goods id="model.goods.tools"
+                      value="100"/>
+        </unit-type>    
+    </unit-types>
     <european-nation-types>
 
         <european-nation-type id="model.nationType.guilds"
@@ -30,7 +41,7 @@
                   type="model.unit.expertSilverMiner"
                   role="model.role.pioneer"/>
             <unit id="soldier"
-                  type="model.unit.masterCarpenter"
+                  type="model.unit.masterMinter"
                   role="model.role.soldier"/>
             <unit id="scout"
                   type="model.unit.seasonedScout"
@@ -59,7 +70,7 @@
                 color="0xc4a022"
                 nation-type="model.nationType.guilds"
                 selectable="true"
-                preferred-latitude="-30"
+                preferred-latitude="-25"
                 starts-on-east-coast="false"
                 ref="model.nation.holyromanempireREF"/>
 
