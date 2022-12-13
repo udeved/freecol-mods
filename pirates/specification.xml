@@ -178,6 +178,8 @@
                         value="false"/>
       <required-goods id="model.goods.muskets"
                       value="50"/>
+      <required-ability id="model.ability.piracy"
+                        value="true"/>
 
       <ability id="model.ability.armed"
                value="true"/>
@@ -207,6 +209,8 @@
                       value="50"/>
       <required-goods id="model.goods.horses"
                       value="50"/>
+      <required-ability id="model.ability.piracy"
+                        value="true"/>
 
       <ability id="model.ability.armed"
                value="true"/>
@@ -228,6 +232,120 @@
                 type="additive" value="9"/>
     </role>
 
+<!--    <role id="model.role.infantry"
+          expert-unit="model.unit.kingsRegular">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="true"/>
+      <required-ability id="model.ability.royalExpeditionaryForce"
+                        value="true"/>
+      <required-goods id="model.goods.muskets"
+                      value="50"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.demandTribute"
+               value="true"/>
+      <ability id="model.ability.disposeOnCombatLoss"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="2"/>
+    </role>
+
+    <role id="model.role.cavalry" downgrade="model.role.infantry"
+          expert-unit="model.unit.kingsRegular">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="true"/>
+      <required-ability id="model.ability.royalExpeditionaryForce"
+                        value="true"/>
+      <required-goods id="model.goods.muskets"
+                      value="50"/>
+      <required-goods id="model.goods.horses"
+                      value="50"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.demandTribute"
+               value="true"/>
+      <ability id="model.ability.mounted"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="2"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="3"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="9"/>
+    </role>
+    
+    <role id="model.role.soldier"
+          expert-unit="model.unit.veteranSoldier">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.muskets"
+                      value="50"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.canBeCaptured"
+               value="false"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.demandTribute"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="2"/>
+    </role>
+
+    <role id="model.role.dragoon" downgrade="model.role.soldier"
+          expert-unit="model.unit.veteranSoldier">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.muskets"
+                      value="50"/>
+      <required-goods id="model.goods.horses"
+                      value="50"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.canBeCaptured"
+               value="false"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.demandTribue"
+               value="true"/>
+      <ability id="model.ability.mounted"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="2"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="3"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="9"/>
+    </role>-->
+    
   </roles>
   
   <unit-change-types>
@@ -243,17 +361,17 @@
                         to="model.unit.freeColonist" probability="100"/>
       <unit-type-change id="model.unitChange.capture.pirate"
                         from="model.unit.pirate"
-                        to="model.unit.freeColonist" probability="100"/>
+                        to="model.unit.pettyCriminal" probability="100"/>
     </unit-change-type>
-<!--    <unit-change-type id="model.unitChange.conversion" owner-change="true">
+    <unit-change-type id="model.unitChange.conversion" owner-change="true">
       <unit-type-change id="model.unitChange.conversion.brave"
                         from="model.unit.brave"
                         to="model.unit.indianConvert" probability="100"/>
-      <unit-type-change id="model.unitChange.conversion.brave.pirate"
-                        from="model.unit.brave.pirate"
-                        to="model.unit.pirate" probability="100"/>
+      <unit-type-change id="model.unitChange.conversion.brave.pirates"
+                        from="model.unit.brave.pirates"
+                        to="model.unit.indenturedServant" probability="100"/>
     </unit-change-type>
-    <unit-change-type id="model.unitChange.promotion">
+  <!--  <unit-change-type id="model.unitChange.promotion">
       <unit-type-change id="model.unitChange.promotion.pettyCriminal"
                         from="model.unit.pettyCriminal"
                         to="model.unit.indenturedServant" probability="100"/>
@@ -345,6 +463,7 @@
                         from="model.unit.pirate"
                         to="model.unit.freeColonist" probability="100"/>
     </unit-change-type>
+    
     <unit-change-type id="model.unitChange.education">
       <unit-type-change id="model.unitChange.education.indenturedServant"
                         from="model.unit.pettyCriminal"
@@ -448,8 +567,14 @@
                         probability="100" turns="6"/>
       <unit-type-change id="model.unitChange.education.pirate"
                         from="model.unit.freeColonist"
-                        to="model.unit.pirate" probability="100"/>
+                        to="model.unit.pirate"
+                        probability="100" turns="2"/>
+      <unit-type-change id="model.unitChange.education.courtesan"
+                        from="model.unit.freeColonist"
+                        to="model.unit.courtesan"
+                        probability="100" turns="2"/>
     </unit-change-type>
+    
     <unit-change-type id="model.unitChange.natives">
       <unit-type-change id="model.unitChange.natives.indenturedServant-expertFarmer"
                         from="model.unit.indenturedServant"
@@ -523,13 +648,26 @@
       <unit-type-change id="model.unitChange.natives.freeColonist-seasonedScout"
                         from="model.unit.freeColonist"
                         to="model.unit.seasonedScout" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.indenturedServant-masterMinter"
+                        from="model.unit.indenturedServant"
+                        to="model.unit.masterMinter" probability="100"/>
       <unit-type-change id="model.unitChange.natives.freeColonist-masterMinter"
                         from="model.unit.freeColonist"
                         to="model.unit.masterMinter" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.indenturedServant-pirate"
+                        from="model.unit.indenturedServant"
+                        to="model.unit.pirate" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.indenturedServant-courtesan"
+                        from="model.unit.indenturedServant"
+                        to="model.unit.courtesan" probability="100"/>
       <unit-type-change id="model.unitChange.natives.freeColonist-pirate"
                         from="model.unit.freeColonist"
                         to="model.unit.pirate" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.freeColonist-courtesan"
+                        from="model.unit.freeColonist"
+                        to="model.unit.courtesan" probability="100"/>
     </unit-change-type>
+    
     <unit-change-type id="model.unitChange.undead" owner-change="true">
       <unit-type-change id="model.unitChange.undead.pettyCriminal"
                         from="model.unit.pettyCriminal"
@@ -621,10 +759,15 @@
       <unit-type-change id="model.unitChange.undead.pirate"
                         from="model.unit.pirate"
                         to="model.unit.undead" probability="100"/>
+      <unit-type-change id="model.unitChange.undead.courtesan"
+                        from="model.unit.courtesan"
+                        to="model.unit.undead" probability="100"/>
     </unit-change-type>
+    
   </unit-change-types>
     
   <unit-types>
+    
     <unit-type id="colonist" abstract="true"
                offence="0" defence="1" movement="3" line-of-sight="1"
                priority="1000">
@@ -643,52 +786,59 @@
       <consumes id="model.goods.food" value="2" />
       <consumes id="model.goods.bells" value="1" />
     </unit-type>
-    <unit-type id="corsair" abstract="true" extends="colonist"
-               skill="0"
-               recruit-probability="1" score-value="2">
+    
+    <unit-type id="model.unit.courtesan" extends="colonist" 
+               score-value="3" skill="-3" recruit-probability="0">
+      <modifier id="model.goods.rum" index="30" type="additive" value="1"/>
+      <consumes id="model.goods.coats" value="1" />
+      <consumes id="model.goods.cloth" value="1" />
+<!--       <required-goods id="model.goods.silvercoin" value="100"/>  -->
+    </unit-type>
+    
+    <unit-type id="model.unit.pirate" extends="colonist"
+               score-value="4" skill="-3" recruit-probability="0">
+               <!--default-unit="true"> space="1"-->
+<!--       <required-goods id="model.goods.silvercoin" value="100"/>  -->
       <consumes id="model.goods.rum" value="1"/>
       <consumes id="model.goods.cigars" value="1"/>
-      <consumes id="model.goods.cloth" value="1"/>
-      <consumes id="model.goods.silvercoin" value="1"/>
-      <consumes id="model.goods.bells" value="2" />
-    </unit-type>
-    <unit-type id="model.unit.courtesan" extends="corsair">
-      <modifier id="model.goods.rum" index="30" type="additive" value="2"/>
-      <modifier id="model.goods.cigars" index="30" type="additive" value="-2"/>
-      <modifier id="model.goods.cloth" index="30" type="additive" value="-1"/>
-      <consumes id="model.goods.coats" value="1"/>
-      <required-goods id="model.goods.silvercoin" value="100"/>
-    </unit-type>
-    <unit-type id="model.unit.pirate" extends="corsair"
-               offence="1">
-      <modifier id="model.goods.muskets" index="30" type="additive" value="2"/>
-      <modifier id="model.goods.hammers" index="30" type="additive" value="1"/>
-      <ability id="model.ability.mercenaryUnit"
-               value="true"/>
-      <ability id="model.ability.supportUnit"
-               value="true"/>
-      <ability id="model.ability.carryGoods"
-               value="true"/>
-      <ability id="model.ability.captureGoods"
-               value="true"/>
+      <modifier id="model.goods.muskets" index="30" type="additive" value="1"/>
       <ability id="model.ability.piracy"
                value="true"/>
       <modifier id="model.modifier.offence" index="40"
-                type="percentage" value="25"/>
+                type="additive" value="1"/>
+      <modifier id="model.modifier.defence" index="40"
+                type="additive" value="-1"/>
+      <modifier id="model.modifier.offence" index="40"
+                type="percentage" value="50"/>
       <modifier id="model.modifier.defence"
-                type="percentage" value="25" index="40"/>
+                type="percentage" value="50" index="40"/>
       <default-role id="model.role.buccaneer"/>
-      <required-goods id="model.goods.silvercoin" value="200"/>
     </unit-type>
+    
     <unit-type id="model.unit.masterMinter" extends="colonist"
                price="2000" skill="3" expert-production="model.goods.silvercoin"
                recruit-probability="1" score-value="5">
       <modifier id="model.goods.silvercoin" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>
+    
+<!--    <unit-type id="model.unit.privateer" extends="ship" price="2000"
+               offence="8" defence="8" movement="24"
+               line-of-sight="2" space="2" spaceTaken="24" hit-points="6"
+               score-value="4">
+      <required-goods id="model.goods.hammers"
+                      value="256"/>
+      <required-goods id="model.goods.tools"
+                      value="120"/>
+      <ability id="model.ability.captureGoods"
+               value="true"/>
+      <ability id="model.ability.piracy"
+               value="true"/>
+    </unit-type>-->
   </unit-types>
     
   <building-types>
+      
     <building-type id="model.building.mintHouse">
       <production>
         <input goods-type="model.goods.silver"
@@ -698,6 +848,7 @@
       </production>
       <required-goods id="model.goods.hammers" value="64" />
     </building-type>
+    
     <building-type id="model.building.mintShop"
                    extends="model.building.mintHouse"
                    upgrades-from="model.building.mintHouse"
@@ -714,6 +865,7 @@
       <required-goods id="model.goods.tools"
                       value="20"/>
     </building-type>
+    
     <building-type id="model.building.mintWorks"
                    extends="model.building.mintShop"
                    upgrades-from="model.building.mintShop"
@@ -738,16 +890,17 @@
     </building-type>
     
     <building-type id="model.building.tavern"
-                   workplaces="1" minimum-skill="-2" maximum-skill="0"
+                   workplaces="1" minimum-skill="-3" maximum-skill="-3"
                    required-population="4" upkeep="5">
-      <required-goods id="model.goods.hammers"
-                      value="64"/>
+      <!--<required-goods id="model.goods.hammers"
+                      value="64"/>-->
       <ability id="model.ability.teach" value="true"/>
     </building-type>
   </building-types>
   
   <indian-nation-types>
-    <indian-nation-type id="defaultPirate" abstract="true">
+    
+    <indian-nation-type id="default" abstract="true">
       <ability id="model.ability.ambushBonus"
                value="true"/>
       <ability id="model.ability.foundsColonies"
@@ -759,13 +912,46 @@
       </ability>
       <ability id="model.ability.native"/>
     </indian-nation-type>
-    <indian-nation-type id="pirates" abstract="true" extends="defaultPirate"
+    
+    <indian-nation-type id="default" abstract="true">
+      <ability id="model.ability.ambushBonus"
+               value="true"/>
+      <ability id="model.ability.foundsColonies"
+               value="false"/>
+      <ability id="model.ability.automaticEquipment"
+               value="true">
+        <scope type="model.role.nativeDragoon"/>
+        <scope type="model.role.armedBrave"/>
+      </ability>
+      <ability id="model.ability.native"/>
+    </indian-nation-type>
+    
+    <indian-nation-type id="corsair" abstract="true" extends="default">
+      <region id="model.region.east"/>   
+      <region id="model.region.center"/>
+      <region id="model.region.west"/>
+<!--       <skill id="model.unit.courtesan" probability="3"/> -->
+      <skill id="model.unit.pirate" probability="3"/>
+<!--       <skill id="model.unit.masterMinter" probability="3"/> -->
+    </indian-nation-type>
+    
+    <indian-nation-type id="model.nationType.letterOfMarque" extends="corsair"
                         aggression="high" number-of-settlements="low">
-      <settlement id="model.settlement.pirates.nest" capital="false"
+      <settlement id="model.settlement.pirates" capital="false"
                   claimable-radius="1" extra-claimable-radius="2"
                   minimum-size="3" maximum-size="6"
                   minimum-growth="3" maximum-growth="10"
-                  trade-bonus="4" convert-threshold="0">
+                  trade-bonus="4" convert-threshold="30">
+        <plunder id="plunder.pirates" probability="100"
+                 minimum="5" maximum="9" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="false"/>
+        </plunder>
+        <plunder id="plunder.pirates.extra" probability="100"
+                 minimum="11" maximum="15" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="true"/>
+        </plunder>
         <gifts probability="50" minimum="5" maximum="10" factor="300" />
         <modifier id="model.modifier.defence" index="50"
                   type="percentage" value="50"/>
@@ -774,7 +960,17 @@
                   claimable-radius="1" extra-claimable-radius="2"
                   minimum-size="6" maximum-size="8"
                   minimum-growth="4" maximum-growth="12"
-                  trade-bonus="3" convert-threshold="0">
+                  trade-bonus="3" convert-threshold="20">
+        <plunder id="plunder.pirates.town" probability="100"
+                 minimum="6" maximum="10" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="false"/>
+        </plunder>
+        <plunder id="plunder.pirates.town.extra" probability="100"
+                 minimum="13" maximum="16" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="true"/>
+        </plunder>
         <gifts probability="50" minimum="5" maximum="10" factor="300" />
         <modifier id="model.modifier.defence" index="50"
                   type="percentage" value="100"/>
@@ -783,18 +979,21 @@
                   claimable-radius="2" extra-claimable-radius="3"
                   minimum-size="8" maximum-size="12"
                   minimum-growth="4" maximum-growth="14"
-                  trade-bonus="4" convert-threshold="0">
+                  trade-bonus="4" convert-threshold="10">
+        <plunder id="plunder.pirates.capital" probability="100"
+                 minimum="7" maximum="12" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="false"/>
+        </plunder>
+        <plunder id="plunder.pirates.capital.extra" probability="100"
+                 minimum="16" maximum="19" factor="1000">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="true"/>
+        </plunder>
         <gifts probability="50" minimum="5" maximum="10" factor="300" />
         <modifier id="model.modifier.defence" index="50"
                   type="percentage" value="150"/>
       </settlement>
-    </indian-nation-type>
-    <indian-nation-type id="model.nationType.letterOfMarque" extends="pirates">
-<!--       <skill id="model.unit.courtesan" probability="3"/> -->
-      <skill id="model.unit.pirate" probability="3"/>
-      <region id="model.region.center"/>
-      <region id="model.region.east"/>
-      <region id="model.region.west"/>
     </indian-nation-type>
   </indian-nation-types>
 
