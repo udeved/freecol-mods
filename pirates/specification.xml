@@ -263,6 +263,9 @@
       <unit-type-change id="model.unitChange.conversion.brave"
                         from="model.unit.brave"
                         to="model.unit.indianConvert" probability="100"/>
+      <unit-type-change id="model.unitChange.conversion.brave.pirates"
+                        from="model.unit.brave.pirates"
+                        to="model.unit.pirateConvert" probability="50"/>
     </unit-change-type>
     
     <unit-change-type id="model.unitChange.clearSkill">
@@ -724,7 +727,31 @@
       <modifier id="model.goods.silvercoin" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>
-
+    
+    <unit-type id="model.unit.pirateConvert"
+               skill="0" offence="0" defence="1" movement="3" line-of-sight="1"
+               maximum-attrition="8" score-value="3">
+      <consumes id="model.goods.food" value="2"/>
+      <consumes id="model.goods.bells" value="1"/>
+      <ability id="model.ability.person"
+               value="true"/>
+      <ability id="model.ability.foundColony"
+               value="false"/>
+      <modifier id="model.goods.grain"   index="30" type="additive" value="-1"/>
+      <modifier id="model.goods.sugar"   index="30" type="additive" value="-1"/>
+      <modifier id="model.goods.tobacco" index="30" type="additive" value="-1"/>
+      <modifier id="model.goods.cotton"  index="30" type="additive" value="-1"/>
+      <modifier id="model.goods.furs"    index="30" type="additive" value="-1"/>
+      <modifier id="model.goods.fish"    index="30" type="additive" value="1"/>
+      <modifier id="model.goods.rum"     index="30" type="additive" value="1"/>
+      <modifier id="model.goods.cigars"  index="30" type="additive" value="-2"/>
+      <modifier id="model.goods.cloth"   index="30" type="additive" value="-2"/>
+      <modifier id="model.goods.coats"   index="30" type="additive" value="-2"/>
+      <modifier id="model.goods.muskets" index="30" type="additive" value="1"/>
+      <modifier id="model.goods.bells"   index="30" type="additive" value="-2"/>
+      <modifier id="model.goods.crosses" index="30" type="additive" value="-2"/>
+    </unit-type>
+    
   </unit-types>
     
   <building-types>
@@ -801,17 +828,17 @@
       <ability id="model.ability.native"/>
     </indian-nation-type>
     
-    <indian-nation-type id="corsair" abstract="true" extends="default">
+    <indian-nation-type id="corsair" abstract="true" extends="default"
+                        aggression="high" number-of-settlements="high">
       <region id="model.region.east"/>   
       <region id="model.region.center"/>
       <region id="model.region.west"/>
-      <skill id="model.unit.courtesan" probability="3"/>
+      <skill id="model.unit.courtesan" probability="10"/>
       <skill id="model.unit.pirate" probability="3"/>
     </indian-nation-type>
     
-    <indian-nation-type id="model.nationType.letterOfMarque" extends="corsair"
-                        aggression="high" number-of-settlements="low">
-      <settlement id="model.settlement.pirates" capital="false"
+    <indian-nation-type id="model.nationType.letterOfMarque" extends="corsair">
+<!--      <settlement id="model.settlement.pirates" capital="false"
                   claimable-radius="1" extra-claimable-radius="2"
                   minimum-size="3" maximum-size="6"
                   minimum-growth="3" maximum-growth="10"
@@ -829,18 +856,18 @@
         <gifts probability="50" minimum="5" maximum="10" factor="300" />
         <modifier id="model.modifier.defence" index="50"
                   type="percentage" value="50"/>
-      </settlement>
-      <settlement id="model.settlement.pirates.town" capital="false"
+      </settlement>-->
+      <settlement id="model.settlement.pirates" capital="false"
                   claimable-radius="1" extra-claimable-radius="2"
                   minimum-size="6" maximum-size="8"
                   minimum-growth="4" maximum-growth="12"
                   trade-bonus="3" convert-threshold="20">
-        <plunder id="plunder.pirates.town" probability="100"
+        <plunder id="plunder.pirates" probability="100"
                  minimum="6" maximum="10" factor="1000">
           <scope ability-id="model.ability.plunderNatives"
                  ability-value="false"/>
         </plunder>
-        <plunder id="plunder.pirates.town.extra" probability="100"
+        <plunder id="plunder.pirates.extra" probability="100"
                  minimum="13" maximum="16" factor="1000">
           <scope ability-id="model.ability.plunderNatives"
                  ability-value="true"/>
