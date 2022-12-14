@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    *  Copyright (C) 2002-2015  The FreeCol Team
+    *  Copyright (C) 2002-2022  The FreeCol Team
     *
     *  This file is part of FreeCol.
     *
@@ -20,7 +20,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="hre" version="0.3">
+<freecol-specification id="hre" version="0.4">
 
 <!--    <unit-types>
         <unit-type id="model.unit.galleon" extends="ship" price="3000"
@@ -56,10 +56,6 @@
                       index="80"
                       type="additive"
                       value="2"/>
- <!--           <modifier id="model.modifier.buildingPriceBonus"
-                      type="percentage" value="-50">
-                <scope type="model.building.docks"/>
-            </modifier>-->
         </european-nation-type>
 
     </european-nation-types>

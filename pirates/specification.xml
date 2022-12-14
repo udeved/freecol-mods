@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    *  Copyright (C) 2002-2015  The FreeCol Team
+    *  Copyright (C) 2002-2022  The FreeCol Team
     *
     *  This file is part of FreeCol.
     *
@@ -20,7 +20,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="pirates" version="0.1">
+<freecol-specification id="pirates" version="0.2">
   
   <goods-types>
     <goods-type id="model.goods.silvercoin" is-farmed="false"
@@ -181,7 +181,9 @@
       <required-ability id="model.ability.refUnit"
                         value="false"/>
       <required-goods id="model.goods.muskets"
-                      value="50"/>
+                      value="25"/>
+      <required-goods id="model.goods.solvercoin"
+                      value="25"/>
       <required-ability id="model.ability.piracy"
                         value="true"/>
 
@@ -198,7 +200,7 @@
       <modifier id="model.modifier.defence" index="30"
                 type="additive" value="0"/>
       <modifier id="model.modifier.offence" index="30"
-                type="additive" value="2"/>
+                type="additive" value="1"/>
     </role>
 
     <role id="model.role.raider" downgrade="model.role.buccaneer"
@@ -210,9 +212,11 @@
       <required-ability id="model.ability.refUnit"
                         value="false"/>
       <required-goods id="model.goods.muskets"
-                      value="50"/>
+                      value="25"/>
       <required-goods id="model.goods.horses"
-                      value="50"/>
+                      value="25"/>
+      <required-goods id="model.goods.solvercoin"
+                      value="25"/>
       <required-ability id="model.ability.piracy"
                         value="true"/>
 
@@ -231,124 +235,10 @@
       <modifier id="model.modifier.defence" index="30"
                 type="additive" value="1"/>
       <modifier id="model.modifier.offence" index="30"
-                type="additive" value="3"/>
+                type="additive" value="2"/>
       <modifier id="model.modifier.movementBonus"
                 type="additive" value="9"/>
     </role>
-
-<!--    <role id="model.role.infantry"
-          expert-unit="model.unit.kingsRegular">
-      <required-ability id="model.ability.canBeEquipped"
-                        value="true"/>
-      <required-ability id="model.ability.native"
-                        value="false"/>
-      <required-ability id="model.ability.refUnit"
-                        value="true"/>
-      <required-ability id="model.ability.royalExpeditionaryForce"
-                        value="true"/>
-      <required-goods id="model.goods.muskets"
-                      value="50"/>
-
-      <ability id="model.ability.armed"
-               value="true"/>
-      <ability id="model.ability.captureUnits"
-               value="true"/>
-      <ability id="model.ability.demandTribute"
-               value="true"/>
-      <ability id="model.ability.disposeOnCombatLoss"
-               value="true"/>
-      <modifier id="model.modifier.defence" index="30"
-                type="additive" value="1"/>
-      <modifier id="model.modifier.offence" index="30"
-                type="additive" value="2"/>
-    </role>
-
-    <role id="model.role.cavalry" downgrade="model.role.infantry"
-          expert-unit="model.unit.kingsRegular">
-      <required-ability id="model.ability.canBeEquipped"
-                        value="true"/>
-      <required-ability id="model.ability.native"
-                        value="false"/>
-      <required-ability id="model.ability.refUnit"
-                        value="true"/>
-      <required-ability id="model.ability.royalExpeditionaryForce"
-                        value="true"/>
-      <required-goods id="model.goods.muskets"
-                      value="50"/>
-      <required-goods id="model.goods.horses"
-                      value="50"/>
-
-      <ability id="model.ability.armed"
-               value="true"/>
-      <ability id="model.ability.captureUnits"
-               value="true"/>
-      <ability id="model.ability.demandTribute"
-               value="true"/>
-      <ability id="model.ability.mounted"
-               value="true"/>
-      <modifier id="model.modifier.defence" index="30"
-                type="additive" value="2"/>
-      <modifier id="model.modifier.offence" index="30"
-                type="additive" value="3"/>
-      <modifier id="model.modifier.movementBonus"
-                type="additive" value="9"/>
-    </role>
-    
-    <role id="model.role.soldier"
-          expert-unit="model.unit.veteranSoldier">
-      <required-ability id="model.ability.canBeEquipped"
-                        value="true"/>
-      <required-ability id="model.ability.native"
-                        value="false"/>
-      <required-ability id="model.ability.refUnit"
-                        value="false"/>
-      <required-goods id="model.goods.muskets"
-                      value="50"/>
-
-      <ability id="model.ability.armed"
-               value="true"/>
-      <ability id="model.ability.canBeCaptured"
-               value="false"/>
-      <ability id="model.ability.captureUnits"
-               value="true"/>
-      <ability id="model.ability.demandTribute"
-               value="true"/>
-      <modifier id="model.modifier.defence" index="30"
-                type="additive" value="1"/>
-      <modifier id="model.modifier.offence" index="30"
-                type="additive" value="2"/>
-    </role>
-
-    <role id="model.role.dragoon" downgrade="model.role.soldier"
-          expert-unit="model.unit.veteranSoldier">
-      <required-ability id="model.ability.canBeEquipped"
-                        value="true"/>
-      <required-ability id="model.ability.native"
-                        value="false"/>
-      <required-ability id="model.ability.refUnit"
-                        value="false"/>
-      <required-goods id="model.goods.muskets"
-                      value="50"/>
-      <required-goods id="model.goods.horses"
-                      value="50"/>
-
-      <ability id="model.ability.armed"
-               value="true"/>
-      <ability id="model.ability.canBeCaptured"
-               value="false"/>
-      <ability id="model.ability.captureUnits"
-               value="true"/>
-      <ability id="model.ability.demandTribue"
-               value="true"/>
-      <ability id="model.ability.mounted"
-               value="true"/>
-      <modifier id="model.modifier.defence" index="30"
-                type="additive" value="2"/>
-      <modifier id="model.modifier.offence" index="30"
-                type="additive" value="3"/>
-      <modifier id="model.modifier.movementBonus"
-                type="additive" value="9"/>
-    </role>-->
     
   </roles>
   
@@ -373,26 +263,8 @@
       <unit-type-change id="model.unitChange.conversion.brave"
                         from="model.unit.brave"
                         to="model.unit.indianConvert" probability="100"/>
-      <!--<unit-type-change id="model.unitChange.conversion.brave.pirates"
-                        from="model.unit.brave.pirates"
-                        to="model.unit.indenturedServant" probability="100"/>-->
     </unit-change-type>
     
-  <!--  <unit-change-type id="model.unitChange.promotion">
-      <unit-type-change id="model.unitChange.promotion.pettyCriminal"
-                        from="model.unit.pettyCriminal"
-                        to="model.unit.indenturedServant" probability="100"/>
-      <unit-type-change id="model.unitChange.promotion.indenturedServant"
-                        from="model.unit.indenturedServant"
-                        to="model.unit.freeColonist" probability="100"/>
-      <unit-type-change id="model.unitChange.promotion.freeColonist"
-                        from="model.unit.freeColonist"
-                        to="model.unit.veteranSoldier" probability="100"/>
-      <unit-type-change id="model.unitChange.promotion.veteranSoldier"
-                        from="model.unit.veteranSoldier"
-                        to="model.unit.colonialRegular" probability="100"/>
-    </unit-change-type>
-    -->
     <unit-change-type id="model.unitChange.clearSkill">
       <unit-type-change id="model.unitChange.clearSkill.expertFarmer"
                         from="model.unit.expertFarmer"
@@ -583,14 +455,14 @@
                         from="model.unit.indenturedServant"
                         to="model.unit.courtesan"
                         probability="100" turns="2"/>
-<!--      <unit-type-change id="model.unitChange.education.pirate"
+      <unit-type-change id="model.unitChange.education.pirateConvert"
                         from="model.unit.indianConvert"
                         to="model.unit.pirate"
                          probability="100" turns="2"/>
-      <unit-type-change id="model.unitChange.education.courtesan"
+      <unit-type-change id="model.unitChange.education.courtesanConvert"
                         from="model.unit.indianConvert"
                         to="model.unit.courtesan"
-                        probability="100" turns="2"/>-->
+                        probability="100" turns="2"/>
     </unit-change-type>
     
     <unit-change-type id="model.unitChange.natives">
@@ -678,12 +550,12 @@
       <unit-type-change id="model.unitChange.natives.indenturedServant-courtesan"
                         from="model.unit.indenturedServant"
                         to="model.unit.courtesan" probability="100"/>
-      <!--<unit-type-change id="model.unitChange.natives.freeColonist-pirate"
+      <unit-type-change id="model.unitChange.natives.freeColonist-pirate"
                         from="model.unit.freeColonist"
                         to="model.unit.pirate" probability="100"/>
       <unit-type-change id="model.unitChange.natives.freeColonist-courtesan"
                         from="model.unit.freeColonist"
-                        to="model.unit.courtesan" probability="100"/>-->
+                        to="model.unit.courtesan" probability="100"/>
     </unit-change-type>
     
     <unit-change-type id="model.unitChange.undead" owner-change="true">
@@ -810,7 +682,6 @@
       
       <ability id="model.ability.piracy"
                value="true"/>
-<!--       <consumes id="model.goods.silvercoin" value="1"/> -->
       
       <modifier id="model.modifier.offence" index="40"
                 type="additive" value="1"/>
@@ -836,7 +707,6 @@
       
       <ability id="model.ability.piracy"
                value="true"/>
-<!--       <consumes id="model.goods.silvercoin" value="1"/> -->
       
       <modifier id="model.goods.rum" index="30"
                 type="additive" value="1"/>
@@ -904,13 +774,14 @@
     </building-type>
     
     <building-type id="model.building.tavern"
-                   workplaces="1" minimum-skill="-2" maximum-skill="0"
+                   workplaces="1" minimum-skill="0" maximum-skill="0"
                    required-population="3" upkeep="5">
       <required-goods id="model.goods.hammers"
                       value="64"/>
       <ability id="model.ability.teach"
                value="true"/>
     </building-type>
+    
   </building-types>
   
   <indian-nation-types>
@@ -996,10 +867,14 @@
                   type="percentage" value="150"/>
       </settlement>
     </indian-nation-type>
+    
   </indian-nation-types>
 
   <nations>
+      
     <nation id="model.nation.pirates" color="0x545454"
             nation-type="model.nationType.letterOfMarque"/>
+    
   </nations>
+  
 </freecol-specification>
