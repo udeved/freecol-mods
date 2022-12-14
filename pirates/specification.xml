@@ -20,7 +20,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="pirates" version="0.2">
+<freecol-specification id="pirates" version="0.3">
   
   <goods-types>
     <goods-type id="model.goods.silvercoin" is-farmed="false"
@@ -678,7 +678,8 @@
     </unit-type>
     
     <unit-type id="model.unit.pirate" extends="colonist"
-               score-value="4" skill="0" recruit-probability="0">
+               score-value="4" skill="0" recruit-probability="0"
+               price="1000" expert-production="model.goods.muskets">
       
       <ability id="model.ability.piracy"
                value="true"/>
@@ -689,11 +690,11 @@
                 type="additive" value="-1" index="40"/>
       
       <modifier id="model.goods.muskets" index="30"
-                type="additive" value="1"/>
+                type="additive" value="2"/>
       <modifier id="model.goods.tools" index="30"
-                type="additive" value="1"/>
+                type="additive" value="-1"/>
       <modifier id="model.goods.silvercoin" index="30" 
-                type="additive" value="-2"/>
+                type="additive" value="-1"/>
       
       <modifier id="model.modifier.offence" index="40"
                 type="percentage" value="50"/>
@@ -703,17 +704,18 @@
     </unit-type>
     
     <unit-type id="model.unit.courtesan" extends="colonist" 
-               score-value="3" skill="0" recruit-probability="0">
+               score-value="3" skill="0" recruit-probability="0"
+               price="500" expert-production="model.goods.rum">
       
       <ability id="model.ability.piracy"
                value="true"/>
       
       <modifier id="model.goods.rum" index="30"
-                type="additive" value="1"/>
+                type="additive" value="2"/>
       <modifier id="model.goods.cloth" index="30"
-                type="additive" value="1"/>
+                type="additive" value="-1"/>
       <modifier id="model.goods.silvercoin" index="30" 
-                type="additive" value="-2"/>
+                type="additive" value="-1"/>
     </unit-type>
     
     <unit-type id="model.unit.masterMinter" extends="colonist"
@@ -803,7 +805,7 @@
       <region id="model.region.east"/>   
       <region id="model.region.center"/>
       <region id="model.region.west"/>
-<!--       <skill id="model.unit.courtesan" probability="3"/> -->
+      <skill id="model.unit.courtesan" probability="3"/>
       <skill id="model.unit.pirate" probability="3"/>
     </indian-nation-type>
     
