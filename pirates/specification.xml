@@ -182,7 +182,7 @@
                         value="false"/>
       <required-goods id="model.goods.muskets"
                       value="25"/>
-      <required-goods id="model.goods.solvercoin"
+      <required-goods id="model.goods.silvercoin"
                       value="25"/>
       <required-ability id="model.ability.piracy"
                         value="true"/>
@@ -215,7 +215,7 @@
                       value="25"/>
       <required-goods id="model.goods.horses"
                       value="25"/>
-      <required-goods id="model.goods.solvercoin"
+      <required-goods id="model.goods.silvercoin"
                       value="25"/>
       <required-ability id="model.ability.piracy"
                         value="true"/>
