@@ -22,47 +22,36 @@
 -->
 <freecol-specification id="hre" version="0.4">
     
-    <european-nation-types>
+  <european-nation-types>
 
-        <european-nation-type id="model.nationType.guilds"
-                              extends="model.nationType.default">
-            <unit id="pioneer"
-                  type="model.unit.expertSilverMiner"
-                  role="model.role.pioneer"/>
-            <unit id="soldier"
-                  type="model.unit.masterMinter"
-                  role="model.role.soldier"/>
-            <!--<unit id="scout"
-                  type="model.unit.seasonedScout"
-                  role="model.role.scout"/>-->
-            <unit id="ship"
-                  type="model.unit.merchantman"/>
-            <modifier id="model.goods.silver"
-                      index="80"
-                      type="additive"
-                      value="2"/>
-            <modifier id="model.goods.silvercoin"
-                      index="80"
-                      type="additive"
-                      value="2"/>
-        </european-nation-type>
+    <european-nation-type id="model.nationType.guilds"
+                          extends="model.nationType.default">
+      <unit id="pioneer"
+            type="model.unit.expertSilverMiner"
+            role="model.role.pioneer"/>
+      <unit id="soldier"
+            type="model.unit.masterMinter"
+            role="model.role.soldier"/>
+      <unit id="ship"
+            type="model.unit.merchantman"/>
+      <modifier id="model.goods.silver" index="80"
+                type="additive" value="2"/>
+      <modifier id="model.goods.silvercoin" index="80"
+                type="additive" value="2"/>
+    </european-nation-type>
 
-    </european-nation-types>
+  </european-nation-types>
 
-    <nations>
+  <nations>
 
-        <nation id="model.nation.holyromanempire"
-                color="0xc4a022"
-                nation-type="model.nationType.guilds"
-                selectable="true"
-                preferred-latitude="0"
-                starts-on-east-coast="false"
-                ref="model.nation.holyromanempireREF"/>
+    <nation id="model.nation.holyromanempire" color="0xc4a022"
+            nation-type="model.nationType.guilds" selectable="true"
+            preferred-latitude="0" starts-on-east-coast="false"
+            ref="model.nation.holyromanempireREF"/>
 
-        <nation id="model.nation.holyromanempireREF"
-                color="0x68228b"
-                nation-type="model.nationType.ref"/>
+    <nation id="model.nation.holyromanempireREF" color="0x68228b"
+            nation-type="model.nationType.ref"/>
 
-    </nations>
+  </nations>
 
 </freecol-specification>
