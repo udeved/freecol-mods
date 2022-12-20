@@ -20,5 +20,5 @@
     * silver and silvercoin bonus
     * master minter, expert silver miner and merchantman ship starting units 
 
-* converScout
+* indian convert Scout
     * allow indian converts to be scouts
