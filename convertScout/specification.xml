@@ -20,7 +20,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="convertScout" version="0.1">
+<freecol-specification id="convertScout" version="0.2">
 
    <roles>
        
@@ -37,8 +37,6 @@
       <required-goods id="model.goods.horses"
                       value="50"/>
       
-      <ability id="model.ability.speakWithChief"
-               value="true"/>
       <ability id="model.ability.armed"
                value="true"/>
       <ability id="model.ability.canBeCaptured"
@@ -52,6 +50,8 @@
       <ability id="model.ability.mounted"
                value="true"/>
       <ability id="model.ability.negotiate"
+               value="true"/>
+      <ability id="model.ability.speakWithChief"
                value="true"/>
       <ability id="model.ability.spyOnColony"
                value="true"/>
@@ -169,8 +169,7 @@
                 type="additive" value="3"/>
     </role>
     
-    <role id="model.role.tracker"
-          expert-unit="model.unit.indianConvert">
+    <role id="model.role.tracker">
       <required-ability id="model.ability.canBeEquipped"
                         value="true"/>
       <required-ability id="model.ability.native"
