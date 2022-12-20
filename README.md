@@ -1,10 +1,13 @@
 # freecol-mods
 
-* pirates
-    * native
-    * add silvercoin goods type
+* silver coin
+    * add goods type
     * add minthouse, mintshop, mintworks
     * add master minter
+
+* pirates
+    * native
+    * depends on silvercoin
     * add tavern
     * add recruitable pirate and courtesan unit 
     * pirates and courtesans can teach indentured servants to become pirates
@@ -13,6 +16,9 @@
     
 * Holy Roman Empire
     * european
+    * depends on silvercoin
     * silver and silvercoin bonus
-    * depends on pirates
     * master minter, expert silver miner and merchantman ship starting units 
+
+* converScout
+    * allow indian converts to be scouts
