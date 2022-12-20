@@ -20,7 +20,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="convertScout" version="1.0">
+<freecol-specification id="convertScout" version="0.1">
 
    <roles>
        
@@ -182,6 +182,8 @@
       <required-goods id="model.goods.horses"
                       value="50"/>
     
+      <ability id="model.ability.expertScout" 
+               value="true"/>
       <ability id="model.ability.armed"
                value="true"/>
       <ability id="model.ability.canBeCaptured"
@@ -208,6 +210,8 @@
                 type="additive" value="1"/>
       <modifier id="model.modifier.movementBonus"
                 type="additive" value="9"/>
+      <modifier id="model.modifier.exploreLostCityRumour"
+                type="percentage" value="10"/>
     </role>
     
   </roles>
@@ -220,12 +224,8 @@
       <consumes id="model.goods.food" value="2"/>
       <consumes id="model.goods.bells" value="1"/>
       
-<!--       <default-role id="model.role.tracker"/> -->
       <ability id="model.ability.canBeEquipped"
                value="true"/>
-      <ability id="model.ability.expertScout" value="true"/>
-      <modifier id="model.modifier.exploreLostCityRumour"
-                type="percentage" value="10"/>
       
       <ability id="model.ability.person"
                value="true"/>

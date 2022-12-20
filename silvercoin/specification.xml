@@ -20,7 +20,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="silvercoin" version="0.3">
+<freecol-specification id="silvercoin" version="0.4">
 
   <goods-types>
     <goods-type id="model.goods.silvercoin" is-farmed="false"
@@ -80,8 +80,6 @@
                         value="false"/>
       <required-ability id="model.ability.refUnit"
                         value="false"/>
-      <required-ability id="model.ability.piracy"
-                        value="false"/>
       <required-goods id="model.goods.muskets"
                       value="50"/>
 
@@ -106,8 +104,6 @@
       <required-ability id="model.ability.native"
                         value="false"/>
       <required-ability id="model.ability.refUnit"
-                        value="false"/>
-      <required-ability id="model.ability.piracy"
                         value="false"/>
       <required-goods id="model.goods.muskets"
                       value="50"/>
