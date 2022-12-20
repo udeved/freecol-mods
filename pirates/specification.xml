@@ -20,14 +20,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="pirates" version="0.3">
-
-  <goods-types>
-    <goods-type id="model.goods.silvercoin" is-farmed="false"
-                made-from="model.goods.silver">
-      <market initial-amount="250" initial-price="20" price-difference="4"/>
-    </goods-type>
-  </goods-types>
+<freecol-specification id="pirates" version="0.4">
 
   <roles>
 
@@ -338,9 +331,6 @@
       <unit-type-change id="model.unitChange.clearSkill.colonialRegular"
                         from="model.unit.colonialRegular"
                         to="model.unit.freeColonist" probability="100"/>
-      <unit-type-change id="model.unitChange.clearSkill.masterMinter"
-                        from="model.unit.masterMinter"
-                        to="model.unit.freeColonist" probability="100"/>
       <unit-type-change id="model.unitChange.clearSkill.pirate"
                         from="model.unit.pirate"
                         to="model.unit.indenturedServant" probability="100"/>
@@ -446,10 +436,6 @@
                         from="model.unit.freeColonist"
                         to="model.unit.jesuitMissionary"
                         probability="100" turns="8"/>
-      <unit-type-change id="model.unitChange.education.masterMinter"
-                        from="model.unit.freeColonist"
-                        to="model.unit.masterMinter"
-                        probability="100" turns="6"/>
       <unit-type-change id="model.unitChange.education.pirate"
                         from="model.unit.indenturedServant"
                         to="model.unit.pirate"
@@ -541,12 +527,6 @@
       <unit-type-change id="model.unitChange.natives.freeColonist-seasonedScout"
                         from="model.unit.freeColonist"
                         to="model.unit.seasonedScout" probability="100"/>
-      <unit-type-change id="model.unitChange.natives.indenturedServant-masterMinter"
-                        from="model.unit.indenturedServant"
-                        to="model.unit.masterMinter" probability="100"/>
-      <unit-type-change id="model.unitChange.natives.freeColonist-masterMinter"
-                        from="model.unit.freeColonist"
-                        to="model.unit.masterMinter" probability="100"/>
       <unit-type-change id="model.unitChange.natives.indenturedServant-pirate"
                         from="model.unit.indenturedServant"
                         to="model.unit.pirate" probability="100"/>
@@ -646,9 +626,6 @@
       <unit-type-change id="model.unitChange.undead.brave"
                         from="model.unit.brave"
                         to="model.unit.undead" probability="100"/>
-      <unit-type-change id="model.unitChange.undead.masterMinter"
-                        from="model.unit.masterMinter"
-                        to="model.unit.undead" probability="100"/>
       <unit-type-change id="model.unitChange.undead.pirate"
                         from="model.unit.pirate"
                         to="model.unit.undead" probability="100"/>
@@ -728,13 +705,6 @@
                 type="additive" value="-1"/>
     </unit-type>
 
-    <unit-type id="model.unit.masterMinter" extends="colonist"
-               price="2000" skill="3" expert-production="model.goods.silvercoin"
-               recruit-probability="1" score-value="5">
-      <modifier id="model.goods.silvercoin" index="30"
-                type="multiplicative" value="2"/>
-    </unit-type>
-
     <unit-type id="model.unit.pirateConvert"
                skill="0" offence="0" defence="1" movement="3" line-of-sight="1"
                maximum-attrition="8" score-value="3">
@@ -788,52 +758,6 @@
   </unit-types>
 
   <building-types>
-
-    <building-type id="model.building.mintHouse"
-                   required-population="4">
-      <production>
-        <input goods-type="model.goods.silver"
-               value="1"/>
-        <output goods-type="model.goods.silvercoin"
-                value="1"/>
-      </production>
-      <required-goods id="model.goods.hammers"
-                      value="64"/>
-    </building-type>
-
-    <building-type id="model.building.mintShop" extends="model.building.mintHouse"
-                   upgrades-from="model.building.mintHouse" competence-factor="2"
-                   required-population="6" upkeep="5">
-      <production>
-        <input goods-type="model.goods.silver"
-               value="2"/>
-        <output goods-type="model.goods.silvercoin"
-                value="2"/>
-      </production>
-      <required-goods id="model.goods.hammers"
-                      value="64"/>
-      <required-goods id="model.goods.tools"
-                      value="20"/>
-    </building-type>
-
-    <building-type id="model.building.mintWorks" extends="model.building.mintShop"
-                   upgrades-from="model.building.mintShop" competence-factor="3"
-                   rebel-factor="1.5" experts-with-connections-production="4"
-                   required-population="10" upkeep="15">
-      <production>
-        <input goods-type="model.goods.silver"
-               value="3"/>
-        <output goods-type="model.goods.silvercoin"
-                value="6"/>
-      </production>
-      <required-goods id="model.goods.hammers"
-                      value="240"/>
-      <required-goods id="model.goods.tools"
-                      value="100"/>
-      <required-ability id="model.ability.buildFactory"/>
-      <ability id="model.ability.expertsUseConnections"
-               value="true"/>
-    </building-type>
 
     <building-type id="model.building.tavern"
                    workplaces="1" minimum-skill="0" maximum-skill="0"

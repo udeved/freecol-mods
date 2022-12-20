@@ -20,7 +20,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="hre" version="0.4">
+<freecol-specification id="hre" version="0.5">
     
   <european-nation-types>
 
