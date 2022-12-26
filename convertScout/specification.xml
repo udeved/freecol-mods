@@ -20,7 +20,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="convertScout" version="0.2">
+<freecol-specification id="convertScout" version="0.3">
 
    <roles>
        
@@ -206,11 +206,13 @@
       <modifier id="model.modifier.offence" index="30"
                 type="additive" value="1"/>
       <modifier id="model.modifier.lineOfSightBonus"
-                type="additive" value="1"/>
+                type="additive" value="2"/>
       <modifier id="model.modifier.movementBonus"
                 type="additive" value="9"/>
       <modifier id="model.modifier.exploreLostCityRumour"
-                type="percentage" value="10"/>
+                type="percentage" value="15"/>
+  <!--    <modifier id="model.modifier.nativeAlarmModifier"
+                type="percentage" value="-25"/>-->
     </role>
     
   </roles>

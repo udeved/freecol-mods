@@ -32,6 +32,9 @@
       <unit id="soldier"
             type="model.unit.masterMinter"
             role="model.role.soldier"/>
+      <unit id="scout"
+            type="model.unit.seasonedScout"
+            role="model.role.scout"/>
       <unit id="ship"
             type="model.unit.merchantman"/>
       <modifier id="model.goods.silver" index="80"
