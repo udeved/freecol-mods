@@ -23,6 +23,7 @@
 <freecol-specification id="pirates" version="0.6">
 
   <goods-types>
+      
     <goods-type id="model.goods.silvercoin" is-farmed="false"
                 made-from="model.goods.silver">
       <market initial-amount="250" initial-price="20" price-difference="4"/>
@@ -30,7 +31,7 @@
     
     <goods-type id="model.goods.intel" is-farmed="false"
                 stored-as="model.goods.silvercoin"  storable="false">
-      <market initial-amount="250" initial-price="20" price-difference="4"/>
+      <market initial-amount="250" initial-price="20" price-difference="1"/>
     </goods-type>
     
   </goods-types>
@@ -503,7 +504,11 @@
                         from="model.unit.freeColonist"
                         to="model.unit.jesuitMissionary"
                         probability="100" turns="8"/>
-      <unit-type-change id="model.unitChange.education.pirate"
+      <unit-type-change id="model.unitChange.education.masterMinter"
+                        from="model.unit.freeColonist"
+                        to="model.unit.masterMinter"
+                        probability="100" turns="6"/>
+     <!-- <unit-type-change id="model.unitChange.education.pirate"
                         from="model.unit.indenturedServant"
                         to="model.unit.pirate"
                         probability="100" turns="4"/>
@@ -511,18 +516,14 @@
                         from="model.unit.indenturedServant"
                         to="model.unit.courtesan"
                         probability="100" turns="4"/>
-      <!-- <unit-type-change id="model.unitChange.education.pirateConvert"
+      <unit-type-change id="model.unitChange.education.pirateConvert"
                         from="model.unit.indianConvert"
                         to="model.unit.pirate"
                          probability="100" turns="4"/>
-     <unit-type-change id="model.unitChange.education.courtesanConvert"
+      <unit-type-change id="model.unitChange.education.courtesanConvert"
                         from="model.unit.indianConvert"
                         to="model.unit.courtesan"
                         probability="100" turns="4"/>-->
-      <unit-type-change id="model.unitChange.education.masterMinter"
-                        from="model.unit.freeColonist"
-                        to="model.unit.masterMinter"
-                        probability="100" turns="6"/>
     </unit-change-type>
 
     <unit-change-type id="model.unitChange.natives">
@@ -598,6 +599,12 @@
       <unit-type-change id="model.unitChange.natives.freeColonist-seasonedScout"
                         from="model.unit.freeColonist"
                         to="model.unit.seasonedScout" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.indenturedServant-masterMinter"
+                        from="model.unit.indenturedServant"
+                        to="model.unit.masterMinter" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.freeColonist-masterMinter"
+                        from="model.unit.freeColonist"
+                        to="model.unit.masterMinter" probability="100"/>
       <unit-type-change id="model.unitChange.natives.indenturedServant-pirate"
                         from="model.unit.indenturedServant"
                         to="model.unit.pirate" probability="100"/>
@@ -610,12 +617,6 @@
       <unit-type-change id="model.unitChange.natives.freeColonist-courtesan"
                         from="model.unit.freeColonist"
                         to="model.unit.courtesan" probability="100"/>
-      <unit-type-change id="model.unitChange.natives.indenturedServant-masterMinter"
-                        from="model.unit.indenturedServant"
-                        to="model.unit.masterMinter" probability="100"/>
-      <unit-type-change id="model.unitChange.natives.freeColonist-masterMinter"
-                        from="model.unit.freeColonist"
-                        to="model.unit.masterMinter" probability="100"/>
     </unit-change-type>
 
     <unit-change-type id="model.unitChange.undead" owner-change="true">
@@ -703,14 +704,14 @@
       <unit-type-change id="model.unitChange.undead.brave"
                         from="model.unit.brave"
                         to="model.unit.undead" probability="100"/>
+      <unit-type-change id="model.unitChange.undead.masterMinter"
+                        from="model.unit.masterMinter"
+                        to="model.unit.undead" probability="100"/>
       <unit-type-change id="model.unitChange.undead.pirate"
                         from="model.unit.pirate"
                         to="model.unit.undead" probability="100"/>
       <unit-type-change id="model.unitChange.undead.courtesan"
                         from="model.unit.courtesan"
-                        to="model.unit.undead" probability="100"/>
-      <unit-type-change id="model.unitChange.undead.masterMinter"
-                        from="model.unit.masterMinter"
                         to="model.unit.undead" probability="100"/>
     </unit-change-type>
 
@@ -738,27 +739,19 @@
     </unit-type>
 
     <unit-type id="model.unit.pirate" extends="colonist"
-               score-value="4" skill="0" recruit-probability="0"
-               expert-production="model.goods.muskets"> <!--price="1000"-->
-
+               score-value="4" skill="0" recruit-probability="0">
       <ability id="model.ability.piracy"
                value="true"/>
+      <ability id="model.ability.foundInLostCity"
+               value="true"/> 
       <ability id="model.ability.bornInColony"
                 value="true"/>
       <required-goods id="model.goods.intel"
-                       value="100"/>
-
+                      value="200"/>
       <modifier id="model.modifier.offence" index="40"
                 type="additive" value="1"/>
       <modifier id="model.modifier.defence"
                 type="additive" value="-1" index="40"/>
-
-      <modifier id="model.goods.muskets" index="30"
-                type="additive" value="1"/>
-<!--      <modifier id="model.goods.tools" index="30"
-                type="additive" value="1"/>
-      <modifier id="model.goods.silvercoin" index="30"
-                type="additive" value="-1"/>-->
 
       <modifier id="model.modifier.offence" index="40"
                 type="percentage" value="50"/>
@@ -769,24 +762,15 @@
 
     <unit-type id="model.unit.courtesan" extends="colonist"
                score-value="3" skill="0" recruit-probability="0"
-               expert-production="model.goods.intel"> <!--price="500"-->
-       <ability id="model.ability.foundInLostCity"
+               expert-production="model.goods.intel"> 
+      <ability id="model.ability.foundInLostCity"
                value="true"/> 
-      <!--<ability id="model.ability.piracy"
-               value="true"/>-->
-       <ability id="model.ability.bornInColony"
-                value="true"/>
-       <required-goods id="model.goods.silvercoin"
-                       value="100"/> 
-
+      <ability id="model.ability.bornInColony"
+               value="true"/>
+      <required-goods id="model.goods.silvercoin"
+                      value="100"/> 
       <modifier id="model.goods.intel" index="30"
                 type="additive" value="2"/>
-     <!-- <modifier id="model.goods.cloth" index="30"
-                type="additive" value="1"/>
-      <modifier id="model.goods.cigars" index="30"
-                type="additive" value="1"/>
-      <modifier id="model.goods.silvercoin" index="30"
-                type="additive" value="-1"/>-->
     </unit-type>
     
     <unit-type id="model.unit.indianConvert"
@@ -833,18 +817,15 @@
     <building-type id="model.building.tavern"
                    workplaces="3"
                    required-population="3" upkeep="5">
-                <!--minimum-skill="0" maximum-skill="0"-->
       <required-goods id="model.goods.hammers"
                       value="32"/>
       <required-ability id="model.ability.hasPort"
                         value="true" />
-  <!--    <ability id="model.ability.teach"
-               value="true"/>-->
       <production unattended="true">
-        <output goods-type="model.goods.intel" value="3"/>
+        <output goods-type="model.goods.intel" value="1"/>
       </production>
       <production>
-        <output goods-type="model.goods.intel" value="4"/>
+        <output goods-type="model.goods.intel" value="3"/>
       </production>
     </building-type>
 
