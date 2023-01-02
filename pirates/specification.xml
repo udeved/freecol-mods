@@ -20,25 +20,23 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="pirates" version="0.6">
+<freecol-specification id="pirates" version="0.7">
 
   <goods-types>
       
     <goods-type id="model.goods.silvercoin" is-farmed="false"
                 made-from="model.goods.silver">
-      <market initial-amount="250" initial-price="20" price-difference="4"/>
+      <market initial-amount="250" initial-price="20" price-difference="1"/>
     </goods-type>
     
     <goods-type id="model.goods.intel" is-farmed="false"
-                stored-as="model.goods.silvercoin"  storable="false">
+                stored-as="model.goods.silvercoin" storable="false">
       <market initial-amount="250" initial-price="20" price-difference="1"/>
     </goods-type>
     
   </goods-types>
 
   <roles>
-
-    <role id="model.role.default"/>
 
     <role id="model.role.scout"
           expert-unit="model.unit.seasonedScout">
@@ -199,8 +197,8 @@
                         value="false"/>
       <required-goods id="model.goods.muskets"
                       value="25"/>
-      <required-goods id="model.goods.silvercoin"
-                      value="25"/>
+ <!--     <required-goods id="model.goods.silvercoin"
+                      value="25"/>-->
       <required-ability id="model.ability.piracy"
                         value="true"/>
       <required-ability id="model.ability.foundColony"
@@ -208,18 +206,18 @@
 
       <ability id="model.ability.armed"
                value="true"/>
-      <ability id="model.ability.canBeCaptured"
-               value="false"/>
+     <!-- <ability id="model.ability.canBeCaptured"
+               value="false"/>-->
       <ability id="model.ability.captureUnits"
                value="true"/>
       <ability id="model.ability.demandTribute"
                value="true"/>
       <ability id="model.ability.captureEquipment"
                value="true"/>
-      <modifier id="model.modifier.defence" index="30"
+     <!-- <modifier id="model.modifier.defence" index="30"
                 type="additive" value="0"/>
       <modifier id="model.modifier.offence" index="30"
-                type="additive" value="1"/>
+                type="additive" value="1"/>-->
     </role>
 
     <role id="model.role.raider" downgrade="model.role.buccaneer"
@@ -234,8 +232,8 @@
                       value="25"/>
       <required-goods id="model.goods.horses"
                       value="25"/>
-      <required-goods id="model.goods.silvercoin"
-                      value="25"/>
+ <!--     <required-goods id="model.goods.silvercoin"
+                      value="25"/>-->
       <required-ability id="model.ability.piracy"
                         value="true"/>
       <required-ability id="model.ability.foundColony"
@@ -253,10 +251,10 @@
                value="true"/>
       <ability id="model.ability.mounted"
                value="true"/>
-      <modifier id="model.modifier.defence" index="30"
+    <!--  <modifier id="model.modifier.defence" index="30"
                 type="additive" value="1"/>
       <modifier id="model.modifier.offence" index="30"
-                type="additive" value="2"/>
+                type="additive" value="2"/>-->
       <modifier id="model.modifier.movementBonus"
                 type="additive" value="9"/>
     </role>
@@ -272,6 +270,8 @@
                         value="false"/>
       <required-goods id="model.goods.horses"
                       value="50"/>
+      <required-ability id="model.ability.navalUnit"
+                        value="false"/>
 
       <ability id="model.ability.expertScout"
                value="true"/>
@@ -303,8 +303,6 @@
                 type="additive" value="9"/>
       <modifier id="model.modifier.exploreLostCityRumour"
                 type="percentage" value="15"/>
-  <!--    <modifier id="model.modifier.nativeAlarmModifier"
-                type="percentage" value="-25"/>-->
     </role>
 
   </roles>
@@ -324,6 +322,9 @@
       <unit-type-change id="model.unitChange.capture.pirate"
                         from="model.unit.pirate"
                         to="model.unit.pettyCriminal" probability="100"/>
+      <unit-type-change id="model.unitChange.capture.courtesan"
+                        from="model.unit.courtesan"
+                        to="model.unit.indenturedServant" probability="100"/>
     </unit-change-type>
 
     <unit-change-type id="model.unitChange.clearSkill">
@@ -398,15 +399,30 @@
                         to="model.unit.freeColonist" probability="100"/>
       <unit-type-change id="model.unitChange.clearSkill.pirate"
                         from="model.unit.pirate"
-                        to="model.unit.indenturedServant" probability="100"/>
+                        to="model.unit.freeColonist" probability="100"/>
       <unit-type-change id="model.unitChange.clearSkill.courtesan"
                         from="model.unit.courtesan"
-                        to="model.unit.indenturedServant" probability="100"/>
+                        to="model.unit.freeColonist" probability="100"/>
       <unit-type-change id="model.unitChange.clearSkill.masterMinter"
                         from="model.unit.masterMinter"
                         to="model.unit.freeColonist" probability="100"/>
     </unit-change-type>
 
+    <unit-change-type id="model.unitChange.demotion">
+      <unit-type-change id="model.unitChange.demotion.veteranSoldier"
+                        from="model.unit.veteranSoldier"
+                        to="model.unit.freeColonist" probability="100"/>
+      <unit-type-change id="model.unitChange.demotion.colonialRegular"
+                        from="model.unit.colonialRegular"
+                        to="model.unit.veteranSoldier" probability="100"/>
+      <unit-type-change id="model.unitChange.demotion.artillery"
+                        from="model.unit.artillery"
+                        to="model.unit.damagedArtillery" probability="100"/>
+      <unit-type-change id="model.unitChange.demotion.pirate"
+                        from="model.unit.pirate"
+                        to="model.unit.freeColonist" probability="100"/>
+    </unit-change-type>
+    
     <unit-change-type id="model.unitChange.education">
       <unit-type-change id="model.unitChange.education.indenturedServant"
                         from="model.unit.pettyCriminal"
@@ -508,22 +524,6 @@
                         from="model.unit.freeColonist"
                         to="model.unit.masterMinter"
                         probability="100" turns="6"/>
-     <!-- <unit-type-change id="model.unitChange.education.pirate"
-                        from="model.unit.indenturedServant"
-                        to="model.unit.pirate"
-                        probability="100" turns="4"/>
-      <unit-type-change id="model.unitChange.education.courtesan"
-                        from="model.unit.indenturedServant"
-                        to="model.unit.courtesan"
-                        probability="100" turns="4"/>
-      <unit-type-change id="model.unitChange.education.pirateConvert"
-                        from="model.unit.indianConvert"
-                        to="model.unit.pirate"
-                         probability="100" turns="4"/>
-      <unit-type-change id="model.unitChange.education.courtesanConvert"
-                        from="model.unit.indianConvert"
-                        to="model.unit.courtesan"
-                        probability="100" turns="4"/>-->
     </unit-change-type>
 
     <unit-change-type id="model.unitChange.natives">
@@ -737,38 +737,29 @@
       <consumes id="model.goods.food" value="2" />
       <consumes id="model.goods.bells" value="1" />
     </unit-type>
-
+    
     <unit-type id="model.unit.pirate" extends="colonist"
-               score-value="4" skill="0" recruit-probability="0">
+               score-value="4" skill="0" recruit-probability="0">     
+      <required-goods id="model.goods.silvercoin"
+                      value="100"/>
+      <!--<consumes id="model.goods.bells"
+                value="1"/>-->
       <ability id="model.ability.piracy"
                value="true"/>
-      <ability id="model.ability.foundInLostCity"
-               value="true"/> 
-      <ability id="model.ability.bornInColony"
-                value="true"/>
-      <required-goods id="model.goods.intel"
-                      value="200"/>
       <modifier id="model.modifier.offence" index="40"
                 type="additive" value="1"/>
-      <modifier id="model.modifier.defence"
-                type="additive" value="-1" index="40"/>
-
-      <modifier id="model.modifier.offence" index="40"
-                type="percentage" value="50"/>
-      <modifier id="model.modifier.defence"
-                type="percentage" value="50" index="40"/>
       <default-role id="model.role.buccaneer"/>
     </unit-type>
 
     <unit-type id="model.unit.courtesan" extends="colonist"
-               score-value="3" skill="0" recruit-probability="0"
-               expert-production="model.goods.intel"> 
-      <ability id="model.ability.foundInLostCity"
-               value="true"/> 
-      <ability id="model.ability.bornInColony"
-               value="true"/>
+               expert-production="model.goods.intel"
+               score-value="4" skill="0" recruit-probability="0">
       <required-goods id="model.goods.silvercoin"
-                      value="100"/> 
+                      value="50"/>
+      <!--<consumes id="model.goods.bells"
+                value="1"/>-->
+      <ability id="model.ability.canBeEquipped"
+               value="false"/>
       <modifier id="model.goods.intel" index="30"
                 type="additive" value="2"/>
     </unit-type>
@@ -827,6 +818,12 @@
       <production>
         <output goods-type="model.goods.intel" value="3"/>
       </production>
+      <ability id="model.ability.build"
+               value="true">
+        <scope type="model.unit.pirate"/>
+<!--        <scope ability-id="model.ability.piracy"/>-->
+        <scope type="model.unit.courtesan"/>
+      </ability>
     </building-type>
 
     <building-type id="model.building.mintHouse"
