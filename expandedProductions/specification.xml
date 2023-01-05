@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    *  Copyright (C) 2002-2022  The FreeCol Team
+    *
+    *  This file is part of FreeCol.
+    *
+    *  FreeCol is free software: you can redistribute it and/or modify
+    *  it under the terms of the GNU General Public License as published by
+    *  the Free Software Foundation, either version 2 of the License, or
+    *  (at your option) any later version.
+    *
+    *  FreeCol is distributed in the hope that it will be useful,
+    *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+    *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    *  GNU General Public License for more details.
+    *
+    *  You should have received a copy of the GNU General Public License
+    *  along with FreeCol.  If not, see <http://www.gnu.org/licenses/>.
+
+    In case of incompatible changes, please update version number and
+    XSD schema for validation.
+-->
+<freecol-specification id="expandedProductions" version="0.1">
+
+  <goods-types>
+
+    <goods-type id="model.goods.goldOre" is-farmed="true"
+                production-weight="3.0">
+      <market initial-amount="500" initial-price="16" price-difference="2" />
+    </goods-type>
+  </goods-types>
+
+  <resource-types>
+    <resource-type id="model.resource.minerals"
+                   minimum-value="40" maximum-value="400">
+      <modifier id="model.goods.ore" index="10"
+                type="additive" value="3"/>
+      <!-- Col1 had silver here, although it was undocmented in the
+           Colonizopedia -->
+      <modifier id="model.goods.silver" index="10"
+                type="additive" value="1"/>
+      <modifier id="model.goods.goldOre" index="10"
+                type="additive" value="1"/>
+    </resource-type>
+    <resource-type id="model.resource.goldOre"
+                   minimum-value="80" maximum-value="800">
+      <modifier id="model.goods.goldOre" index="10"
+                type="additive" value="2"/>
+    </resource-type>
+  </resource-types>
+
+  <tile-types>
+    <tile-type id="model.tile.marsh"
+               basic-move-cost="6" basic-work-turns="5">
+      <gen humidity-minimum="50" humidity-maximum="100"
+           temperature-minimum="5" temperature-maximum="15"
+           altitude-minimum="2" altitude-maximum="2"/>
+      <modifier id="model.modifier.defence" index="50"
+                type="percentage" value="25"/>
+      <production unattended="true">
+        <output goods-type="model.goods.grain" value="3"/>
+        <output goods-type="model.goods.tobacco" value="2"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.grain" value="3"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.tobacco" value="2"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.ore" value="2"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.silver" value="0"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.goldOre" value="0"/>
+      </production>
+      <resource type="model.resource.minerals" probability="100"/>
+      <disaster id="model.disaster.disease" probability="100"/>
+    </tile-type>
+    <tile-type id="model.tile.swamp"
+               basic-move-cost="6" basic-work-turns="7">
+      <gen humidity-minimum="50" humidity-maximum="100"
+           temperature-minimum="10" temperature-maximum="40"
+           altitude-minimum="1" altitude-maximum="1"/>
+      <modifier id="model.modifier.defence" index="50"
+                type="percentage" value="25"/>
+      <production unattended="true">
+        <output goods-type="model.goods.grain" value="3"/>
+        <output goods-type="model.goods.sugar" value="2"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.grain" value="3"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.sugar" value="2"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.ore" value="2"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.silver" value="0"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.goldOre" value="0"/>
+      </production>
+      <resource type="model.resource.minerals" probability="100"/>
+      <disaster id="model.disaster.disease" probability="50"/>
+      <disaster id="model.disaster.flood" probability="50"/>
+    </tile-type>
+    <tile-type id="model.tile.tundra"
+               basic-move-cost="3" basic-work-turns="4">
+      <gen humidity-minimum="0" humidity-maximum="100"
+           temperature-minimum="-5" temperature-maximum="5"
+           altitude-minimum="1" altitude-maximum="3"/>
+      <production unattended="true">
+        <output goods-type="model.goods.grain" value="3"/>
+        <output goods-type="model.goods.ore" value="2"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.grain" value="3"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.ore" value="2"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.silver" value="0"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.goldOre" value="0"/>
+      </production>
+      <!-- Col1 had minerals here, even if not mentioned in the
+           Colonizopedia. -->
+      <resource type="model.resource.minerals" probability="100"/>
+      <disaster id="model.disaster.blizzard" probability="100"/>
+    </tile-type>
+    <tile-type id="model.tile.wetlandForest"
+               basic-move-cost="9" basic-work-turns="6" is-forest="true">
+      <gen humidity-minimum="50" humidity-maximum="100"
+           temperature-minimum="5" temperature-maximum="15"
+           altitude-minimum="2" altitude-maximum="2"/>
+      <modifier id="model.modifier.defence" index="50"
+                type="percentage" value="50"/>
+      <production unattended="true">
+        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.furs" value="2"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.grain" value="2"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.tobacco" value="1"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.furs" value="2"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.lumber" value="4"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.ore" value="1"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.silver" value="0"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.goldOre" value="0"/>
+      </production>
+      <resource type="model.resource.minerals" probability="100"/>
+      <ability id="model.ability.ambushTerrain"
+               value="true"/>
+    </tile-type>
+    <tile-type id="model.tile.rainForest"
+               basic-move-cost="9" basic-work-turns="7" is-forest="true">
+      <gen humidity-minimum="50" humidity-maximum="100"
+           temperature-minimum="10" temperature-maximum="40"
+           altitude-minimum="1" altitude-maximum="1"/>
+      <modifier id="model.modifier.defence" index="50"
+                type="percentage" value="75"/>
+      <production unattended="true">
+        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.sugar" value="1"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.grain" value="2"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.sugar" value="1"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.furs" value="1"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.lumber" value="4"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.ore" value="1"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.silver" value="0"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.goldOre" value="0"/>
+      </production>
+      <resource type="model.resource.minerals" probability="100"/>
+      <disaster id="model.disaster.disease" probability="100"/>
+      <ability id="model.ability.ambushTerrain"
+               value="true"/>
+    </tile-type>
+    <tile-type id="model.tile.mountains"
+               basic-move-cost="9" basic-work-turns="7"
+               is-elevation="true" can-settle="false">
+      <gen humidity-minimum="0" humidity-maximum="100"
+           temperature-minimum="-20" temperature-maximum="40"
+           altitude-minimum="3" altitude-maximum="3"/>
+      <modifier id="model.modifier.defence" index="50"
+                type="percentage" value="150"/>
+      <production>
+        <output goods-type="model.goods.ore" value="4"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.silver" value="1"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.goldOre" value="1"/>
+      </production>
+      <resource type="model.resource.minerals" probability="100"/>
+      <disaster id="model.disaster.earthquake" probability="50"/>
+      <disaster id="model.disaster.landslide" probability="50"/>
+      <ability id="model.ability.ambushTerrain"
+               value="true"/>
+    </tile-type>
+  </tile-types>
+
+  <roles>
+    <role id="model.role.default"/>
+
+    <role id="model.role.scout"
+          expert-unit="model.unit.seasonedScout">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.horses"
+                      value="50"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.canBeCaptured"
+               value="false"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.demandTribute"
+               value="true"/>
+      <ability id="model.ability.disposeOnCombatLoss"
+               value="true"/>
+      <ability id="model.ability.mounted"
+               value="true"/>
+      <ability id="model.ability.negotiate"
+               value="true"/>
+      <ability id="model.ability.speakWithChief"
+               value="true"/>
+      <ability id="model.ability.spyOnColony"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.lineOfSightBonus"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="9"/>
+    </role>
+
+    <role id="model.role.soldier"
+          expert-unit="model.unit.veteranSoldier">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.muskets"
+                      value="50"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.canBeCaptured"
+               value="false"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.demandTribute"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="2"/>
+    </role>
+
+    <role id="model.role.dragoon" downgrade="model.role.soldier"
+          expert-unit="model.unit.veteranSoldier">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.muskets"
+                      value="50"/>
+      <required-goods id="model.goods.horses"
+                      value="50"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.canBeCaptured"
+               value="false"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.demandTribue"
+               value="true"/>
+      <ability id="model.ability.mounted"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="2"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="3"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="9"/>
+    </role>
+
+    <role id="model.role.pioneer"
+          expert-unit="model.unit.hardyPioneer" maximum-count="5">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.tools"
+                      value="20"/>
+
+      <ability id="model.ability.disposeOnCombatLoss"
+               value="true"/>
+      <ability id="model.ability.improveTerrain"
+               value="true"/>
+    </role>
+
+    <role id="model.role.missionary"
+          expert-unit="model.unit.jesuitMissionary">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.dressMissionary"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+
+      <ability id="model.ability.denounceHeresy"
+               value="true"/>
+      <ability id="model.ability.establishMission"
+               value="true"/>
+      <ability id="model.ability.inciteNatives"
+               value="true"/>
+      <modifier id="model.modifier.missionaryTradeBonus"
+                type="percentage" value="10"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="3"/>
+    </role>
+
+    <role id="model.role.infantry"
+          expert-unit="model.unit.kingsRegular">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="true"/>
+      <required-ability id="model.ability.royalExpeditionaryForce"
+                        value="true"/>
+      <required-goods id="model.goods.muskets"
+                      value="50"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.demandTribute"
+               value="true"/>
+      <ability id="model.ability.disposeOnCombatLoss"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="2"/>
+    </role>
+
+    <role id="model.role.cavalry" downgrade="model.role.infantry"
+          expert-unit="model.unit.kingsRegular">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="true"/>
+      <required-ability id="model.ability.royalExpeditionaryForce"
+                        value="true"/>
+      <required-goods id="model.goods.muskets"
+                      value="50"/>
+      <required-goods id="model.goods.horses"
+                      value="50"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.demandTribute"
+               value="true"/>
+      <ability id="model.ability.mounted"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="2"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="3"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="9"/>
+    </role>
+
+    <role id="model.role.mountedBrave">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="true"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.horses"
+                      value="25"/>
+
+      <ability id="model.ability.disposeOnCombatLoss"
+               value="true"/>
+      <ability id="model.ability.mounted"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="9"/>
+      <role-change from="model.role.default" capture="model.role.scout"/>
+      <role-change from="model.role.default" capture="model.role.dragoon"/>
+      <role-change from="model.role.default" capture="model.role.cavalry"/>
+    </role>
+
+    <role id="model.role.armedBrave">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="true"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.muskets"
+                      value="25"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.disposeOnCombatLoss"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="2"/>
+      <role-change from="model.role.default" capture="model.role.soldier"/>
+      <role-change from="model.role.default" capture="model.role.infantry"/>
+    </role>
+
+    <role id="model.role.nativeDragoon" downgrade="model.role.armedBrave">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="true"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.muskets"
+                      value="25"/>
+      <required-goods id="model.goods.horses"
+                      value="25"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.mounted"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="2"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="3"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="9"/>
+      <role-change from="model.role.mountedBrave"
+                   capture="model.role.soldier"/>
+      <role-change from="model.role.mountedBrave"
+                   capture="model.role.infantry"/>
+      <role-change from="model.role.armedBrave" capture="model.role.scout"/>
+      <role-change from="model.role.armedBrave" capture="model.role.dragoon"/>
+      <role-change from="model.role.armedBrave" capture="model.role.cavalry"/>
+    </role>
+  </roles>
+
+  <!--
+      Parent options: name, add-work-turns, natural, type,
+      required-improvement, required-role, expended-amount,
+      deliver-goods-type, deliver-amount
+      - natural="true" means that this improvement cannot be built,
+        but may be present on its own
+      - required-role/expended-amount are the 'cost' of building this
+        improvement in terms of Unit.roleCount
+      Children: worker, type, tiles, tile, effect, change
+      - deliver goods/amount are the instant reward that will be given
+        to the nearby colony (eg. lumber from deforestation)
+      - worker child options: id
+      - type child options: id, magnitude
+      - id is a string identifier, there must be a "river" and a
+        "road" id among the tile-improvement-types
+      - to get the movement-bonus, must travel from a similar 'id' to this id
+      - magnitude is a number to decide overwriting,
+      a similar id tileImprovement will be replaced with one with a
+      higher magnitude tiles child options: all-land-tiles,
+      all-forest-tiles, all-water-tiles
+      - putting all-water-tiles="false" is redundant, but serves as a reminder
+      - putting all-land-tiles="true" all-forest-tiles="false" will
+        result in all non-forested land tiles.
+      tile child options: id
+      change child options: from, to
+      zIndex: tile improvements will be layered according to their z-index
+        tile overlays (e.g. hills) have a zIndex of 100, forests of 200,
+        resources of 400, lost city rumours of 500
+  -->
+  <tile-improvement-types>
+    <tile-improvement-type id="model.improvement.river" natural="true"
+                           add-work-turns="0" magnitude="1"
+                           movement-cost="1" zIndex="150">
+      <scope method-name="isWater" method-value="false"/>
+      <scope type="model.tile.arctic" match-negated="true"/>
+      <scope type="model.tile.hills" match-negated="true"/>
+      <scope type="model.tile.mountains" match-negated="true"/>
+      <disaster id="model.disaster.flood"/>
+      <modifier id="model.goods.grain" index="50"
+                type="additive" value="1"/>
+      <modifier id="model.goods.sugar" index="50"
+                type="additive" value="1"/>
+      <modifier id="model.goods.tobacco" index="50"
+                type="additive" value="1"/>
+      <modifier id="model.goods.cotton" index="50"
+                type="additive" value="1"/>
+      <modifier id="model.goods.furs" index="50"
+                 type="additive" value="2"/>
+      <modifier id="model.goods.lumber" index="50"
+                 type="additive" value="2"/>
+      <modifier id="model.goods.ore" index="50"
+                 type="additive" value="1"/>
+      <modifier id="model.goods.silver" index="50"
+                 type="additive" value="1"/>
+      <modifier id="model.goods.goldOre" index="50"
+                 type="additive" value="1"/>
+    </tile-improvement-type>
+    <tile-improvement-type id="model.improvement.road"
+                           add-work-turns="0" magnitude="1"
+                           required-role="model.role.pioneer"
+                           expended-amount="1"
+                           movement-cost="1" zIndex="350">
+      <scope method-name="isWater" method-value="false" />
+      <modifier id="model.goods.furs" index="50"
+                type="additive" value="2"/>
+      <modifier id="model.goods.lumber" index="50"
+                type="additive" value="2"/>
+      <modifier id="model.goods.ore" index="50"
+                type="additive" value="1"/>
+      <modifier id="model.goods.silver" index="50"
+                type="additive" value="1"/>
+      <modifier id="model.goods.goldOre" index="50"
+                type="additive" value="1"/>
+    </tile-improvement-type>
+  </tile-improvement-types>
+
+</freecol-specification>
