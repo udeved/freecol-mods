@@ -20,42 +20,50 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="expandedProduction" version="0.1">
+<freecol-specification id="expandedProduction" version="0.2">
 
   <goods-types>
 
     <goods-type id="model.goods.stone" is-farmed="true"
-                production-weight="3.0">
-      <market initial-amount="500" initial-price="16" price-difference="2" />
+                production-weight="4.0"
+                low-production-threshold="6" zero-production-factor="0.0">
+      <market initial-amount="500" initial-price="16" price-difference="3" />
     </goods-type>
     
     <goods-type id="model.goods.hemp" is-farmed="true"
-                production-weight="3.0">
-      <market initial-amount="500" initial-price="16" price-difference="2" />
-    </goods-type>
-    
-    <goods-type id="model.goods.pearl" is-farmed="true"
-                production-weight="3.0">
-      <market initial-amount="500" initial-price="16" price-difference="2" />
-    </goods-type>
-    
-    <goods-type id="model.goods.gold" is-farmed="true"
-                production-weight="3.0">
-      <market initial-amount="500" initial-price="16" price-difference="2" />
-    </goods-type>
-    
-    <goods-type id="model.goods.gem" is-farmed="true"
-                production-weight="3.0">
-      <market initial-amount="500" initial-price="16" price-difference="2" />
+                production-weight="2.5">
+      <market initial-amount="3000" initial-price="2" price-difference="2" />
     </goods-type>
     
     <goods-type id="model.goods.rope" is-farmed="false"
                 made-from="model.goods.hemp">
-      <market initial-amount="500" initial-price="16" price-difference="2" />
+      <market initial-amount="2000" initial-price="5" price-difference="2" />
     </goods-type>
     
-    <goods-type id="model.goods.jewelry" is-farmed="false">
-      <market initial-amount="500" initial-price="16" price-difference="2" />
+    <goods-type id="model.goods.luxuryMaterials" is-farmed="true"
+                ignore-limit="true" is-food="false"
+                production-weight="5.0">
+      <market initial-amount="1000" initial-price="16" price-difference="2" />
+    </goods-type>
+    
+    <goods-type id="model.goods.pearl" is-farmed="true" storable="false"
+                stored-as="model.goods.luxuryMaterials"
+                production-weight="5.0">
+    </goods-type>
+    
+    <goods-type id="model.goods.gold" is-farmed="true" storable="false"
+                stored-as="model.goods.luxuryMaterials"
+                production-weight="5.0">
+    </goods-type>
+    
+    <goods-type id="model.goods.gem" is-farmed="true" storable="false"
+                stored-as="model.goods.luxuryMaterials"
+                production-weight="5.0">
+    </goods-type>
+    
+    <goods-type id="model.goods.jewelry" is-farmed="false"
+                made-from="model.goods.luxuryMaterials">
+      <market initial-amount="500" initial-price="20" price-difference="1" />
     </goods-type>
 
   </goods-types>
@@ -152,10 +160,10 @@
         <output goods-type="model.goods.cotton" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.ore" value="1"/>
+        <output goods-type="model.goods.hemp" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="2"/>
+        <output goods-type="model.goods.ore" value="1"/>
       </production>
       <resource type="model.resource.grain" probability="50"/>
       <resource type="model.resource.hemp" probability="50"/>
@@ -238,6 +246,9 @@
         <output goods-type="model.goods.grain" value="3"/>
         <output goods-type="model.goods.tobacco" value="2"/>
         <output goods-type="model.goods.hemp" value="2"/>
+    <!--    <output goods-type="model.goods.silver" value="1"/>
+        <output goods-type="model.goods.gold" value="1"/>
+        <output goods-type="model.goods.gem" value="1"/>-->
       </production>
       <production>
         <output goods-type="model.goods.grain" value="3"/>
@@ -252,7 +263,13 @@
         <output goods-type="model.goods.ore" value="2"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.silver" value="0"/>
+        <output goods-type="model.goods.silver" value="1"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.gold" value="1"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.gem" value="1"/>
       </production>
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="100"/>
@@ -268,6 +285,9 @@
         <output goods-type="model.goods.grain" value="3"/>
         <output goods-type="model.goods.sugar" value="2"/>
         <output goods-type="model.goods.hemp" value="2"/>
+<!--        <output goods-type="model.goods.silver" value="1"/>
+        <output goods-type="model.goods.gold" value="1"/>
+        <output goods-type="model.goods.gem" value="1"/>-->
       </production>
       <production>
         <output goods-type="model.goods.grain" value="3"/>
@@ -282,7 +302,13 @@
         <output goods-type="model.goods.ore" value="2"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.silver" value="0"/>
+        <output goods-type="model.goods.silver" value="1"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.gold" value="1"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.gem" value="1"/>
       </production>
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="50"/>
@@ -296,17 +322,17 @@
       <production unattended="true" production-level="veryHigh">
         <output goods-type="model.goods.grain" value="2"/>
         <output goods-type="model.goods.ore" value="2"/>
-        <output goods-type="model.goods.gold" value="2"/>
+        <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production unattended="true" production-level="veryLow">
         <output goods-type="model.goods.grain" value="1"/>
         <output goods-type="model.goods.ore" value="2"/>
-        <output goods-type="model.goods.gold" value="2"/>
+        <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production unattended="true">
         <output goods-type="model.goods.grain" value="1"/>
         <output goods-type="model.goods.ore" value="2"/>
-         <output goods-type="model.goods.gold" value="2"/>
+         <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production>
         <output goods-type="model.goods.grain" value="2"/>
@@ -318,10 +344,9 @@
         <output goods-type="model.goods.ore" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.gold" value="2"/>
+        <output goods-type="model.goods.gold" value="1"/>
       </production>
-      <resource type="model.resource.oasis" probability="50"/>
-      <resource type="model.resource.gold" probability="50"/>
+      <resource type="model.resource.oasis" probability="100"/>
       <disaster id="model.disaster.sandstorm" probability="50"/>
       <disaster id="model.disaster.drought" probability="50"/>
     </tile-type>
@@ -333,8 +358,9 @@
       <production unattended="true">
         <output goods-type="model.goods.grain" value="3"/>
         <output goods-type="model.goods.ore" value="2"/>
-        <output goods-type="model.goods.gold" value="2"/>
-        <output goods-type="model.goods.gem" value="2"/>
+        <output goods-type="model.goods.silver" value="1"/>
+        <output goods-type="model.goods.gold" value="1"/>
+        <output goods-type="model.goods.gem" value="1"/>
       </production>
       <production>
         <output goods-type="model.goods.grain" value="3"/>
@@ -343,13 +369,13 @@
         <output goods-type="model.goods.ore" value="2"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.silver" value="0"/>
+        <output goods-type="model.goods.silver" value="1"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.gold" value="0"/>
+        <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.gem" value="0"/>
+        <output goods-type="model.goods.gem" value="1"/>
       </production>
       <!-- Col1 had minerals here, even if not mentioned in the
            Colonizopedia. -->
@@ -828,8 +854,6 @@
       <modifier id="model.goods.lumber" index="50"
                 type="additive" value="2"/>
       <modifier id="model.goods.ore" index="50"
-                type="additive" value="1"/>
-      <modifier id="model.goods.silver" index="50"
                 type="additive" value="1"/>
       <modifier id="model.goods.silver" index="50"
                 type="additive" value="1"/>
