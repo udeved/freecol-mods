@@ -24,7 +24,7 @@
 
   <goods-types>
 
-    <goods-type id="model.goods.goldOre" is-farmed="true"
+    <goods-type id="model.goods.gold" is-farmed="true"
                 production-weight="3.0">
       <market initial-amount="500" initial-price="16" price-difference="2" />
     </goods-type>
@@ -39,12 +39,12 @@
            Colonizopedia -->
       <modifier id="model.goods.silver" index="10"
                 type="additive" value="1"/>
-      <modifier id="model.goods.goldOre" index="10"
+      <modifier id="model.goods.gold" index="10"
                 type="additive" value="1"/>
     </resource-type>
     <resource-type id="model.resource.goldOre"
                    minimum-value="80" maximum-value="800">
-      <modifier id="model.goods.goldOre" index="10"
+      <modifier id="model.goods.gold" index="10"
                 type="additive" value="2"/>
     </resource-type>
   </resource-types>
@@ -74,7 +74,7 @@
         <output goods-type="model.goods.silver" value="0"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.goldOre" value="0"/>
+        <output goods-type="model.goods.gold" value="0"/>
       </production>
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="100"/>
@@ -103,7 +103,7 @@
         <output goods-type="model.goods.silver" value="0"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.goldOre" value="0"/>
+        <output goods-type="model.goods.gold" value="0"/>
       </production>
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="50"/>
@@ -128,7 +128,7 @@
         <output goods-type="model.goods.silver" value="0"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.goldOre" value="0"/>
+        <output goods-type="model.goods.gold" value="0"/>
       </production>
       <!-- Col1 had minerals here, even if not mentioned in the
            Colonizopedia. -->
@@ -165,7 +165,7 @@
         <output goods-type="model.goods.silver" value="0"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.goldOre" value="0"/>
+        <output goods-type="model.goods.gold" value="0"/>
       </production>
       <resource type="model.resource.minerals" probability="100"/>
       <ability id="model.ability.ambushTerrain"
@@ -201,7 +201,7 @@
         <output goods-type="model.goods.silver" value="0"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.goldOre" value="0"/>
+        <output goods-type="model.goods.gold" value="0"/>
       </production>
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="100"/>
@@ -223,7 +223,7 @@
         <output goods-type="model.goods.silver" value="1"/>
       </production>
       <production>
-        <output goods-type="model.goods.goldOre" value="1"/>
+        <output goods-type="model.goods.gold" value="1"/>
       </production>
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.earthquake" probability="50"/>
