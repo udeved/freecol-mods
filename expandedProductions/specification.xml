@@ -47,7 +47,7 @@
     </goods-type>
     
     <goods-type id="model.goods.pearls" is-farmed="true" storable="false"
-                stored-as="model.goods.luxuryMaterials"
+                stored-as="model.goods.luxuryMaterials" new-world-goods="true" 
                 production-weight="2.5">
     </goods-type>
     
@@ -1672,6 +1672,77 @@
                 type="multiplicative" value="2"/>
     </unit-type>
     
+    
+    
+    <unit-type id="ship" abstract="true">
+      <ability id="model.ability.navalUnit"
+               value="true"/>
+      <ability id="model.ability.carryGoods"
+               value="true"/>
+      <ability id="model.ability.carryUnits"
+               value="true"/>
+      <ability id="model.ability.evadeAttack"
+               value="true"/>
+      <ability id="model.ability.foundColony"
+               value="false"/>
+      <modifier id="model.modifier.tradeVolumePenalty"
+                value="-75" type="percentage"/>
+    </unit-type>
+    <unit-type id="model.unit.caravel" extends="ship" price="1000"
+               offence="0" defence="2" movement="12"
+               line-of-sight="1" space="2" spaceTaken="24" hit-points="6"
+               score-value="3">
+      <required-goods id="model.goods.cloth"
+                      value="20"/>
+      <required-goods id="model.goods.rope"
+                      value="20"/>
+    </unit-type>
+    <unit-type id="model.unit.frigate" extends="ship" price="5000"
+               offence="16" defence="16" movement="18"
+               line-of-sight="2" space="4" spaceTaken="32" hit-points="6"
+               score-value="6">
+      <required-goods id="model.goods.cloth"
+                      value="100"/>
+      <required-goods id="model.goods.rope"
+                      value="100"/>
+    </unit-type>
+    <unit-type id="model.unit.galleon" extends="ship" price="3000"
+               offence="0" defence="10" movement="18"
+               line-of-sight="2" space="6" spaceTaken="64" hit-points="6"
+               score-value="5">
+      <required-goods id="model.goods.cloth"
+                      value="50"/>
+      <required-goods id="model.goods.rope"
+                      value="50"/>
+    </unit-type>
+    <unit-type id="model.unit.manOWar" extends="ship" mercenary-price="10000"
+               offence="24" defence="24" movement="18"
+               line-of-sight="2" space="6" spaceTaken="64" hit-points="6"
+               score-value="8">
+      <required-goods id="model.goods.cloth"
+                      value="150"/>
+      <required-goods id="model.goods.rope"
+                      value="150"/>
+    </unit-type>
+    <unit-type id="model.unit.merchantman" extends="ship" price="2000"
+               offence="0" defence="6" movement="15"
+               line-of-sight="1" space="4" spaceTaken="32" hit-points="6"
+               score-value="4">
+      <required-goods id="model.goods.cloth"
+                      value="40"/>
+      <required-goods id="model.goods.rope"
+                      value="40"/>
+    </unit-type>
+    <unit-type id="model.unit.privateer" extends="ship" price="2000"
+               offence="8" defence="8" movement="24"
+               line-of-sight="2" space="2" spaceTaken="24" hit-points="6"
+               score-value="4">
+      <required-goods id="model.goods.cloth"
+                      value="60"/>
+      <required-goods id="model.goods.rope"
+                      value="60"/>
+    </unit-type>
+    
   </unit-types>
   
   <building-types>
@@ -1687,7 +1758,7 @@
                    extends="model.building.ropeBinderHouse"
                    upgrades-from="model.building.ropeBinderHouse"
                    competence-factor="2"
-                   upkeep="5">
+                   upkeep="10">
       <production>
         <input goods-type="model.goods.hemp" value="6"/>
         <output goods-type="model.goods.rope" value="6"/>
@@ -1703,7 +1774,7 @@
                    upgrades-from="model.building.ropeBinderShop"
                    experts-with-connections-production="4"
                    competence-factor="3" rebel-factor="1.5"
-                   required-population="8" upkeep="15">
+                   required-population="8" upkeep="20">
       <production>
         <input goods-type="model.goods.hemp" value="6"/>
         <output goods-type="model.goods.rope" value="9"/>
@@ -1712,6 +1783,8 @@
                       value="160"/>
       <required-goods id="model.goods.tools"
                       value="100"/>
+      <required-goods id="model.goods.stone"
+                      value="160"/>
       <required-ability id="model.ability.buildFactory"/>
       <ability id="model.ability.expertsUseConnections"
                value="true"/>
@@ -1728,7 +1801,7 @@
                    extends="model.building.jewelerHouse"
                    upgrades-from="model.building.jewelerHouse"
                    competence-factor="2"
-                   upkeep="5">
+                   upkeep="10">
       <production>
         <input goods-type="model.goods.luxuryMaterials" value="6"/>
         <output goods-type="model.goods.jewelry" value="6"/>
@@ -1744,7 +1817,7 @@
                    upgrades-from="model.building.jewelerShop"
                    experts-with-connections-production="4"
                    competence-factor="3" rebel-factor="1.5"
-                   required-population="8" upkeep="15">
+                   required-population="8" upkeep="20">
       <production>
         <input goods-type="model.goods.luxuryMaterials" value="6"/>
         <output goods-type="model.goods.jewelry" value="9"/>
@@ -1753,13 +1826,16 @@
                       value="160"/>
       <required-goods id="model.goods.tools"
                       value="100"/>
+      <required-goods id="model.goods.stone"
+                      value="160"/>
       <required-ability id="model.ability.buildFactory"/>
       <ability id="model.ability.expertsUseConnections"
                value="true"/>
     </building-type>
     
     <building-type id="model.building.printingPress"
-                   upkeep="5">
+                   workplaces="3"
+                   upkeep="10">
       <production>
         <input goods-type="model.goods.hemp" value="3"/>
         <output goods-type="model.goods.books" value="3"/>
@@ -1777,21 +1853,249 @@
     <building-type id="model.building.newspaper"
                    extends="model.building.printingPress"
                    upgrades-from="model.building.printingPress"
-                   required-population="4" upkeep="10">
+                   required-population="4" upkeep="20">
       <production>
         <input goods-type="model.goods.hemp" value="6"/>
         <output goods-type="model.goods.books" value="6"/>
       </production>
-<!--      <required-goods id="model.goods.hammers"
-                      value="120"/>
-      <required-goods id="model.goods.tools"
-                      value="50"/>
-      <modifier id="model.goods.bells" delete="true" />
+      <modifier id="model.goods.bells" delete="true" /> 
       <modifier id="model.goods.bells" index="70"
                 type="percentage" value="100">
         <scope ability-id="model.ability.person" match-negated="true"/>
-      </modifier>-->
+      </modifier>
+    </building-type>
+    
+    <building-type id="model.building.fortress"
+                   extends="model.building.fort"
+                   upgrades-from="model.building.fort"
+                   required-population="8" upkeep="20">
+      <required-goods id="model.goods.stone"
+                      value="320"/>
+    </building-type>
+    
+    <building-type id="model.building.church"
+                   extends="model.building.chapel"
+                   upgrades-from="model.building.chapel"
+                   workplaces="3"
+                   required-population="3" upkeep="10">
+      <required-goods id="model.goods.stone"
+                      value="64"/>
+    </building-type>
+    
+    <building-type id="model.building.cathedral"
+                   extends="model.building.church"
+                   upgrades-from="model.building.church"
+                   competence-factor="2" rebel-factor="2"
+                   required-population="8" upkeep="20">
+      <required-goods id="model.goods.stone"
+                      value="176"/>
+    </building-type>
+    
+    <building-type id="model.building.college"
+                   extends="model.building.schoolhouse"
+                   workplaces="2" maximum-skill="2"
+                   upgrades-from="model.building.schoolhouse"
+                   required-population="8" upkeep="15">
+      <required-goods id="model.goods.stone"
+                      value="160"/>
+    </building-type>
+    
+    <building-type id="model.building.university"
+                   extends="model.building.college"
+                   workplaces="3" maximum-skill="4"
+                   upgrades-from="model.building.college"
+                   required-population="10" upkeep="20">
+      <required-goods id="model.goods.stone"
+                      value="200"/>
+    </building-type>
+    
+    <building-type id="model.building.furTradingPost"
+                   extends="model.building.furTraderHouse"
+                   upgrades-from="model.building.furTraderHouse"
+                   competence-factor="2"
+                   upkeep="10">
+      <required-goods id="model.goods.stone"
+                      value="56"/>
+    </building-type>
+    
+    <building-type id="model.building.furFactory"
+                   extends="model.building.furTradingPost"
+                   upgrades-from="model.building.furTradingPost"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="6" upkeep="20">
+      <required-goods id="model.goods.stone"
+                      value="160"/>
+    </building-type>
+    
+    <building-type id="model.building.rumDistillery"
+                   extends="model.building.distillerHouse"
+                   upgrades-from="model.building.distillerHouse"
+                   competence-factor="2"
+                   upkeep="10">
+      <required-goods id="model.goods.stone"
+                      value="64"/>
+    </building-type>
+    
+    <building-type id="model.building.rumFactory"
+                   extends="model.building.rumDistillery"
+                   upgrades-from="model.building.rumDistillery"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="8" upkeep="20">
+      <required-goods id="model.goods.stone"
+                      value="160"/>
+    </building-type>
+    
+    <building-type id="model.building.weaverShop"
+                   extends="model.building.weaverHouse"
+                   upgrades-from="model.building.weaverHouse"
+                   competence-factor="2"
+                   upkeep="10">
+      <required-goods id="model.goods.stone"
+                      value="64"/>
+    </building-type>
+    
+    <building-type id="model.building.textileMill"
+                   extends="model.building.weaverShop"
+                   upgrades-from="model.building.weaverShop"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="8" upkeep="20">
+      <required-goods id="model.goods.stone"
+                      value="160"/>
+    </building-type>
+    
+    <building-type id="model.building.tobacconistShop"
+                   extends="model.building.tobacconistHouse"
+                   upgrades-from="model.building.tobacconistHouse"
+                   competence-factor="2"
+                   upkeep="10">
+      <required-goods id="model.goods.hammers"
+                      value="64"/>
+    </building-type>
+    
+    <building-type id="model.building.cigarFactory"
+                   extends="model.building.tobacconistShop"
+                   upgrades-from="model.building.tobacconistShop"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="8" upkeep="20">
+      <required-goods id="model.goods.stone"
+                      value="160"/>
+    </building-type>
+    
+    <building-type id="model.building.ironWorks"
+                   extends="model.building.blacksmithShop"
+                   upgrades-from="model.building.blacksmithShop"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="8" upkeep="20">
+      <required-goods id="model.goods.stone"
+                      value="240"/>
+    </building-type>
+    
+    <building-type id="model.building.magazine"
+                   extends="model.building.armory"
+                   upgrades-from="model.building.armory"
+                   competence-factor="2"
+                   required-population="8" upkeep="15">
+      <required-goods id="model.goods.stone"
+                      value="120"/>
+    </building-type>
+    
+    <building-type id="model.building.arsenal"
+                   extends="model.building.magazine"
+                   upgrades-from="model.building.magazine"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   upkeep="20">
+      <required-goods id="model.goods.stone"
+                      value="240"/>
+    </building-type>
+    
+    <building-type id="model.building.drydock"
+                   extends="model.building.docks"
+                   upgrades-from="model.building.docks"
+                   required-population="4" upkeep="15">
+      <required-goods id="model.goods.stone"
+                      value="80"/>
+    </building-type>
+    
+    <building-type id="model.building.shipyard"
+                   extends="model.building.drydock"
+                   upgrades-from="model.building.drydock"
+                   required-population="8" upkeep="20">
+      <required-goods id="model.goods.stone"
+                      value="240"/>
     </building-type>
     
   </building-types>
+    
+  <indian-nation-types>
+      
+    <indian-nation-type id="default" abstract="true">
+      <ability id="model.ability.ambushBonus"
+               value="true"/>
+      <ability id="model.ability.foundsColonies"
+               value="false"/>
+      <ability id="model.ability.automaticEquipment"
+               value="true">
+        <scope type="model.role.nativeDragoon"/>
+        <scope type="model.role.armedBrave"/>
+      </ability>
+      <ability id="model.ability.native"/>
+    </indian-nation-type>
+    
+    <indian-nation-type id="village" abstract="true" extends="default">
+      <settlement id="model.settlement.village" capital="false"
+                  claimable-radius="1" extra-claimable-radius="2"
+                  minimum-size="6" maximum-size="8"
+                  minimum-growth="1" maximum-growth="8"
+                  trade-bonus="2" convert-threshold="100">
+        <plunder id="plunder.village" probability="50"
+                 minimum="3" maximum="8" factor="100">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="false"/>
+        </plunder>
+        <plunder id="plunder.village.extra" probability="100"
+                 minimum="4" maximum="12" factor="100">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="true"/>
+        </plunder>
+        <gifts probability="100" minimum="3" maximum="6" factor="100" />
+        <modifier id="model.modifier.defence" index="50"
+                  type="percentage" value="50"/>
+      </settlement>
+      <settlement id="model.settlement.village.capital" capital="true"
+                  claimable-radius="2" extra-claimable-radius="2"
+                  minimum-size="8" maximum-size="10"
+                  minimum-growth="2" maximum-growth="10"
+                  trade-bonus="3" convert-threshold="100">
+        <plunder id="plunder.village.capital" probability="100"
+                 minimum="3" maximum="8" factor="200">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="false"/>
+        </plunder>
+        <plunder id="plunder.village.capital.extra" probability="100"
+                 minimum="3" maximum="8" factor="300">
+          <scope ability-id="model.ability.plunderNatives"
+                 ability-value="true"/>
+        </plunder>
+        <gifts probability="100" minimum="4" maximum="8" factor="200" />
+        <modifier id="model.modifier.defence" index="50"
+                  type="percentage" value="100"/>
+      </settlement>
+    </indian-nation-type>
+    
+    <indian-nation-type id="model.nationType.arawak" extends="village"
+                        number-of-settlements="low" aggression="low">
+      <skill id="model.unit.expertPearlDiver" probability="10"/>
+    </indian-nation-type>
+      
+    <indian-nation-type id="city" abstract="true" extends="default"
+                        number-of-settlements="high">
+      <skill id="model.unit.expertPearlDiver" probability="10"/>
+    </indian-nation-type>
+  </indian-nation-types>
 </freecol-specification>
