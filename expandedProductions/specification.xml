@@ -20,33 +20,33 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="expandedProduction" version="0.3">
+<freecol-specification id="expandedProduction" version="0.4">
 
   <goods-types>
 
     <goods-type id="model.goods.stone" is-farmed="true"
                 production-weight="4.0"
                 low-production-threshold="6" zero-production-factor="0.0">
-      <market initial-amount="5000" initial-price="3" price-difference="3" />
+      <market initial-amount="5000" initial-price="3" price-difference="3"/>
     </goods-type>
     
     <goods-type id="model.goods.hemp" is-farmed="true"
                 production-weight="2.5">
-      <market initial-amount="3000" initial-price="2" price-difference="2" />
+      <market initial-amount="3000" initial-price="3" price-difference="2"/>
     </goods-type>
     
     <goods-type id="model.goods.rope" is-farmed="false"
                 made-from="model.goods.hemp">
-      <market initial-amount="2000" initial-price="5" price-difference="2" />
+      <market initial-amount="2000" initial-price="5" price-difference="2"/>
     </goods-type>
     
     <goods-type id="model.goods.luxuryMaterials" is-farmed="true"
                 ignore-limit="true" is-food="false"
                 production-weight="5.0">
-      <market initial-amount="1000" initial-price="16" price-difference="2" />
+      <market initial-amount="1000" initial-price="16" price-difference="2"/>
     </goods-type>
     
-    <goods-type id="model.goods.pearl" is-farmed="true" storable="false"
+    <goods-type id="model.goods.pearls" is-farmed="true" storable="false"
                 stored-as="model.goods.luxuryMaterials"
                 production-weight="2.5">
     </goods-type>
@@ -56,14 +56,19 @@
                 production-weight="5.0">
     </goods-type>
     
-    <goods-type id="model.goods.gem" is-farmed="true" storable="false"
+    <goods-type id="model.goods.gems" is-farmed="true" storable="false"
                 stored-as="model.goods.luxuryMaterials"
                 production-weight="2.5">
     </goods-type>
     
     <goods-type id="model.goods.jewelry" is-farmed="false"
                 made-from="model.goods.luxuryMaterials">
-      <market initial-amount="500" initial-price="20" price-difference="1" />
+      <market initial-amount="500" initial-price="20" price-difference="1"/>
+    </goods-type>
+    
+    <goods-type id="model.goods.books" is-farmed="false"
+                made-from="model.goods.hemp">
+      <market initial-amount="1000" initial-price="18" price-difference="2"/>
     </goods-type>
 
   </goods-types>
@@ -78,11 +83,11 @@
     
     <resource-type id="model.resource.hemp">
       <modifier id="model.goods.hemp" index="10"
-                type="additive" value="2"/>
+                type="multiplicative" value="2"/>
     </resource-type>
     
-    <resource-type id="model.resource.pearl">
-      <modifier id="model.goods.pearl" index="10"
+    <resource-type id="model.resource.mussels">
+      <modifier id="model.goods.pearls" index="10"
                 type="additive" value="2"/>
     </resource-type>
     
@@ -96,7 +101,7 @@
                 type="additive" value="1"/>
       <modifier id="model.goods.gold" index="10"
                 type="additive" value="1"/>
-      <modifier id="model.goods.gem" index="10"
+      <modifier id="model.goods.gems" index="10"
                 type="additive" value="1"/>
     </resource-type>
     
@@ -106,9 +111,9 @@
                 type="additive" value="2"/>
     </resource-type>
     
-    <resource-type id="model.resource.gem"
+    <resource-type id="model.resource.gems"
                    minimum-value="80" maximum-value="800">
-      <modifier id="model.goods.gem" index="10"
+      <modifier id="model.goods.gems" index="10"
                 type="additive" value="2"/>
     </resource-type>
     
@@ -269,7 +274,7 @@
         <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.gem" value="1"/>
+        <output goods-type="model.goods.gems" value="1"/>
       </production>
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="100"/>
@@ -287,7 +292,7 @@
         <output goods-type="model.goods.hemp" value="2"/>
 <!--        <output goods-type="model.goods.silver" value="1"/>
         <output goods-type="model.goods.gold" value="1"/>
-        <output goods-type="model.goods.gem" value="1"/>-->
+        <output goods-type="model.goods.gems" value="1"/>-->
       </production>
       <production>
         <output goods-type="model.goods.grain" value="3"/>
@@ -308,7 +313,7 @@
         <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.gem" value="1"/>
+        <output goods-type="model.goods.gems" value="1"/>
       </production>
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="50"/>
@@ -375,7 +380,7 @@
         <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.gem" value="1"/>
+        <output goods-type="model.goods.gems" value="1"/>
       </production>
       <!-- Col1 had minerals here, even if not mentioned in the
            Colonizopedia. -->
@@ -534,7 +539,13 @@
         <output goods-type="model.goods.ore" value="1"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.silver" value="0"/>
+        <output goods-type="model.goods.silver" value="1"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.gold" value="1"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.gems" value="1"/>
       </production>
       <resource type="model.resource.minerals" probability="100"/>
       <ability id="model.ability.ambushTerrain"
@@ -570,7 +581,13 @@
         <output goods-type="model.goods.ore" value="1"/>
       </production>
       <production> <!-- Minerals! -->
-        <output goods-type="model.goods.silver" value="0"/>
+        <output goods-type="model.goods.silver" value="1"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.gold" value="1"/>
+      </production>
+      <production> <!-- Minerals! -->
+        <output goods-type="model.goods.gems" value="1"/>
       </production>
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="100"/>
@@ -691,14 +708,14 @@
         <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production>
-        <output goods-type="model.goods.gem" value="1"/>
+        <output goods-type="model.goods.gems" value="1"/>
       </production>
       <production>
         <output goods-type="model.goods.stone" value="4"/>
       </production>
       <resource type="model.resource.silver" probability="25"/>
       <resource type="model.resource.gold" probability="25"/>
-      <resource type="model.resource.gem" probability="25"/>
+      <resource type="model.resource.gems" probability="25"/>
       <resource type="model.resource.stone" probability="25"/>
       <disaster id="model.disaster.earthquake" probability="50"/>
       <disaster id="model.disaster.landslide" probability="50"/>
@@ -728,10 +745,10 @@
         <output goods-type="model.goods.fish" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.pearl" value="2"/>
+        <output goods-type="model.goods.pearls" value="2"/>
       </production>
       <resource type="model.resource.fish" probability="50"/>
-      <resource type="model.resource.pearl" probability="50"/>
+      <resource type="model.resource.mussels" probability="50"/>
       <disaster id="model.disaster.stormsurge" probability="100"/>
     </tile-type>
     <tile-type id="model.tile.lake"
@@ -744,10 +761,10 @@
         <output goods-type="model.goods.fish" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.pearl" value="2"/>
+        <output goods-type="model.goods.pearls" value="2"/>
       </production>
       <resource type="model.resource.fish" probability="50"/>
-      <resource type="model.resource.pearl" probability="50"/>
+      <resource type="model.resource.mussels" probability="50"/>
       <disaster id="model.disaster.flood" probability="100"/>
     </tile-type>
     <tile-type id="model.tile.highSeas"
@@ -760,7 +777,7 @@
         <output goods-type="model.goods.fish" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.pearl" value="2"/>
+        <output goods-type="model.goods.pearls" value="2"/>
       </production>
       <ability id="model.ability.moveToEurope"/>
     </tile-type>
@@ -774,13 +791,152 @@
         <output goods-type="model.goods.fish" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.pearl" value="2"/>
+        <output goods-type="model.goods.pearls" value="2"/>
       </production>
       <resource type="model.resource.fish" probability="50"/>
-      <resource type="model.resource.pearl" probability="50"/>
+      <resource type="model.resource.mussels" probability="50"/>
       <disaster id="model.disaster.flood" probability="100"/>
     </tile-type>
   </tile-types>
+  
+  <roles>
+
+    <role id="model.role.scout"
+          expert-unit="model.unit.seasonedScout">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.horses"
+                      value="50"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.canBeCaptured"
+               value="false"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.demandTribute"
+               value="true"/>
+      <ability id="model.ability.disposeOnCombatLoss"
+               value="true"/>
+      <ability id="model.ability.mounted"
+               value="true"/>
+      <ability id="model.ability.negotiate"
+               value="true"/>
+      <ability id="model.ability.speakWithChief"
+               value="true"/>
+      <ability id="model.ability.spyOnColony"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.lineOfSightBonus"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="9"/>
+    </role>
+
+    <role id="model.role.soldier"
+          expert-unit="model.unit.veteranSoldier">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.muskets"
+                      value="50"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.canBeCaptured"
+               value="false"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.demandTribute"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="2"/>
+    </role>
+
+    <role id="model.role.dragoon" downgrade="model.role.soldier"
+          expert-unit="model.unit.veteranSoldier">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.muskets"
+                      value="50"/>
+      <required-goods id="model.goods.horses"
+                      value="50"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.canBeCaptured"
+               value="false"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.demandTribue"
+               value="true"/>
+      <ability id="model.ability.mounted"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="2"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="3"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="9"/>
+    </role>
+
+    <role id="model.role.pioneer"
+          expert-unit="model.unit.hardyPioneer" maximum-count="5">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-goods id="model.goods.tools"
+                      value="20"/>
+
+      <ability id="model.ability.disposeOnCombatLoss"
+               value="true"/>
+      <ability id="model.ability.improveTerrain"
+               value="true"/>
+    </role>
+
+    <role id="model.role.missionary"
+          expert-unit="model.unit.jesuitMissionary">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.dressMissionary"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+
+      <ability id="model.ability.denounceHeresy"
+               value="true"/>
+      <ability id="model.ability.establishMission"
+               value="true"/>
+      <ability id="model.ability.inciteNatives"
+               value="true"/>
+      <modifier id="model.modifier.missionaryTradeBonus"
+                type="percentage" value="10"/>
+      <modifier id="model.modifier.movementBonus"
+                type="additive" value="3"/>
+    </role>
+
+  </roles>
   
   <!--
       Parent options: name, add-work-turns, natural, type,
@@ -1203,9 +1359,9 @@
       <unit-type-change id="model.unitChange.experience.masterTobaccoPlanter"
                         from="model.unit.freeColonist"
                         to="model.unit.masterTobaccoPlanter" probability="4"/>
-      <unit-type-change id="model.unitChange.experience.masterHempPlanter"
+      <unit-type-change id="model.unitChange.experience.expertHempPlanter"
                         from="model.unit.freeColonist"
-                        to="model.unit.masterHempPlanter" probability="4"/>
+                        to="model.unit.expertHempPlanter" probability="4"/>
       <unit-type-change id="model.unitChange.experience.expertGoldMiner"
                         from="model.unit.freeColonist"
                         to="model.unit.expertGoldMiner" probability="4"/>
@@ -1448,6 +1604,24 @@
   </unit-change-types>
   
   <unit-types>
+    <unit-type id="colonist" abstract="true"
+               offence="0" defence="1" movement="3" line-of-sight="1"
+               priority="1000">
+      <ability id="model.ability.person"
+               value="true"/>
+      <ability id="model.ability.foundColony"
+               value="true"/>
+      <ability id="model.ability.canBeEquipped"
+               value="true"/>
+      <ability id="model.ability.canBeCaptured"
+               value="true"/>
+      <modifier id="model.modifier.conversionSkill"
+                type="additive" value="6"/>
+      <modifier id="model.modifier.conversionAlarmRate"
+                type="percentage" value="2"/>
+      <consumes id="model.goods.food" value="2" />
+      <consumes id="model.goods.bells" value="1" />
+    </unit-type>
     <unit-type id="model.unit.expertGoldMiner" extends="colonist"
                price="900" skill="1" expert-production="model.goods.gold"
                recruit-probability="1" score-value="4">
@@ -1455,15 +1629,15 @@
                 type="multiplicative" value="2"/>
     </unit-type>
     <unit-type id="model.unit.expertGemMiner" extends="colonist"
-               price="900" skill="1" expert-production="model.goods.gem"
+               price="900" skill="1" expert-production="model.goods.gems"
                recruit-probability="1" score-value="4">
-      <modifier id="model.goods.gem" index="30"
+      <modifier id="model.goods.gems" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>
     <unit-type id="model.unit.expertPearlDiver" extends="colonist"
-               price="900" skill="1" expert-production="model.goods.pearl"
+               price="900" skill="1" expert-production="model.goods.pearls"
                recruit-probability="1" score-value="4">
-      <modifier id="model.goods.pearl" index="30"
+      <modifier id="model.goods.pearls" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>
     <unit-type id="model.unit.expertStoneCutter" extends="colonist"
@@ -1480,7 +1654,7 @@
     </unit-type>
     <unit-type id="model.unit.expertHempPlanter" extends="colonist"
                skill="2" expert-production="model.goods.hemp"
-               score-value="5" >
+               score-value="5">
       <modifier id="model.goods.hemp" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>    
@@ -1490,5 +1664,134 @@
       <modifier id="model.goods.jewelry" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>
+    
+    <unit-type id="model.unit.masterPrinter" extends="colonist"
+               price="600" skill="2" expert-production="model.goods.books"
+               recruit-probability="1" score-value="5">
+      <modifier id="model.goods.books" index="30"
+                type="multiplicative" value="2"/>
+    </unit-type>
+    
   </unit-types>
+  
+  <building-types>
+    
+    <building-type id="model.building.ropeBinderHouse">
+      <production>
+        <input goods-type="model.goods.hemp" value="3"/>
+        <output goods-type="model.goods.rope" value="3"/>
+      </production>
+    </building-type>
+    
+    <building-type id="model.building.ropeBinderShop"
+                   extends="model.building.ropeBinderHouse"
+                   upgrades-from="model.building.ropeBinderHouse"
+                   competence-factor="2"
+                   upkeep="5">
+      <production>
+        <input goods-type="model.goods.hemp" value="6"/>
+        <output goods-type="model.goods.rope" value="6"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="64"/>
+      <required-goods id="model.goods.tools"
+                      value="20"/>
+    </building-type>
+    
+    <building-type id="model.building.ropeBinderWorks"
+                   extends="model.building.ropeBinderShop"
+                   upgrades-from="model.building.ropeBinderShop"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="8" upkeep="15">
+      <production>
+        <input goods-type="model.goods.hemp" value="6"/>
+        <output goods-type="model.goods.rope" value="9"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="160"/>
+      <required-goods id="model.goods.tools"
+                      value="100"/>
+      <required-ability id="model.ability.buildFactory"/>
+      <ability id="model.ability.expertsUseConnections"
+               value="true"/>
+    </building-type>
+    
+    <building-type id="model.building.jewelerHouse">
+      <production>
+        <input goods-type="model.goods.luxuryMaterials" value="3"/>
+        <output goods-type="model.goods.jewelry" value="3"/>
+      </production>
+    </building-type>
+    
+    <building-type id="model.building.jewelerShop"
+                   extends="model.building.jewelerHouse"
+                   upgrades-from="model.building.jewelerHouse"
+                   competence-factor="2"
+                   upkeep="5">
+      <production>
+        <input goods-type="model.goods.luxuryMaterials" value="6"/>
+        <output goods-type="model.goods.jewelry" value="6"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="64"/>
+      <required-goods id="model.goods.tools"
+                      value="20"/>
+    </building-type>
+    
+    <building-type id="model.building.jewelerWorks"
+                   extends="model.building.jewelerShop"
+                   upgrades-from="model.building.jewelerShop"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="8" upkeep="15">
+      <production>
+        <input goods-type="model.goods.luxuryMaterials" value="6"/>
+        <output goods-type="model.goods.jewelry" value="9"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="160"/>
+      <required-goods id="model.goods.tools"
+                      value="100"/>
+      <required-ability id="model.ability.buildFactory"/>
+      <ability id="model.ability.expertsUseConnections"
+               value="true"/>
+    </building-type>
+    
+    <building-type id="model.building.printingPress"
+                   upkeep="5">
+      <production>
+        <input goods-type="model.goods.hemp" value="3"/>
+        <output goods-type="model.goods.books" value="3"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="52"/>
+      <required-goods id="model.goods.tools"
+                      value="20"/>
+      <modifier id="model.goods.bells" index="70"
+                type="percentage" value="50">
+        <scope ability-id="model.ability.person" match-negated="true"/>
+      </modifier>
+    </building-type>
+    
+    <building-type id="model.building.newspaper"
+                   extends="model.building.printingPress"
+                   upgrades-from="model.building.printingPress"
+                   required-population="4" upkeep="10">
+      <production>
+        <input goods-type="model.goods.hemp" value="6"/>
+        <output goods-type="model.goods.books" value="6"/>
+      </production>
+<!--      <required-goods id="model.goods.hammers"
+                      value="120"/>
+      <required-goods id="model.goods.tools"
+                      value="50"/>
+      <modifier id="model.goods.bells" delete="true" />
+      <modifier id="model.goods.bells" index="70"
+                type="percentage" value="100">
+        <scope ability-id="model.ability.person" match-negated="true"/>
+      </modifier>-->
+    </building-type>
+    
+  </building-types>
 </freecol-specification>
