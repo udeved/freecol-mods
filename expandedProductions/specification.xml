@@ -20,7 +20,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="expandedProduction" version="0.5">
+<freecol-specification id="expandedProduction" version="0.6">
 
   <goods-types>
 
@@ -79,7 +79,11 @@
     
     <resource-type id="model.resource.mussels">
       <modifier id="model.goods.pearls" index="10"
-                type="additive" value="2"/>
+                type="additive" value="3"/>
+      <modifier id="model.goods.pearls" index="10"
+                type="additive" value="3">
+        <scope type="model.unit.expertPearlDiver" matches-null="false"/>
+      </modifier>
     </resource-type>
     
     <resource-type id="model.resource.minerals"
@@ -245,9 +249,9 @@
       <production> <!-- Minerals! -->
         <output goods-type="model.goods.silver" value="1"/>
       </production>
-      <production> <!-- Minerals! -->
+       <!--<production> Minerals!
         <output goods-type="model.goods.gold" value="1"/>
-      </production>
+      </production> -->
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="100"/>
     </tile-type>
@@ -274,9 +278,9 @@
       <production>
         <output goods-type="model.goods.ore" value="2"/>
       </production>
-      <production> <!-- Minerals! -->
+      <!--<production>  Minerals!
         <output goods-type="model.goods.silver" value="1"/>
-      </production>
+      </production> -->
       <production> <!-- Minerals! -->
         <output goods-type="model.goods.gold" value="1"/>
       </production>
@@ -335,9 +339,9 @@
       <production> <!-- Minerals! -->
         <output goods-type="model.goods.silver" value="1"/>
       </production>
-      <production> <!-- Minerals! -->
+      <!--<production>  Minerals! 
         <output goods-type="model.goods.gold" value="1"/>
-      </production>
+      </production>-->
       <!-- Col1 had minerals here, even if not mentioned in the
            Colonizopedia. -->
       <resource type="model.resource.minerals" probability="100"/>
@@ -497,9 +501,9 @@
       <production> <!-- Minerals! -->
         <output goods-type="model.goods.silver" value="1"/>
       </production>
-      <production> <!-- Minerals! -->
+      <!--<production>  Minerals! 
         <output goods-type="model.goods.gold" value="1"/>
-      </production>
+      </production>-->
       <resource type="model.resource.minerals" probability="100"/>
       <ability id="model.ability.ambushTerrain"
                value="true"/>
@@ -533,9 +537,9 @@
       <production>
         <output goods-type="model.goods.ore" value="1"/>
       </production>
-      <production> <!-- Minerals! -->
+      <!--<production>  Minerals! 
         <output goods-type="model.goods.silver" value="1"/>
-      </production>
+      </production>-->
       <production> <!-- Minerals! -->
         <output goods-type="model.goods.gold" value="1"/>
       </production>
@@ -578,6 +582,9 @@
       <production>
         <output goods-type="model.goods.ore" value="1"/>
       </production>
+      <production>
+        <output goods-type="model.goods.gold" value="1"/>
+      </production>
       <resource type="model.resource.oasis" probability="100"/>
       <disaster id="model.disaster.brushfire" probability="50"/>
       <disaster id="model.disaster.drought" probability="50"/>
@@ -606,6 +613,9 @@
       </production>
       <production>
         <output goods-type="model.goods.ore" value="1"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.silver" value="1"/>
       </production>
       <resource type="model.resource.game" probability="100"/>
       <ability id="model.ability.ambushTerrain"
@@ -2098,11 +2108,6 @@
     
     <indian-nation-type id="model.nationType.arawak" extends="village"
                         number-of-settlements="low" aggression="low">
-      <skill id="model.unit.expertPearlDiver" probability="10"/>
-    </indian-nation-type>
-      
-    <indian-nation-type id="city" abstract="true" extends="default"
-                        number-of-settlements="high">
       <skill id="model.unit.expertPearlDiver" probability="10"/>
     </indian-nation-type>
     
