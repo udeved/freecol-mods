@@ -46,7 +46,7 @@
     </goods-type>
     
     <goods-type id="model.goods.pearls" is-farmed="true"               
-                production-weight="2.5"> <!-- new-world-goods="true" trade-goods="true"-->
+                production-weight="2.5" new-world-goods="true"> <!--  trade-goods="true"-->
       <market initial-amount="1000" initial-price="16" price-difference="1"/>
     </goods-type>
     
@@ -1128,8 +1128,8 @@
                         from="model.unit.expertGoldMiner"
                         to="model.unit.freeColonist" probability="100"/>
 <!--      <unit-type-change id="model.unitChange.clearSkill.expertGemMiner"
-                        from="model.unit.expertGemMiner"-->
-                        to="model.unit.freeColonist" probability="100"/>
+                        from="model.unit.expertGemMiner"
+                        to="model.unit.freeColonist" probability="100"/>-->
       <unit-type-change id="model.unitChange.clearSkill.masterRopeBinder"
                         from="model.unit.masterRopeBinder"
                         to="model.unit.freeColonist" probability="100"/>
@@ -1705,7 +1705,7 @@
                    upgrades-from="model.building.carpenterHouse"
                    competence-factor="2" rebel-factor="2"
                    required-population="3" upkeep="15">
-      <modifier id="model.goods.lumber" delete="true"/> 
+      <modifier id="model.modifier.tileTypeChangeProduction" delete="true"/> 
 <!--      <modifier id="model.modifier.tileTypeChangeProduction"
                 type="multiplicative" value="3">
         <scope type="model.goods.lumber"/>
@@ -1726,7 +1726,7 @@
                       value="160"/>
       <required-goods id="model.goods.tools"
                       value="100"/>
-      <modifier id="model.goods.lumber" delete="true"/> 
+      <modifier id="model.modifier.tileTypeChangeProduction" delete="true"/> 
     </building-type>
     
     <building-type id="model.building.ropeBinderHouse">
@@ -1778,9 +1778,9 @@
     
     <building-type id="model.building.jewelerHouse">
       
-      <production>
+ <!--     <production>
         <input goods-type="model.goods.pearls" value="3"/>
-      </production>
+      </production>-->
       <production>
         <input goods-type="model.goods.gold" value="3"/>
         <output goods-type="model.goods.jewelry" value="3"/>
@@ -1794,9 +1794,9 @@
                    upgrades-from="model.building.jewelerHouse"
                    competence-factor="2"
                    upkeep="15">
-      <production>
+ <!--     <production>
         <input goods-type="model.goods.pearls" value="6"/>
-      </production>
+      </production>-->
       <production>
         <input goods-type="model.goods.gold" value="6"/>
         <output goods-type="model.goods.jewelry" value="6"/>
@@ -1815,9 +1815,9 @@
                    experts-with-connections-production="4"
                    competence-factor="3" rebel-factor="1.5"
                    required-population="8" upkeep="20">
-      <production>
+     <!-- <production>
         <input goods-type="model.goods.pearls" value="6"/>
-      </production>
+      </production>-->
       <production>
         <input goods-type="model.goods.gold" value="6"/>
         <output goods-type="model.goods.jewelry" value="9"/>
@@ -2036,7 +2036,7 @@
     
   </building-types>
     
-<!--  <indian-nation-types>
+  <indian-nation-types>
       
     <indian-nation-type id="default" abstract="true">
       <ability id="model.ability.ambushBonus"
@@ -2102,6 +2102,6 @@
       <skill id="model.unit.expertPearlDiver" probability="10"/>
     </indian-nation-type>
     
-  </indian-nation-types>-->
+  </indian-nation-types>
 
 </freecol-specification>
