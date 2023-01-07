@@ -41,16 +41,31 @@
     </goods-type>
     
     <goods-type id="model.goods.books" is-farmed="false"
-                made-from="model.goods.hemp">  <!--ignore-limit="true" storable="false"-->
-      <market initial-amount="1000" initial-price="12" price-difference="2"/>
- <!--     <modifier id="model.modifier.popularSupport"
-                type="multiplicative" value="1" /> -->
+                ignore-limit="true" storable="false">  <!-- made-from="model.goods.hemp" -->
+<!--       <market initial-amount="1000" initial-price="12" price-difference="2"/> -->
+      <modifier id="model.modifier.liberty"
+                type="multiplicative" value="1">
+          <scope ability-id="model.ability.person" match-negated="true"/>
+      </modifier> 
+    </goods-type>
+    
+    <goods-type id="model.goods.silvercoin" is-farmed="false"
+                made-from="model.goods.silver">
+      <market initial-amount="250" initial-price="20" price-difference="1"/>
+    </goods-type>
+    
+    <goods-type id="model.goods.intel" is-farmed="false"
+                stored-as="model.goods.silvercoin" storable="false">
     </goods-type>
     
     <goods-type id="model.goods.gold" is-farmed="true"
                 production-weight="5.0">
       <market initial-amount="1000" initial-price="17" price-difference="2"/>
     </goods-type>
+    
+<!--    <goods-type id="model.goods.mussels" is-farmed="true" storable="false"
+                stored-as="model.goods.food" is-food="true"
+                production-weight="5.0" />-->
     
     <goods-type id="model.goods.pearls" is-farmed="true"               
                 production-weight="2.5" new-world-goods="true">
@@ -80,10 +95,18 @@
     <resource-type id="model.resource.mussels">
       <modifier id="model.goods.pearls" index="10"
                 type="additive" value="3"/>
+<!--      <modifier id="model.goods.mussels" index="10"
+                type="additive" value="2">
+        <scope type="model.unit.expertPearlDiver" matches-null="false"/>
+      </modifier>-->
       <modifier id="model.goods.pearls" index="10"
                 type="additive" value="3">
         <scope type="model.unit.expertPearlDiver" matches-null="false"/>
       </modifier>
+<!--      <modifier id="model.goods.mussels" index="10"
+                type="additive" value="2">
+        <scope type="model.unit.expertPearlDiver" matches-null="false"/>
+      </modifier>-->
     </resource-type>
     
     <resource-type id="model.resource.minerals"
@@ -135,6 +158,7 @@
          where X is a relative probability, not necessarily a percentage value
   -->
   <tile-types>
+      
     <tile-type id="model.tile.plains"
                basic-move-cost="3" basic-work-turns="3">
       <gen humidity-minimum="0" humidity-maximum="60"
@@ -160,6 +184,7 @@
       <resource type="model.resource.hemp" probability="50"/>
       <disaster id="model.disaster.tornado" probability="100"/>
     </tile-type>
+    
     <tile-type id="model.tile.grassland"
                basic-move-cost="3" basic-work-turns="3">
       <gen humidity-minimum="25" humidity-maximum="70"
@@ -181,6 +206,7 @@
       <resource type="model.resource.tobacco" probability="50"/>
       <resource type="model.resource.hemp" probability="50"/>
     </tile-type>
+    
     <tile-type id="model.tile.prairie"
                basic-move-cost="3" basic-work-turns="3">
       <gen humidity-minimum="20" humidity-maximum="50"
@@ -202,6 +228,7 @@
       <resource type="model.resource.cotton" probability="50"/>
       <resource type="model.resource.hemp" probability="50"/>
     </tile-type>
+    
     <tile-type id="model.tile.savannah"
                basic-move-cost="3" basic-work-turns="3">
       <gen humidity-minimum="25" humidity-maximum="70"
@@ -223,6 +250,7 @@
       <resource type="model.resource.sugar" probability="50"/>
       <resource type="model.resource.hemp" probability="50"/>
     </tile-type>
+    
     <tile-type id="model.tile.marsh"
                basic-move-cost="6" basic-work-turns="5">
       <gen humidity-minimum="50" humidity-maximum="100"
@@ -255,6 +283,7 @@
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="100"/>
     </tile-type>
+    
     <tile-type id="model.tile.swamp"
                basic-move-cost="6" basic-work-turns="7">
       <gen humidity-minimum="50" humidity-maximum="100"
@@ -288,6 +317,7 @@
       <disaster id="model.disaster.disease" probability="50"/>
       <disaster id="model.disaster.flood" probability="50"/>
     </tile-type>
+    
     <tile-type id="model.tile.desert"
                basic-move-cost="3" basic-work-turns="3">
       <gen humidity-minimum="0" humidity-maximum="25"
@@ -321,6 +351,7 @@
       <disaster id="model.disaster.sandstorm" probability="50"/>
       <disaster id="model.disaster.drought" probability="50"/>
     </tile-type>
+    
     <tile-type id="model.tile.tundra"
                basic-move-cost="3" basic-work-turns="4">
       <gen humidity-minimum="0" humidity-maximum="100"
@@ -347,6 +378,7 @@
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.blizzard" probability="100"/>
     </tile-type>
+    
     <tile-type id="model.tile.mixedForest"
                basic-move-cost="6" basic-work-turns="4" is-forest="true">
       <gen humidity-minimum="0" humidity-maximum="60"
@@ -378,6 +410,7 @@
       <ability id="model.ability.ambushTerrain"
                value="true"/>
     </tile-type>
+    
     <tile-type id="model.tile.coniferForest"
                basic-move-cost="6" basic-work-turns="4" is-forest="true">
       <gen humidity-minimum="25" humidity-maximum="70"
@@ -408,6 +441,7 @@
       <ability id="model.ability.ambushTerrain"
                value="true"/>
     </tile-type>
+    
     <tile-type id="model.tile.broadleafForest"
                basic-move-cost="6" basic-work-turns="4" is-forest="true">
       <gen humidity-minimum="20" humidity-maximum="50"
@@ -438,6 +472,7 @@
       <ability id="model.ability.ambushTerrain"
                value="true"/>
     </tile-type>
+    
     <tile-type id="model.tile.tropicalForest"
                basic-move-cost="6" basic-work-turns="6" is-forest="true">
       <gen humidity-minimum="25" humidity-maximum="70"
@@ -469,6 +504,7 @@
       <ability id="model.ability.ambushTerrain"
                value="true"/>
     </tile-type>
+    
     <tile-type id="model.tile.wetlandForest"
                basic-move-cost="9" basic-work-turns="6" is-forest="true">
       <gen humidity-minimum="50" humidity-maximum="100"
@@ -508,6 +544,7 @@
       <ability id="model.ability.ambushTerrain"
                value="true"/>
     </tile-type>
+    
     <tile-type id="model.tile.rainForest"
                basic-move-cost="9" basic-work-turns="7" is-forest="true">
       <gen humidity-minimum="50" humidity-maximum="100"
@@ -548,6 +585,7 @@
       <ability id="model.ability.ambushTerrain"
                value="true"/>
     </tile-type>
+    
     <tile-type id="model.tile.scrubForest"
                basic-move-cost="3" basic-work-turns="4" is-forest="true">
       <gen humidity-minimum="0" humidity-maximum="25"
@@ -591,6 +629,7 @@
       <ability id="model.ability.ambushTerrain"
                value="true"/>
     </tile-type>
+    
     <tile-type id="model.tile.borealForest"
                basic-move-cost="6" basic-work-turns="4" is-forest="true">
       <gen humidity-minimum="0" humidity-maximum="100"
@@ -621,6 +660,7 @@
       <ability id="model.ability.ambushTerrain"
                value="true"/>
     </tile-type>
+    
     <tile-type id="model.tile.hills"
                basic-move-cost="6" basic-work-turns="4" is-elevation="true">
       <gen humidity-minimum="0" humidity-maximum="100"
@@ -648,6 +688,7 @@
       <ability id="model.ability.ambushTerrain"
                value="true"/>
     </tile-type>
+    
     <tile-type id="model.tile.mountains"
                basic-move-cost="9" basic-work-turns="7"
                is-elevation="true" can-settle="false">
@@ -675,9 +716,10 @@
       <ability id="model.ability.ambushTerrain"
                value="true"/>
     </tile-type>
-    <tile-type id="model.tile.arctic"
+    
+  <!-- <tile-type id="model.tile.arctic"
                basic-move-cost="6" basic-work-turns="4">
-      <gen humidity-minimum="0" humidity-maximum="100"
+       <gen humidity-minimum="0" humidity-maximum="100"
            temperature-minimum="-20" temperature-maximum="0"
            altitude-minimum="1" altitude-maximum="3"/>
       <production unattended="true" production-level="veryHigh">
@@ -687,7 +729,8 @@
         <output goods-type="model.goods.grain" value="1"/>
       </production>
       <disaster id="model.disaster.blizzard" probability="100"/>
-    </tile-type>
+    </tile-type>-->
+    
     <tile-type id="model.tile.ocean"
                basic-move-cost="3" basic-work-turns="4" is-water="true"
                can-settle="false" is-connected="true">
@@ -697,10 +740,14 @@
       <production>
         <output goods-type="model.goods.fish" value="2"/>
       </production>
+      <production>
+        <output goods-type="model.goods.pearls" value="2"/>
+      </production>
       <resource type="model.resource.fish" probability="50"/>
       <resource type="model.resource.mussels" probability="50"/>
       <disaster id="model.disaster.stormsurge" probability="100"/>
     </tile-type>
+    
     <tile-type id="model.tile.lake"
                basic-move-cost="3" basic-work-turns="4" is-water="true"
                can-settle="false" is-connected="false">
@@ -717,6 +764,7 @@
       <resource type="model.resource.mussels" probability="50"/>
       <disaster id="model.disaster.flood" probability="100"/>
     </tile-type>
+    
     <tile-type id="model.tile.highSeas"
                basic-move-cost="3" basic-work-turns="4" is-water="true"
                can-settle="false" is-connected="true">
@@ -731,6 +779,7 @@
       </production>
       <ability id="model.ability.moveToEurope"/>
     </tile-type>
+    
     <tile-type id="model.tile.greatRiver"
                basic-move-cost="3" basic-work-turns="4" is-water="true"
                can-settle="false">
@@ -747,6 +796,7 @@
       <resource type="model.resource.mussels" probability="50"/>
       <disaster id="model.disaster.flood" probability="100"/>
     </tile-type>
+    
   </tile-types>
   
   <roles>
@@ -918,6 +968,7 @@
         resources of 400, lost city rumours of 500
   -->
   <tile-improvement-types>
+      
     <tile-improvement-type id="model.improvement.river" natural="true"
                            add-work-turns="0" magnitude="1"
                            movement-cost="1" zIndex="150">
@@ -947,6 +998,7 @@
       <modifier id="model.goods.hemp" index="50"
                  type="additive" value="1"/>
     </tile-improvement-type>
+    
     <tile-improvement-type id="model.improvement.road"
                            add-work-turns="0" magnitude="1"
                            required-role="model.role.pioneer"
@@ -966,6 +1018,7 @@
       <modifier id="model.goods.stone" index="50"
                 type="additive" value="2"/>
     </tile-improvement-type>
+    
     <tile-improvement-type id="model.improvement.plow"
                            add-work-turns="2" magnitude="1"
                            required-role="model.role.pioneer"
@@ -987,58 +1040,7 @@
       <modifier id="model.goods.hemp" index="50"
                 type="additive" value="1"/>
     </tile-improvement-type>
-    <tile-improvement-type id="model.improvement.clearForest"
-                           add-work-turns="2" magnitude="1"
-                           required-role="model.role.pioneer"
-                           expended-amount="1"
-                           expose-resource-percent="5">
-      <scope method-name="isForested" method-value="true" />
-      <tile-type-change from="model.tile.mixedForest" to="model.tile.plains">
-        <production goods-type="model.goods.lumber" value="20" />
-      </tile-type-change>
-      <tile-type-change from="model.tile.coniferForest"
-                        to="model.tile.grassland">
-        <production goods-type="model.goods.lumber" value="20" />
-      </tile-type-change>
-      <tile-type-change from="model.tile.broadleafForest"
-                        to="model.tile.prairie">
-        <production goods-type="model.goods.lumber" value="20" />
-      </tile-type-change>
-      <tile-type-change from="model.tile.tropicalForest"
-                        to="model.tile.savannah">
-        <production goods-type="model.goods.lumber" value="20" />
-      </tile-type-change>
-      <tile-type-change from="model.tile.wetlandForest"
-                        to="model.tile.marsh">
-        <production goods-type="model.goods.lumber" value="20" />
-      </tile-type-change>
-      <tile-type-change from="model.tile.rainForest"
-                        to="model.tile.swamp">
-        <production goods-type="model.goods.lumber" value="20" />
-      </tile-type-change>
-      <tile-type-change from="model.tile.scrubForest"
-                        to="model.tile.desert">
-        <production goods-type="model.goods.lumber" value="10" />
-      </tile-type-change>
-      <tile-type-change from="model.tile.borealForest"
-                        to="model.tile.tundra">
-        <production goods-type="model.goods.lumber" value="20" />
-      </tile-type-change>
-    </tile-improvement-type>
-    <tile-improvement-type id="model.improvement.fishBonusLand" natural="true"
-                           zIndex="250">
-      <scope method-name="isWater" method-value="true" />
-      <scope type="model.tile.highSeas" match-negated="true" />
-      <modifier id="model.goods.fish" index="50"
-                type="additive" value="2"/>
-    </tile-improvement-type>
-    <tile-improvement-type id="model.improvement.fishBonusRiver" natural="true"
-                           zIndex="250">
-      <scope method-name="isWater" method-value="true" />
-      <scope type="model.tile.highSeas" match-negated="true" />
-      <modifier id="model.goods.fish" index="50"
-                type="additive" value="1"/>
-    </tile-improvement-type>
+    
     <tile-improvement-type id="model.improvement.pearlBonusLand" natural="true"
                            zIndex="250">
       <scope method-name="isWater" method-value="true" />
@@ -1046,6 +1048,7 @@
       <modifier id="model.goods.pearls" index="50"
                 type="additive" value="2"/>
     </tile-improvement-type>
+    
     <tile-improvement-type id="model.improvement.pearlBonusRiver" natural="true"
                            zIndex="250">
       <scope method-name="isWater" method-value="true" />
@@ -1053,6 +1056,7 @@
       <modifier id="model.goods.pearls" index="50"
                 type="additive" value="1"/>
     </tile-improvement-type>
+    
   </tile-improvement-types>
   
   <unit-change-types>
@@ -1148,8 +1152,11 @@
       <unit-type-change id="model.unitChange.clearSkill.expertStoneCutter"
                         from="model.unit.expertStoneCutter"
                         to="model.unit.freeColonist" probability="100"/>
-       <unit-type-change id="model.unitChange.clearSkill.masterPrinter"
+      <unit-type-change id="model.unitChange.clearSkill.masterPrinter"
                         from="model.unit.masterPrinter"
+                        to="model.unit.freeColonist" probability="100"/>
+      <unit-type-change id="model.unitChange.clearSkill.masterMinter"
+                        from="model.unit.masterMinter"
                         to="model.unit.freeColonist" probability="100"/>
     </unit-change-type>
 
@@ -1281,6 +1288,10 @@
       <unit-type-change id="model.unitChange.education.masterPrinter"
                         from="model.unit.freeColonist"
                         to="model.unit.masterPrinter"
+                        probability="100" turns="6"/>
+      <unit-type-change id="model.unitChange.education.masterMinter"
+                        from="model.unit.freeColonist"
+                        to="model.unit.masterMinter"
                         probability="100" turns="6"/>
     </unit-change-type>
     
@@ -1450,6 +1461,12 @@
       <unit-type-change id="model.unitChange.natives.freeColonist-masterPrinter"
                         from="model.unit.freeColonist"
                         to="model.unit.masterPrinter" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.indenturedServant-masterMinter"
+                        from="model.unit.indenturedServant"
+                        to="model.unit.masterMinter" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.freeColonist-masterMinter"
+                        from="model.unit.freeColonist"
+                        to="model.unit.masterMinter" probability="100"/>
     </unit-change-type>
 
     <unit-change-type id="model.unitChange.undead" owner-change="true">
@@ -1561,6 +1578,9 @@
       <unit-type-change id="model.unitChange.undead.masterPrinter"
                         from="model.unit.masterPrinter"
                         to="model.unit.undead" probability="100"/>
+      <unit-type-change id="model.unitChange.undead.masterMinter"
+                        from="model.unit.masterMinter"
+                        to="model.unit.undead" probability="100"/>
     </unit-change-type>
     
   </unit-change-types>
@@ -1638,6 +1658,13 @@
                price="1100" skill="2" expert-production="model.goods.books"
                recruit-probability="1" score-value="5">
       <modifier id="model.goods.books" index="30"
+                type="multiplicative" value="2"/>
+    </unit-type>
+    
+    <unit-type id="model.unit.masterMinter" extends="colonist"
+               price="1800" skill="3" expert-production="model.goods.silvercoin"
+               recruit-probability="1" score-value="5">
+      <modifier id="model.goods.silvercoin" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>
     
@@ -1720,10 +1747,6 @@
                    competence-factor="2" rebel-factor="2"
                    required-population="3" upkeep="15">
       <modifier id="model.modifier.tileTypeChangeProduction" delete="true"/> 
-<!--      <modifier id="model.modifier.tileTypeChangeProduction"
-                type="multiplicative" value="3">
-        <scope type="model.goods.lumber"/>
-      </modifier>-->
     </building-type>
     
     <building-type id="model.building.constructionYard"
@@ -1791,10 +1814,6 @@
     </building-type>
     
     <building-type id="model.building.jewelerHouse">
-      
- <!--     <production>
-        <input goods-type="model.goods.pearls" value="3"/>
-      </production>-->
       <production>
         <input goods-type="model.goods.gold" value="3"/>
         <output goods-type="model.goods.jewelry" value="3"/>
@@ -1808,9 +1827,6 @@
                    upgrades-from="model.building.jewelerHouse"
                    competence-factor="2"
                    upkeep="15">
- <!--     <production>
-        <input goods-type="model.goods.pearls" value="6"/>
-      </production>-->
       <production>
         <input goods-type="model.goods.gold" value="6"/>
         <output goods-type="model.goods.jewelry" value="6"/>
@@ -1829,9 +1845,6 @@
                    experts-with-connections-production="4"
                    competence-factor="3" rebel-factor="1.5"
                    required-population="8" upkeep="20">
-     <!-- <production>
-        <input goods-type="model.goods.pearls" value="6"/>
-      </production>-->
       <production>
         <input goods-type="model.goods.gold" value="6"/>
         <output goods-type="model.goods.jewelry" value="9"/>
@@ -1850,33 +1863,30 @@
     <building-type id="model.building.printingPress"
                    workplaces="3"
                    upkeep="15">
+      <production unattended="true">
+        <output goods-type="model.goods.books" value="1"/>
+      </production>
       <production>
-        <input goods-type="model.goods.hemp" value="3"/>
-        <output goods-type="model.goods.books" value="3"/>
+        <output goods-type="model.goods.books" value="2"/>
       </production>
       <required-goods id="model.goods.hammers"
                       value="52"/>
       <required-goods id="model.goods.tools"
                       value="20"/>
-      <modifier id="model.goods.bells" index="70"
-                type="percentage" value="50">
-        <scope ability-id="model.ability.person" match-negated="true"/>
-      </modifier>
+      <modifier id="model.goods.bells" delete="true"/>
     </building-type>
     
     <building-type id="model.building.newspaper"
                    extends="model.building.printingPress"
                    upgrades-from="model.building.printingPress"
                    required-population="4" upkeep="20">
-      <production>
-        <input goods-type="model.goods.hemp" value="6"/>
-        <output goods-type="model.goods.books" value="6"/>
+      <production unattended="true">
+        <output goods-type="model.goods.books" value="2"/>
       </production>
-      <modifier id="model.goods.bells" delete="true" /> 
-      <modifier id="model.goods.bells" index="70"
-                type="percentage" value="100">
-        <scope ability-id="model.ability.person" match-negated="true"/>
-      </modifier>
+      <production>
+        <output goods-type="model.goods.books" value="3"/>
+      </production>
+      <modifier id="model.goods.bells" delete="true"/> 
     </building-type>
     
     <building-type id="model.building.fortress"
@@ -1999,6 +2009,15 @@
                       value="160"/>
     </building-type>
     
+    <building-type id="model.building.blacksmithShop"
+                   extends="model.building.blacksmithHouse"
+                   upgrades-from="model.building.blacksmithHouse"
+                   competence-factor="2"
+                   upkeep="10">
+      <required-goods id="model.goods.stone"
+                      value="64"/>
+    </building-type>
+    
     <building-type id="model.building.ironWorks"
                    extends="model.building.blacksmithShop"
                    upgrades-from="model.building.blacksmithShop"
@@ -2046,6 +2065,60 @@
                    required-population="8" upkeep="20">
       <required-goods id="model.goods.stone"
                       value="240"/>
+    </building-type>
+    
+    <building-type id="model.building.mintHouse"
+                   required-population="4">
+      <production>
+        <input goods-type="model.goods.silver"
+               value="3"/>
+        <output goods-type="model.goods.silvercoin"
+                value="3"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="32"/>
+    </building-type>
+
+    <building-type id="model.building.mintShop"
+                   extends="model.building.mintHouse"
+                   upgrades-from="model.building.mintHouse"
+                   competence-factor="2"
+                   required-population="8" upkeep="5">
+      <production>
+        <input goods-type="model.goods.silver"
+               value="6"/>
+        <output goods-type="model.goods.silvercoin"
+                value="6"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="64"/>
+      <required-goods id="model.goods.tools"
+                      value="20"/>
+      <required-goods id="model.goods.stone"
+                      value="64"/>
+    </building-type>
+
+    <building-type id="model.building.mintWorks"
+                   extends="model.building.mintShop"
+                   upgrades-from="model.building.mintShop" 
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="10" upkeep="15">
+      <production>
+        <input goods-type="model.goods.silver"
+               value="6"/>
+        <output goods-type="model.goods.silvercoin"
+                value="9"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="240"/>
+      <required-goods id="model.goods.tools"
+                      value="100"/>
+      <required-goods id="model.goods.stone"
+                      value="240"/>
+      <required-ability id="model.ability.buildFactory"/>
+      <ability id="model.ability.expertsUseConnections"
+               value="true"/>
     </building-type>
     
   </building-types>
