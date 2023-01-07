@@ -29,7 +29,7 @@
                 low-production-threshold="6" zero-production-factor="0.0">
       <market initial-amount="5000" initial-price="3" price-difference="3"/>
     </goods-type>
-    
+     
     <goods-type id="model.goods.hemp" is-farmed="true"
                 production-weight="2.5">
       <market initial-amount="3000" initial-price="3" price-difference="2"/>
@@ -40,29 +40,18 @@
       <market initial-amount="2000" initial-price="5" price-difference="2"/>
     </goods-type>
     
-    <goods-type id="model.goods.luxuryMaterials" is-farmed="true"
-                ignore-limit="true" is-food="false"
+    <goods-type id="model.goods.gold" is-farmed="true"
                 production-weight="5.0">
-      <market initial-amount="1000" initial-price="16" price-difference="2"/>
+      <market initial-amount="1000" initial-price="16" price-difference="1"/>
     </goods-type>
     
-    <goods-type id="model.goods.pearls" is-farmed="true" storable="false"
-                stored-as="model.goods.luxuryMaterials" new-world-goods="true" 
-                production-weight="2.5">
-    </goods-type>
-    
-    <goods-type id="model.goods.gold" is-farmed="true" storable="false"
-                stored-as="model.goods.luxuryMaterials"
-                production-weight="5.0">
-    </goods-type>
-    
-    <goods-type id="model.goods.gems" is-farmed="true" storable="false"
-                stored-as="model.goods.luxuryMaterials"
-                production-weight="2.5">
+    <goods-type id="model.goods.pearls" is-farmed="true"               
+                production-weight="2.5"> <!-- new-world-goods="true" trade-goods="true"-->
+      <market initial-amount="1000" initial-price="16" price-difference="1"/>
     </goods-type>
     
     <goods-type id="model.goods.jewelry" is-farmed="false"
-                made-from="model.goods.luxuryMaterials">
+                made-from="model.goods.gold">
       <market initial-amount="500" initial-price="20" price-difference="1"/>
     </goods-type>
     
@@ -101,19 +90,11 @@
                 type="additive" value="1"/>
       <modifier id="model.goods.gold" index="10"
                 type="additive" value="1"/>
-      <modifier id="model.goods.gems" index="10"
-                type="additive" value="1"/>
     </resource-type>
     
     <resource-type id="model.resource.gold"
                    minimum-value="80" maximum-value="800">
       <modifier id="model.goods.gold" index="10"
-                type="additive" value="2"/>
-    </resource-type>
-    
-    <resource-type id="model.resource.gems"
-                   minimum-value="80" maximum-value="800">
-      <modifier id="model.goods.gems" index="10"
                 type="additive" value="2"/>
     </resource-type>
     
@@ -155,7 +136,6 @@
            altitude-minimum="1" altitude-maximum="2"/>
       <production unattended="true">
         <output goods-type="model.goods.grain" value="3"/>
-        <output goods-type="model.goods.cotton" value="2"/>
         <output goods-type="model.goods.hemp" value="2"/>
       </production>
       <production>
@@ -182,7 +162,6 @@
       <production unattended="true">
         <output goods-type="model.goods.grain" value="3"/>
         <output goods-type="model.goods.tobacco" value="3"/>
-        <output goods-type="model.goods.hemp" value="3"/>
       </production>
       <production>
         <output goods-type="model.goods.grain" value="3"/>
@@ -204,7 +183,6 @@
       <production unattended="true">
         <output goods-type="model.goods.grain" value="3"/>
         <output goods-type="model.goods.cotton" value="3"/>
-        <output goods-type="model.goods.hemp" value="3"/>
       </production>
       <production>
         <output goods-type="model.goods.grain" value="3"/>
@@ -226,7 +204,6 @@
       <production unattended="true">
         <output goods-type="model.goods.grain" value="3"/>
         <output goods-type="model.goods.sugar" value="3"/>
-        <output goods-type="model.goods.hemp" value="3"/>
       </production>
       <production>
         <output goods-type="model.goods.grain" value="4"/>
@@ -250,10 +227,6 @@
       <production unattended="true">
         <output goods-type="model.goods.grain" value="3"/>
         <output goods-type="model.goods.tobacco" value="2"/>
-        <output goods-type="model.goods.hemp" value="2"/>
-    <!--    <output goods-type="model.goods.silver" value="1"/>
-        <output goods-type="model.goods.gold" value="1"/>
-        <output goods-type="model.goods.gem" value="1"/>-->
       </production>
       <production>
         <output goods-type="model.goods.grain" value="3"/>
@@ -273,9 +246,6 @@
       <production> <!-- Minerals! -->
         <output goods-type="model.goods.gold" value="1"/>
       </production>
-      <production> <!-- Minerals! -->
-        <output goods-type="model.goods.gems" value="1"/>
-      </production>
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="100"/>
     </tile-type>
@@ -289,10 +259,6 @@
       <production unattended="true">
         <output goods-type="model.goods.grain" value="3"/>
         <output goods-type="model.goods.sugar" value="2"/>
-        <output goods-type="model.goods.hemp" value="2"/>
-<!--        <output goods-type="model.goods.silver" value="1"/>
-        <output goods-type="model.goods.gold" value="1"/>
-        <output goods-type="model.goods.gems" value="1"/>-->
       </production>
       <production>
         <output goods-type="model.goods.grain" value="3"/>
@@ -312,9 +278,6 @@
       <production> <!-- Minerals! -->
         <output goods-type="model.goods.gold" value="1"/>
       </production>
-      <production> <!-- Minerals! -->
-        <output goods-type="model.goods.gems" value="1"/>
-      </production>
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="50"/>
       <disaster id="model.disaster.flood" probability="50"/>
@@ -327,17 +290,14 @@
       <production unattended="true" production-level="veryHigh">
         <output goods-type="model.goods.grain" value="2"/>
         <output goods-type="model.goods.ore" value="2"/>
-        <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production unattended="true" production-level="veryLow">
         <output goods-type="model.goods.grain" value="1"/>
         <output goods-type="model.goods.ore" value="2"/>
-        <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production unattended="true">
         <output goods-type="model.goods.grain" value="1"/>
         <output goods-type="model.goods.ore" value="2"/>
-         <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production>
         <output goods-type="model.goods.grain" value="2"/>
@@ -363,9 +323,6 @@
       <production unattended="true">
         <output goods-type="model.goods.grain" value="3"/>
         <output goods-type="model.goods.ore" value="2"/>
-        <output goods-type="model.goods.silver" value="1"/>
-        <output goods-type="model.goods.gold" value="1"/>
-        <output goods-type="model.goods.gem" value="1"/>
       </production>
       <production>
         <output goods-type="model.goods.grain" value="3"/>
@@ -378,9 +335,6 @@
       </production>
       <production> <!-- Minerals! -->
         <output goods-type="model.goods.gold" value="1"/>
-      </production>
-      <production> <!-- Minerals! -->
-        <output goods-type="model.goods.gems" value="1"/>
       </production>
       <!-- Col1 had minerals here, even if not mentioned in the
            Colonizopedia. -->
@@ -544,9 +498,6 @@
       <production> <!-- Minerals! -->
         <output goods-type="model.goods.gold" value="1"/>
       </production>
-      <production> <!-- Minerals! -->
-        <output goods-type="model.goods.gems" value="1"/>
-      </production>
       <resource type="model.resource.minerals" probability="100"/>
       <ability id="model.ability.ambushTerrain"
                value="true"/>
@@ -585,9 +536,6 @@
       </production>
       <production> <!-- Minerals! -->
         <output goods-type="model.goods.gold" value="1"/>
-      </production>
-      <production> <!-- Minerals! -->
-        <output goods-type="model.goods.gems" value="1"/>
       </production>
       <resource type="model.resource.minerals" probability="100"/>
       <disaster id="model.disaster.disease" probability="100"/>
@@ -628,8 +576,7 @@
       <production>
         <output goods-type="model.goods.ore" value="1"/>
       </production>
-      <resource type="model.resource.oasis" probability="50"/>
-      <resource type="model.resource.gold" probability="50"/>
+      <resource type="model.resource.oasis" probability="100"/>
       <disaster id="model.disaster.brushfire" probability="50"/>
       <disaster id="model.disaster.drought" probability="50"/>
       <ability id="model.ability.ambushTerrain"
@@ -672,7 +619,6 @@
       <production unattended="true">
         <output goods-type="model.goods.grain" value="2"/>
         <output goods-type="model.goods.ore" value="4"/>
-        <output goods-type="model.goods.stone" value="4"/>
       </production>
       <production>
         <output goods-type="model.goods.grain" value="2"/>
@@ -708,15 +654,10 @@
         <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production>
-        <output goods-type="model.goods.gems" value="1"/>
-      </production>
-      <production>
         <output goods-type="model.goods.stone" value="4"/>
       </production>
-      <resource type="model.resource.silver" probability="25"/>
-      <resource type="model.resource.gold" probability="25"/>
-      <resource type="model.resource.gems" probability="25"/>
-      <resource type="model.resource.stone" probability="25"/>
+      <resource type="model.resource.silver" probability="50"/>
+      <resource type="model.resource.gold" probability="50"/>
       <disaster id="model.disaster.earthquake" probability="50"/>
       <disaster id="model.disaster.landslide" probability="50"/>
       <ability id="model.ability.ambushTerrain"
@@ -996,8 +937,6 @@
                  type="additive" value="2"/>
       <modifier id="model.goods.hemp" index="50"
                  type="additive" value="1"/>
-      <modifier id="model.goods.gem" index="50"
-                 type="additive" value="1"/>
     </tile-improvement-type>
     <tile-improvement-type id="model.improvement.road"
                            add-work-turns="0" magnitude="1"
@@ -1014,8 +953,6 @@
       <modifier id="model.goods.silver" index="50"
                 type="additive" value="1"/>
       <modifier id="model.goods.gold" index="50"
-                type="additive" value="1"/>
-      <modifier id="model.goods.gem" index="50"
                 type="additive" value="1"/>
       <modifier id="model.goods.stone" index="50"
                 type="additive" value="2"/>
@@ -1097,14 +1034,14 @@
                            zIndex="250">
       <scope method-name="isWater" method-value="true" />
       <scope type="model.tile.highSeas" match-negated="true" />
-      <modifier id="model.goods.pearl" index="50"
+      <modifier id="model.goods.pearls" index="50"
                 type="additive" value="2"/>
     </tile-improvement-type>
     <tile-improvement-type id="model.improvement.pearlBonusRiver" natural="true"
                            zIndex="250">
       <scope method-name="isWater" method-value="true" />
       <scope type="model.tile.highSeas" match-negated="true" />
-      <modifier id="model.goods.pearl" index="50"
+      <modifier id="model.goods.pearls" index="50"
                 type="additive" value="1"/>
     </tile-improvement-type>
   </tile-improvement-types>
@@ -1190,8 +1127,8 @@
       <unit-type-change id="model.unitChange.clearSkill.expertGoldMiner"
                         from="model.unit.expertGoldMiner"
                         to="model.unit.freeColonist" probability="100"/>
-      <unit-type-change id="model.unitChange.clearSkill.expertGemMiner"
-                        from="model.unit.expertGemMiner"
+<!--      <unit-type-change id="model.unitChange.clearSkill.expertGemMiner"
+                        from="model.unit.expertGemMiner"-->
                         to="model.unit.freeColonist" probability="100"/>
       <unit-type-change id="model.unitChange.clearSkill.masterRopeBinder"
                         from="model.unit.masterRopeBinder"
@@ -1201,6 +1138,9 @@
                         to="model.unit.freeColonist" probability="100"/>
       <unit-type-change id="model.unitChange.clearSkill.expertStoneCutter"
                         from="model.unit.expertStoneCutter"
+                        to="model.unit.freeColonist" probability="100"/>
+       <unit-type-change id="model.unitChange.clearSkill.masterPrinter"
+                        from="model.unit.masterPrinter"
                         to="model.unit.freeColonist" probability="100"/>
     </unit-change-type>
 
@@ -1313,10 +1253,10 @@
                         from="model.unit.freeColonist"
                         to="model.unit.expertGoldMiner"
                         probability="100" turns="4"/>
-      <unit-type-change id="model.unitChange.education.expertGemMiner"
+      <!--<unit-type-change id="model.unitChange.education.expertGemMiner"
                         from="model.unit.freeColonist"
                         to="model.unit.expertGemMiner"
-                        probability="100" turns="4"/>
+                        probability="100" turns="4"/>-->
       <unit-type-change id="model.unitChange.education.expertStoneCutter"
                         from="model.unit.freeColonist"
                         to="model.unit.expertStoneCutter"
@@ -1328,6 +1268,10 @@
       <unit-type-change id="model.unitChange.education.masterJeweler"
                         from="model.unit.freeColonist"
                         to="model.unit.masterJeweler"
+                        probability="100" turns="6"/>
+      <unit-type-change id="model.unitChange.education.masterPrinter"
+                        from="model.unit.freeColonist"
+                        to="model.unit.masterPrinter"
                         probability="100" turns="6"/>
     </unit-change-type>
     
@@ -1365,9 +1309,9 @@
       <unit-type-change id="model.unitChange.experience.expertGoldMiner"
                         from="model.unit.freeColonist"
                         to="model.unit.expertGoldMiner" probability="4"/>
-      <unit-type-change id="model.unitChange.experience.expertGemMiner"
+<!--      <unit-type-change id="model.unitChange.experience.expertGemMiner"
                         from="model.unit.freeColonist"
-                        to="model.unit.expertGemMiner" probability="4"/>
+                        to="model.unit.expertGemMiner" probability="4"/>-->
       <unit-type-change id="model.unitChange.experience.expertStoneCutter"
                         from="model.unit.freeColonist"
                         to="model.unit.expertStoneCutter" probability="4"/>
@@ -1473,12 +1417,12 @@
       <unit-type-change id="model.unitChange.natives.freeColonist-expertGoldMiner"
                         from="model.unit.freeColonist"
                         to="model.unit.expertGoldMiner" probability="100"/>
-      <unit-type-change id="model.unitChange.natives.indenturedServant-expertGemMiner"
+     <!-- <unit-type-change id="model.unitChange.natives.indenturedServant-expertGemMiner"
                         from="model.unit.indenturedServant"
                         to="model.unit.expertGemMiner" probability="100"/>
       <unit-type-change id="model.unitChange.natives.freeColonist-expertGemMiner"
                         from="model.unit.freeColonist"
-                        to="model.unit.expertGemMiner" probability="100"/>
+                        to="model.unit.expertGemMiner" probability="100"/>-->
       <unit-type-change id="model.unitChange.natives.indenturedServant-expertPearlDiver"
                         from="model.unit.indenturedServant"
                         to="model.unit.expertPearlDiver" probability="100"/>
@@ -1491,6 +1435,12 @@
       <unit-type-change id="model.unitChange.natives.freeColonist-masterJeweler"
                         from="model.unit.freeColonist"
                         to="model.unit.masterJeweler" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.indenturedServant-masterPrinter"
+                        from="model.unit.indenturedServant"
+                        to="model.unit.masterPrinter" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.freeColonist-masterPrinter"
+                        from="model.unit.freeColonist"
+                        to="model.unit.masterPrinter" probability="100"/>
     </unit-change-type>
 
     <unit-change-type id="model.unitChange.undead" owner-change="true">
@@ -1584,9 +1534,9 @@
       <unit-type-change id="model.unitChange.undead.expertPearlDiver"
                         from="model.unit.expertPearlDiver"
                         to="model.unit.undead" probability="100"/>
-      <unit-type-change id="model.unitChange.undead.expertGemMiner"
+<!--      <unit-type-change id="model.unitChange.undead.expertGemMiner"
                         from="model.unit.expertGemMiner"
-                        to="model.unit.undead" probability="100"/>
+                        to="model.unit.undead" probability="100"/>-->
       <unit-type-change id="model.unitChange.undead.expertGoldMiner"
                         from="model.unit.expertGoldMiner"
                         to="model.unit.undead" probability="100"/>
@@ -1598,6 +1548,9 @@
                         to="model.unit.undead" probability="100"/>
       <unit-type-change id="model.unitChange.undead.masterJeweler"
                         from="model.unit.masterJeweler"
+                        to="model.unit.undead" probability="100"/>
+      <unit-type-change id="model.unitChange.undead.masterPrinter"
+                        from="model.unit.masterPrinter"
                         to="model.unit.undead" probability="100"/>
     </unit-change-type>
     
@@ -1628,12 +1581,12 @@
       <modifier id="model.goods.gold" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>
-    <unit-type id="model.unit.expertGemMiner" extends="colonist"
+<!--    <unit-type id="model.unit.expertGemMiner" extends="colonist"
                price="900" skill="1" expert-production="model.goods.gems"
                recruit-probability="1" score-value="4">
       <modifier id="model.goods.gems" index="30"
                 type="multiplicative" value="2"/>
-    </unit-type>
+    </unit-type>-->
     <unit-type id="model.unit.expertPearlDiver" extends="colonist"
                price="900" skill="1" expert-production="model.goods.pearls"
                recruit-probability="1" score-value="4">
@@ -1747,18 +1700,49 @@
   
   <building-types>
     
+    <building-type id="model.building.lumberMill"
+                   extends="model.building.carpenterHouse"
+                   upgrades-from="model.building.carpenterHouse"
+                   competence-factor="2" rebel-factor="2"
+                   required-population="3" upkeep="15">
+      <modifier id="model.goods.lumber" delete="true"/> 
+<!--      <modifier id="model.modifier.tileTypeChangeProduction"
+                type="multiplicative" value="3">
+        <scope type="model.goods.lumber"/>
+      </modifier>-->
+    </building-type>
+    
+    <building-type id="model.building.constructionYard"
+                   extends="model.building.lumberMill"
+                   upgrades-from="model.building.lumberMill"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="8" upkeep="20">
+      <production>
+        <input goods-type="model.goods.lumber" value="6"/>
+        <output goods-type="model.goods.hammers" value="9"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="160"/>
+      <required-goods id="model.goods.tools"
+                      value="100"/>
+      <modifier id="model.goods.lumber" delete="true"/> 
+    </building-type>
+    
     <building-type id="model.building.ropeBinderHouse">
       <production>
         <input goods-type="model.goods.hemp" value="3"/>
         <output goods-type="model.goods.rope" value="3"/>
       </production>
+      <required-goods id="model.goods.hammers"
+                      value="64"/>
     </building-type>
     
     <building-type id="model.building.ropeBinderShop"
                    extends="model.building.ropeBinderHouse"
                    upgrades-from="model.building.ropeBinderHouse"
                    competence-factor="2"
-                   upkeep="10">
+                   upkeep="15">
       <production>
         <input goods-type="model.goods.hemp" value="6"/>
         <output goods-type="model.goods.rope" value="6"/>
@@ -1767,6 +1751,8 @@
                       value="64"/>
       <required-goods id="model.goods.tools"
                       value="20"/>
+      <required-goods id="model.goods.stone"
+                      value="64"/>
     </building-type>
     
     <building-type id="model.building.ropeBinderWorks"
@@ -1791,25 +1777,36 @@
     </building-type>
     
     <building-type id="model.building.jewelerHouse">
+      
       <production>
-        <input goods-type="model.goods.luxuryMaterials" value="3"/>
+        <input goods-type="model.goods.pearls" value="3"/>
+      </production>
+      <production>
+        <input goods-type="model.goods.gold" value="3"/>
         <output goods-type="model.goods.jewelry" value="3"/>
       </production>
+      <required-goods id="model.goods.hammers"
+                      value="64"/>
     </building-type>
     
     <building-type id="model.building.jewelerShop"
                    extends="model.building.jewelerHouse"
                    upgrades-from="model.building.jewelerHouse"
                    competence-factor="2"
-                   upkeep="10">
+                   upkeep="15">
       <production>
-        <input goods-type="model.goods.luxuryMaterials" value="6"/>
+        <input goods-type="model.goods.pearls" value="6"/>
+      </production>
+      <production>
+        <input goods-type="model.goods.gold" value="6"/>
         <output goods-type="model.goods.jewelry" value="6"/>
       </production>
       <required-goods id="model.goods.hammers"
                       value="64"/>
       <required-goods id="model.goods.tools"
                       value="20"/>
+      <required-goods id="model.goods.stone"
+                      value="64"/>
     </building-type>
     
     <building-type id="model.building.jewelerWorks"
@@ -1819,7 +1816,10 @@
                    competence-factor="3" rebel-factor="1.5"
                    required-population="8" upkeep="20">
       <production>
-        <input goods-type="model.goods.luxuryMaterials" value="6"/>
+        <input goods-type="model.goods.pearls" value="6"/>
+      </production>
+      <production>
+        <input goods-type="model.goods.gold" value="6"/>
         <output goods-type="model.goods.jewelry" value="9"/>
       </production>
       <required-goods id="model.goods.hammers"
@@ -1835,7 +1835,7 @@
     
     <building-type id="model.building.printingPress"
                    workplaces="3"
-                   upkeep="10">
+                   upkeep="15">
       <production>
         <input goods-type="model.goods.hemp" value="3"/>
         <output goods-type="model.goods.books" value="3"/>
@@ -1877,7 +1877,7 @@
                    extends="model.building.chapel"
                    upgrades-from="model.building.chapel"
                    workplaces="3"
-                   required-population="3" upkeep="10">
+                   required-population="3" upkeep="15">
       <required-goods id="model.goods.stone"
                       value="64"/>
     </building-type>
@@ -1913,7 +1913,7 @@
                    extends="model.building.furTraderHouse"
                    upgrades-from="model.building.furTraderHouse"
                    competence-factor="2"
-                   upkeep="10">
+                   upkeep="15">
       <required-goods id="model.goods.stone"
                       value="56"/>
     </building-type>
@@ -1932,7 +1932,7 @@
                    extends="model.building.distillerHouse"
                    upgrades-from="model.building.distillerHouse"
                    competence-factor="2"
-                   upkeep="10">
+                   upkeep="15">
       <required-goods id="model.goods.stone"
                       value="64"/>
     </building-type>
@@ -1951,7 +1951,7 @@
                    extends="model.building.weaverHouse"
                    upgrades-from="model.building.weaverHouse"
                    competence-factor="2"
-                   upkeep="10">
+                   upkeep="15">
       <required-goods id="model.goods.stone"
                       value="64"/>
     </building-type>
@@ -1970,7 +1970,7 @@
                    extends="model.building.tobacconistHouse"
                    upgrades-from="model.building.tobacconistHouse"
                    competence-factor="2"
-                   upkeep="10">
+                   upkeep="15">
       <required-goods id="model.goods.hammers"
                       value="64"/>
     </building-type>
@@ -2018,6 +2018,10 @@
                    extends="model.building.docks"
                    upgrades-from="model.building.docks"
                    required-population="4" upkeep="15">
+<!--      <production>
+        <input goods-type="model.goods.mussels" value="6"/>
+        <output goods-type="model.goods.pearls" value="9"/>
+      </production>-->
       <required-goods id="model.goods.stone"
                       value="80"/>
     </building-type>
@@ -2032,7 +2036,7 @@
     
   </building-types>
     
-  <indian-nation-types>
+<!--  <indian-nation-types>
       
     <indian-nation-type id="default" abstract="true">
       <ability id="model.ability.ambushBonus"
@@ -2097,5 +2101,7 @@
                         number-of-settlements="high">
       <skill id="model.unit.expertPearlDiver" probability="10"/>
     </indian-nation-type>
-  </indian-nation-types>
+    
+  </indian-nation-types>-->
+
 </freecol-specification>
