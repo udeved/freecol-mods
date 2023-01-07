@@ -20,19 +20,19 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="expandedProduction" version="0.4">
+<freecol-specification id="expandedProduction" version="0.5">
 
   <goods-types>
 
     <goods-type id="model.goods.stone" is-farmed="true"
                 production-weight="4.0"
                 low-production-threshold="6" zero-production-factor="0.0">
-      <market initial-amount="5000" initial-price="3" price-difference="3"/>
+      <market initial-amount="5000" initial-price="1" price-difference="5"/>
     </goods-type>
      
     <goods-type id="model.goods.hemp" is-farmed="true"
                 production-weight="2.5">
-      <market initial-amount="3000" initial-price="3" price-difference="2"/>
+      <market initial-amount="3000" initial-price="2" price-difference="3"/>
     </goods-type>
     
     <goods-type id="model.goods.rope" is-farmed="false"
@@ -40,26 +40,28 @@
       <market initial-amount="2000" initial-price="5" price-difference="2"/>
     </goods-type>
     
+    <goods-type id="model.goods.books" is-farmed="false"
+                made-from="model.goods.hemp">  <!--ignore-limit="true" storable="false"-->
+      <market initial-amount="1000" initial-price="12" price-difference="2"/>
+ <!--     <modifier id="model.modifier.popularSupport"
+                type="multiplicative" value="1" /> -->
+    </goods-type>
+    
     <goods-type id="model.goods.gold" is-farmed="true"
                 production-weight="5.0">
-      <market initial-amount="1000" initial-price="16" price-difference="1"/>
+      <market initial-amount="1000" initial-price="17" price-difference="2"/>
     </goods-type>
     
     <goods-type id="model.goods.pearls" is-farmed="true"               
-                production-weight="2.5" new-world-goods="true"> <!--  trade-goods="true"-->
-      <market initial-amount="1000" initial-price="16" price-difference="1"/>
+                production-weight="2.5" new-world-goods="true">
+      <market initial-amount="1000" initial-price="14" price-difference="2"/>
     </goods-type>
     
     <goods-type id="model.goods.jewelry" is-farmed="false"
                 made-from="model.goods.gold">
-      <market initial-amount="500" initial-price="20" price-difference="1"/>
+      <market initial-amount="500" initial-price="22" price-difference="1"/>
     </goods-type>
     
-    <goods-type id="model.goods.books" is-farmed="false"
-                made-from="model.goods.hemp">
-      <market initial-amount="1000" initial-price="18" price-difference="2"/>
-    </goods-type>
-
   </goods-types>
 
   <resource-types>
@@ -136,16 +138,16 @@
            altitude-minimum="1" altitude-maximum="2"/>
       <production unattended="true">
         <output goods-type="model.goods.grain" value="3"/>
-        <output goods-type="model.goods.hemp" value="2"/>
+        <output goods-type="model.goods.hemp" value="3"/>
       </production>
       <production>
         <output goods-type="model.goods.grain" value="5"/>
       </production>
       <production>
-        <output goods-type="model.goods.cotton" value="2"/>
+        <output goods-type="model.goods.hemp" value="5"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="2"/>
+        <output goods-type="model.goods.cotton" value="2"/>
       </production>
       <production>
         <output goods-type="model.goods.ore" value="1"/>
@@ -167,10 +169,10 @@
         <output goods-type="model.goods.grain" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.tobacco" value="3"/>
+        <output goods-type="model.goods.hemp" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="3"/>
+        <output goods-type="model.goods.tobacco" value="3"/>
       </production>
       <resource type="model.resource.tobacco" probability="50"/>
       <resource type="model.resource.hemp" probability="50"/>
@@ -188,10 +190,10 @@
         <output goods-type="model.goods.grain" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.cotton" value="3"/>
+        <output goods-type="model.goods.hemp" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="3"/>
+        <output goods-type="model.goods.cotton" value="3"/>
       </production>
       <resource type="model.resource.cotton" probability="50"/>
       <resource type="model.resource.hemp" probability="50"/>
@@ -209,10 +211,10 @@
         <output goods-type="model.goods.grain" value="4"/>
       </production>
       <production>
-        <output goods-type="model.goods.sugar" value="3"/>
+        <output goods-type="model.goods.hemp" value="4"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="3"/>
+        <output goods-type="model.goods.sugar" value="3"/>
       </production>
       <resource type="model.resource.sugar" probability="50"/>
       <resource type="model.resource.hemp" probability="50"/>
@@ -232,10 +234,10 @@
         <output goods-type="model.goods.grain" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.tobacco" value="2"/>
+        <output goods-type="model.goods.hemp" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="2"/>
+        <output goods-type="model.goods.tobacco" value="2"/>
       </production>
       <production>
         <output goods-type="model.goods.ore" value="2"/>
@@ -264,10 +266,10 @@
         <output goods-type="model.goods.grain" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.sugar" value="2"/>
+        <output goods-type="model.goods.hemp" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="2"/>
+        <output goods-type="model.goods.sugar" value="2"/>
       </production>
       <production>
         <output goods-type="model.goods.ore" value="2"/>
@@ -356,10 +358,10 @@
         <output goods-type="model.goods.grain" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.cotton" value="1"/>
+        <output goods-type="model.goods.hemp" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="1"/>
+        <output goods-type="model.goods.cotton" value="1"/>
       </production>
       <production>
         <output goods-type="model.goods.furs" value="3"/>
@@ -387,10 +389,10 @@
         <output goods-type="model.goods.grain" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.tobacco" value="1"/>
+        <output goods-type="model.goods.hemp" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="1"/>
+        <output goods-type="model.goods.tobacco" value="1"/>
       </production>
       <production>
         <output goods-type="model.goods.furs" value="2"/>
@@ -417,10 +419,10 @@
         <output goods-type="model.goods.grain" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.cotton" value="1"/>
+        <output goods-type="model.goods.hemp" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="1"/>
+        <output goods-type="model.goods.cotton" value="1"/>
       </production>
       <production>
         <output goods-type="model.goods.furs" value="2"/>
@@ -447,10 +449,10 @@
         <output goods-type="model.goods.grain" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.sugar" value="1"/>
+        <output goods-type="model.goods.hemp" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="1"/>
+        <output goods-type="model.goods.sugar" value="1"/>
       </production>
       <production>
         <output goods-type="model.goods.furs" value="2"/>
@@ -478,10 +480,10 @@
         <output goods-type="model.goods.grain" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.tobacco" value="1"/>
+        <output goods-type="model.goods.hemp" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="1"/>
+        <output goods-type="model.goods.tobacco" value="1"/>
       </production>
       <production>
         <output goods-type="model.goods.furs" value="2"/>
@@ -517,10 +519,10 @@
         <output goods-type="model.goods.grain" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.sugar" value="1"/>
+        <output goods-type="model.goods.hemp" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.hemp" value="1"/>
+        <output goods-type="model.goods.sugar" value="1"/>
       </production>
       <production>
         <output goods-type="model.goods.furs" value="1"/>
@@ -684,9 +686,6 @@
            altitude-minimum="-2" altitude-maximum="-1"/>
       <production>
         <output goods-type="model.goods.fish" value="2"/>
-      </production>
-      <production>
-        <output goods-type="model.goods.pearls" value="2"/>
       </production>
       <resource type="model.resource.fish" probability="50"/>
       <resource type="model.resource.mussels" probability="50"/>
@@ -1575,57 +1574,62 @@
       <consumes id="model.goods.food" value="2" />
       <consumes id="model.goods.bells" value="1" />
     </unit-type>
-    <unit-type id="model.unit.expertGoldMiner" extends="colonist"
-               price="900" skill="1" expert-production="model.goods.gold"
-               recruit-probability="1" score-value="4">
-      <modifier id="model.goods.gold" index="30"
-                type="multiplicative" value="2"/>
-    </unit-type>
-<!--    <unit-type id="model.unit.expertGemMiner" extends="colonist"
-               price="900" skill="1" expert-production="model.goods.gems"
-               recruit-probability="1" score-value="4">
-      <modifier id="model.goods.gems" index="30"
-                type="multiplicative" value="2"/>
-    </unit-type>-->
-    <unit-type id="model.unit.expertPearlDiver" extends="colonist"
-               price="900" skill="1" expert-production="model.goods.pearls"
-               recruit-probability="1" score-value="4">
-      <modifier id="model.goods.pearls" index="30"
-                type="multiplicative" value="2"/>
-    </unit-type>
+    
     <unit-type id="model.unit.expertStoneCutter" extends="colonist"
                price="700" skill="1" expert-production="model.goods.stone"
                recruit-probability="1" score-value="4">
       <modifier id="model.goods.stone" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>
+    
+    <unit-type id="model.unit.expertHempPlanter" extends="colonist"
+               price="1000" skill="2" expert-production="model.goods.hemp"
+               score-value="5">
+      <modifier id="model.goods.hemp" index="30"
+                type="multiplicative" value="2"/>
+    </unit-type>
+    
+    <unit-type id="model.unit.expertPearlDiver" extends="colonist"
+               skill="1" expert-production="model.goods.pearls"
+               recruit-probability="0" score-value="4">
+      <modifier id="model.goods.pearls" index="30"
+                type="multiplicative" value="2"/>
+    </unit-type>
+    
+<!--    <unit-type id="model.unit.expertGemMiner" extends="colonist"
+               price="900" skill="1" expert-production="model.goods.gems"
+               recruit-probability="1" score-value="4">
+      <modifier id="model.goods.gems" index="30"
+                type="multiplicative" value="2"/>
+    </unit-type>-->
+    
+    <unit-type id="model.unit.expertGoldMiner" extends="colonist"
+               price="1000" skill="1" expert-production="model.goods.gold"
+               recruit-probability="1" score-value="4">
+      <modifier id="model.goods.gold" index="30"
+                type="multiplicative" value="2"/>
+    </unit-type>
+    
     <unit-type id="model.unit.masterRopeBinder" extends="colonist"
-               price="600" skill="2" expert-production="model.goods.rope"
+               price="1050" skill="2" expert-production="model.goods.rope"
                recruit-probability="1" score-value="5">
       <modifier id="model.goods.rope" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>
-    <unit-type id="model.unit.expertHempPlanter" extends="colonist"
-               skill="2" expert-production="model.goods.hemp"
-               score-value="5">
-      <modifier id="model.goods.hemp" index="30"
-                type="multiplicative" value="2"/>
-    </unit-type>    
+        
     <unit-type id="model.unit.masterJeweler" extends="colonist"
-               price="600" skill="2" expert-production="model.goods.jewelry"
+               price="1700" skill="2" expert-production="model.goods.jewelry"
                recruit-probability="1" score-value="5">
       <modifier id="model.goods.jewelry" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>
     
     <unit-type id="model.unit.masterPrinter" extends="colonist"
-               price="600" skill="2" expert-production="model.goods.books"
+               price="1100" skill="2" expert-production="model.goods.books"
                recruit-probability="1" score-value="5">
       <modifier id="model.goods.books" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>
-    
-    
     
     <unit-type id="ship" abstract="true">
       <ability id="model.ability.navalUnit"
