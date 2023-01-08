@@ -61,6 +61,11 @@
                 stored-as="model.goods.silvercoin" storable="false">
     </goods-type>
 
+    <goods-type id="model.goods.gems" is-farmed="true"
+                production-weight="5.0">
+      <market initial-amount="1000" initial-price="17" price-difference="2"/>
+    </goods-type>
+    
     <goods-type id="model.goods.gold" is-farmed="true"
                 production-weight="5.0">
       <market initial-amount="1000" initial-price="17" price-difference="2"/>
@@ -72,7 +77,7 @@
     </goods-type>
 
     <goods-type id="model.goods.jewelry" is-farmed="false"
-                made-from="model.goods.gold">
+                made-from="model.goods.gold"> <!--made-from="model.goods.pearls" made-from="model.goods.gems"-->
       <market initial-amount="500" initial-price="22" price-difference="1"/>
     </goods-type>
 
@@ -99,12 +104,12 @@
         <scope type="model.unit.expertPearlDiver" matches-null="false"/>
       </modifier>
       <modifier id="model.goods.mussels" index="10"
-                type="additive" value="1">
+                type="additive" value="2">
       </modifier>
-      <modifier id="model.goods.mussels" index="10"
-                type="additive" value="1">
+      <!--<modifier id="model.goods.mussels" index="10"
+                type="additive" value="2">
         <scope type="model.unit.expertPearlDiver" matches-null="false"/>
-      </modifier>
+      </modifier>-->
     </resource-type>
 
     <resource-type id="model.resource.minerals"
@@ -117,11 +122,19 @@
                 type="additive" value="1"/>
       <modifier id="model.goods.gold" index="10"
                 type="additive" value="1"/>
+      <modifier id="model.goods.gems" index="10"
+                type="additive" value="1"/>
     </resource-type>
 
     <resource-type id="model.resource.gold"
                    minimum-value="80" maximum-value="800">
       <modifier id="model.goods.gold" index="10"
+                type="additive" value="2"/>
+    </resource-type>
+    
+    <resource-type id="model.resource.gems"
+                   minimum-value="80" maximum-value="800">
+      <modifier id="model.goods.gems" index="10"
                 type="additive" value="2"/>
     </resource-type>
 
@@ -688,10 +701,15 @@
         <output goods-type="model.goods.gold" value="1"/>
       </production>
       <production>
+        <output goods-type="model.goods.gems" value="1"/>
+      </production>
+      <production>
         <output goods-type="model.goods.stone" value="4"/>
       </production>
-      <resource type="model.resource.silver" probability="50"/>
-      <resource type="model.resource.gold" probability="50"/>
+      <resource type="model.resource.silver" probability="25"/>
+      <resource type="model.resource.gold" probability="25"/>
+      <resource type="model.resource.gems" probability="25"/>
+      <resource type="model.resource.stone" probability="25"/>
       <disaster id="model.disaster.earthquake" probability="50"/>
       <disaster id="model.disaster.landslide" probability="50"/>
       <ability id="model.ability.ambushTerrain"
@@ -1055,6 +1073,8 @@
       <disaster id="model.disaster.flood"/>
       <modifier id="model.goods.grain" index="50"
                 type="additive" value="1"/>
+      <modifier id="model.goods.meat" index="50"
+                type="additive" value="1"/>
       <modifier id="model.goods.sugar" index="50"
                 type="additive" value="1"/>
       <modifier id="model.goods.tobacco" index="50"
@@ -1071,6 +1091,8 @@
                  type="additive" value="1"/>
       <modifier id="model.goods.gold" index="50"
                  type="additive" value="2"/>
+      <modifier id="model.goods.gems" index="50"
+                 type="additive" value="1"/>
       <modifier id="model.goods.hemp" index="50"
                  type="additive" value="1"/>
     </tile-improvement-type>
@@ -1093,6 +1115,10 @@
                 type="additive" value="1"/>
       <modifier id="model.goods.stone" index="50"
                 type="additive" value="2"/>
+      <modifier id="model.goods.gems" index="50"
+                type="additive" value="1"/>
+      <modifier id="model.goods.meat" index="50"
+                type="additive" value="1"/>
     </tile-improvement-type>
 
     <tile-improvement-type id="model.improvement.plow"
@@ -1262,9 +1288,9 @@
       <unit-type-change id="model.unitChange.clearSkill.expertHunter"
                         from="model.unit.expertHunter"
                         to="model.unit.freeColonist" probability="100"/>
-      <!-- <unit-type-change id="model.unitChange.clearSkill.expertGemMiner"
+      <unit-type-change id="model.unitChange.clearSkill.expertGemMiner"
                         from="model.unit.expertGemMiner"
-                        to="model.unit.freeColonist" probability="100"/> -->
+                        to="model.unit.freeColonist" probability="100"/> 
     </unit-change-type>
 
     <unit-change-type id="model.unitChange.demotion">
@@ -1415,10 +1441,10 @@
                         from="model.unit.freeColonist"
                         to="model.unit.expertHunter"
                         probability="100" turns="4"/>
-      <!-- <unit-type-change id="model.unitChange.education.expertGemMiner"
+      <unit-type-change id="model.unitChange.education.expertGemMiner"
                         from="model.unit.freeColonist"
                         to="model.unit.expertGemMiner"
-                        probability="100" turns="4"/> -->
+                        probability="100" turns="4"/> 
     </unit-change-type>
 
     <unit-change-type id="model.unitChange.experience">
@@ -1464,9 +1490,9 @@
       <unit-type-change id="model.unitChange.experience.expertHunter"
                         from="model.unit.freeColonist"
                         to="model.unit.expertHunter" probability="4"/>
-      <!-- <unit-type-change id="model.unitChange.experience.expertGemMiner"
+      <unit-type-change id="model.unitChange.experience.expertGemMiner"
                         from="model.unit.freeColonist"
-                        to="model.unit.expertGemMiner" probability="4"/> -->
+                        to="model.unit.expertGemMiner" probability="4"/> 
     </unit-change-type>
 
     <unit-change-type id="model.unitChange.natives">
@@ -1608,12 +1634,12 @@
       <unit-type-change id="model.unitChange.natives.freeColonist-expertHunter"
                         from="model.unit.freeColonist"
                         to="model.unit.expertHunter" probability="100"/>
-      <!-- <unit-type-change id="model.unitChange.natives.indenturedServant-expertGemMiner"
+      <unit-type-change id="model.unitChange.natives.indenturedServant-expertGemMiner"
                         from="model.unit.indenturedServant"
                         to="model.unit.expertGemMiner" probability="100"/>
       <unit-type-change id="model.unitChange.natives.freeColonist-expertGemMiner"
                         from="model.unit.freeColonist"
-                        to="model.unit.expertGemMiner" probability="100"/> -->
+                        to="model.unit.expertGemMiner" probability="100"/> 
     </unit-change-type>
 
     <unit-change-type id="model.unitChange.undead" owner-change="true">
@@ -1734,9 +1760,9 @@
       <unit-type-change id="model.unitChange.undead.expertHunter"
                         from="model.unit.expertHunter"
                         to="model.unit.undead" probability="100"/>
-      <!-- <unit-type-change id="model.unitChange.undead.expertGemMiner"
+      <unit-type-change id="model.unitChange.undead.expertGemMiner"
                         from="model.unit.expertGemMiner"
-                        to="model.unit.undead" probability="100"/> -->
+                        to="model.unit.undead" probability="100"/> 
     </unit-change-type>
 
   </unit-change-types>
@@ -1886,7 +1912,7 @@
                price="700" skill="1" expert-production="model.goods.meat"
                recruit-probability="1" score-value="4">
       <modifier id="model.goods.meat" index="30"
-                type="additive" value="3"/>
+                type="additive" value="2"/>
     </unit-type>
 
     <unit-type id="model.unit.expertStoneCutter" extends="colonist"
@@ -1907,17 +1933,17 @@
                skill="1" expert-production="model.goods.pearls"
                recruit-probability="0" score-value="4">
       <modifier id="model.goods.pearls" index="30"
-                type="additive" value="3"/>
+                type="additive" value="2"/>
       <modifier id="model.goods.mussels" index="30"
-                type="additive" value="1"/>
+                type="additive" value="2"/>
     </unit-type>
 
-    <!-- <unit-type id="model.unit.expertGemMiner" extends="colonist"
+    <unit-type id="model.unit.expertGemMiner" extends="colonist"
                price="900" skill="1" expert-production="model.goods.gems"
                recruit-probability="1" score-value="4">
       <modifier id="model.goods.gems" index="30"
                 type="multiplicative" value="2"/>
-    </unit-type>-->
+    </unit-type>
 
     <unit-type id="model.unit.expertGoldMiner" extends="colonist"
                price="1000" skill="1" expert-production="model.goods.gold"
@@ -2362,6 +2388,8 @@
 
     <building-type id="model.building.jewelerHouse">
       <production>
+        <input goods-type="model.goods.gems" value="1"/>
+        <input goods-type="model.goods.pearls" value="1"/>
         <input goods-type="model.goods.gold" value="3"/>
         <output goods-type="model.goods.jewelry" value="3"/>
       </production>
@@ -2375,6 +2403,8 @@
                    competence-factor="2"
                    upkeep="15">
       <production>
+        <input goods-type="model.goods.gems" value="3"/>
+        <input goods-type="model.goods.pearls" value="3"/>
         <input goods-type="model.goods.gold" value="6"/>
         <output goods-type="model.goods.jewelry" value="6"/>
       </production>
@@ -2393,6 +2423,8 @@
                    competence-factor="3" rebel-factor="1.5"
                    required-population="8" upkeep="20">
       <production>
+        <input goods-type="model.goods.gems" value="3"/>
+        <input goods-type="model.goods.pearls" value="3"/>
         <input goods-type="model.goods.gold" value="6"/>
         <output goods-type="model.goods.jewelry" value="9"/>
       </production>
