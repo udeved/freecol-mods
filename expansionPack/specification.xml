@@ -23,25 +23,25 @@
   <goods-types>
 
     <goods-type id="model.goods.meat" is-farmed="true" storable="false"
-                stored-as="model.goods.food" is-food="true" />
+                stored-as="model.goods.food" is-food="true"/>
 
     <goods-type id="model.goods.mussels" is-farmed="true" storable="false"
-                stored-as="model.goods.food" is-food="true" />
+                stored-as="model.goods.food" is-food="true"/>
 
     <goods-type id="model.goods.stone" is-farmed="true"
                 production-weight="4.0"
                 low-production-threshold="6" zero-production-factor="0.0">
-      <market initial-amount="5000" initial-price="1" price-difference="5"/>
+      <market initial-amount="3000" initial-price="1" price-difference="5"/>
     </goods-type>
 
     <goods-type id="model.goods.hemp" is-farmed="true"
                 production-weight="2.5">
-      <market initial-amount="3000" initial-price="2" price-difference="3"/>
+      <market initial-amount="2000" initial-price="2" price-difference="3"/>
     </goods-type>
 
     <goods-type id="model.goods.rope" is-farmed="false"
                 made-from="model.goods.hemp">
-      <market initial-amount="2000" initial-price="5" price-difference="2"/>
+      <market initial-amount="1500" initial-price="5" price-difference="2"/>
     </goods-type>
 
     <goods-type id="model.goods.books" is-farmed="false"
@@ -58,27 +58,44 @@
     </goods-type>
 
     <goods-type id="model.goods.intel" is-farmed="false"
-                stored-as="model.goods.silvercoin" storable="false">
-    </goods-type>
+                stored-as="model.goods.silvercoin" storable="false"/>
 
     <goods-type id="model.goods.gems" is-farmed="true"
                 production-weight="5.0">
-      <market initial-amount="1000" initial-price="17" price-difference="2"/>
+      <market initial-amount="500" initial-price="17" price-difference="2"/>
     </goods-type>
     
     <goods-type id="model.goods.gold" is-farmed="true"
                 production-weight="5.0">
-      <market initial-amount="1000" initial-price="17" price-difference="2"/>
+      <market initial-amount="500" initial-price="17" price-difference="2"/>
     </goods-type>
 
     <goods-type id="model.goods.pearls" is-farmed="true"
                 production-weight="2.5" new-world-goods="true">
-      <market initial-amount="1000" initial-price="14" price-difference="2"/>
+      <market initial-amount="500" initial-price="14" price-difference="2"/>
     </goods-type>
 
     <goods-type id="model.goods.jewelry" is-farmed="false"
                 made-from="model.goods.gold"> <!--made-from="model.goods.pearls" made-from="model.goods.gems"-->
-      <market initial-amount="500" initial-price="22" price-difference="1"/>
+      <market initial-amount="250" initial-price="22" price-difference="1"/>
+    </goods-type>
+    
+    
+    <!--<goods-type id="model.goods.weapons" is-farmed="false"
+                production-weight="5.0" is-military="true">
+      <market initial-amount="1000" initial-price="1" price-difference="2"/>
+    </goods-type>-->
+                
+    <goods-type id="model.goods.cannons" is-farmed="false"
+                made-from="model.goods.tools" 
+                production-weight="5.0" is-military="true">
+      <market initial-amount="1000" initial-price="1" price-difference="2"/>
+    </goods-type>
+    
+    <goods-type id="model.goods.muskets" is-farmed="false"
+                made-from="model.goods.tools"
+                production-weight="5.0" is-military="true">
+      <market initial-amount="1000" initial-price="1" price-difference="2"/>
     </goods-type>
 
   </goods-types>
@@ -1058,6 +1075,61 @@
       <modifier id="model.modifier.exploreLostCityRumour"
                 type="percentage" value="15"/>
     </role>
+    
+    <role id="model.role.crewedPrivateer"
+          expert-unit="model.unit.privateer">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-ability id="model.ability.piracy"
+                        value="true"/>
+      <required-ability id="model.ability.navalUnit"
+                        value="true"/>
+      <required-goods id="model.goods.muskets"
+                      value="25"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.canBeCaptured"
+               value="true"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <ability id="model.ability.captureEquipment"
+               value="true"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="1"/>
+    </role>
+    
+    <role id="model.role.armedPrivateer" 
+          downgrade="model.role.crewedPrivateer"
+          expert-unit="model.unit.privateer">
+      <required-ability id="model.ability.canBeEquipped"
+                        value="true"/>
+      <required-ability id="model.ability.native"
+                        value="false"/>
+      <required-ability id="model.ability.refUnit"
+                        value="false"/>
+      <required-ability id="model.ability.piracy"
+                        value="true"/>
+      <required-ability id="model.ability.navalUnit"
+                        value="true"/>
+      <required-goods id="model.goods.cannons"
+                      value="10"/>
+
+      <ability id="model.ability.armed"
+               value="true"/>
+      <ability id="model.ability.canBeCaptured"
+               value="false"/>
+      <ability id="model.ability.captureUnits"
+               value="true"/>
+      <modifier id="model.modifier.defence" index="30"
+                type="additive" value="1"/>
+      <modifier id="model.modifier.offence" index="30"
+                type="additive" value="2"/>
+    </role>
 
   </roles>
 
@@ -1889,6 +1961,8 @@
                       value="60"/>
       <required-goods id="model.goods.rope"
                       value="60"/>
+      <ability id="model.ability.canBeEquipped"
+               value="true"/>
     </unit-type>
 
     <unit-type id="model.unit.wagonTrain" extends="wagon"
@@ -2173,6 +2247,11 @@
 
     <building-type id="model.building.armory"
                    priority="400" upkeep="5">
+      <production>
+        <input goods-type="model.goods.tools" value="3"/>
+        <output goods-type="model.goods.muskets" value="3"/>
+        <output goods-type="model.goods.cannons" value="3"/>
+      </production>
       <required-goods id="model.goods.hammers"
                       value="52"/>
     </building-type>
@@ -2182,6 +2261,11 @@
                    upgrades-from="model.building.armory"
                    competence-factor="2"
                    required-population="8" upkeep="10">
+      <production>
+        <input goods-type="model.goods.tools" value="6"/>
+        <output goods-type="model.goods.muskets" value="6"/>
+        <output goods-type="model.goods.cannons" value="6"/>
+      </production>
       <required-goods id="model.goods.stone"
                       value="120"/>
     </building-type>
@@ -2192,6 +2276,11 @@
                    experts-with-connections-production="4"
                    competence-factor="3" rebel-factor="1.5"
                    upkeep="15">
+      <production>
+        <input goods-type="model.goods.tools" value="9"/>
+        <output goods-type="model.goods.muskets" value="9"/>
+        <output goods-type="model.goods.cannons" value="9"/>
+      </production>
       <required-goods id="model.goods.stone"
                       value="240"/>
     </building-type>
