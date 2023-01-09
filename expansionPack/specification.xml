@@ -2478,10 +2478,6 @@
                       value="100"/>
       <required-goods id="model.goods.stone"
                       value="160"/>
-      <limit id="model.limit.Libraries" operator="eq">
-        <left-hand-side operand-type="buildings" scope-level="player"/>
-        <right-hand-side value="1"/>
-      </limit>
     </building-type>
     
     <building-type id="model.building.cityHall"
@@ -2502,7 +2498,7 @@
                       value="64"/>
     </building-type>
     
-    <building-type id="model.building.cityCouncil"
+    <building-type id="model.building.federalHall"
                    extends="model.building.cityHall"
                    upgrades-from="model.building.cityHall"
                    experts-with-connections-production="4"
@@ -2520,6 +2516,10 @@
                       value="100"/>
       <required-goods id="model.goods.stone"
                       value="240"/>
+      <limit id="model.limit.federalHalls" operator="eq">
+        <left-hand-side operand-type="buildings" scope-level="player"/>
+        <right-hand-side value="1"/>
+      </limit>
     </building-type>
 
   </building-types>
