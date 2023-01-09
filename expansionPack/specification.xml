@@ -18,7 +18,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="expansionPack" version="0.3">
+<freecol-specification id="expansionPack" version="0.4">
 
   <goods-types>
 
@@ -444,11 +444,11 @@
       <modifier id="model.modifier.defence" index="50"
                 type="percentage" value="50"/>
       <production unattended="true">
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
         <output goods-type="model.goods.furs" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
       </production>
       <production>
         <output goods-type="model.goods.hemp" value="2"/>
@@ -632,11 +632,11 @@
       <modifier id="model.modifier.defence" index="50"
                 type="percentage" value="50"/>
       <production unattended="true">
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
         <output goods-type="model.goods.furs" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
       </production>
       <production>
         <output goods-type="model.goods.furs" value="3"/>
@@ -2459,6 +2459,68 @@
         <scope type="model.unit.courtesan"/>
       </ability>
     </building-type>
+    
+    <building-type id="model.building.library"
+                   extends="model.building.newspaper"
+                   upgrades-from="model.building.newspaper"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="8" upkeep="15">
+       <production unattended="true">
+        <output goods-type="model.goods.books" value="3"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.books" value="4"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="160"/>
+      <required-goods id="model.goods.tools"
+                      value="100"/>
+      <required-goods id="model.goods.stone"
+                      value="160"/>
+      <limit id="model.limit.Libraries" operator="eq">
+        <left-hand-side operand-type="buildings" scope-level="player"/>
+        <right-hand-side value="1"/>
+      </limit>
+    </building-type>
+    
+    <building-type id="model.building.cityHall"
+                   extends="model.building.townHall"
+                   upgrades-from="model.building.townHall"
+                   required-population="8" upkeep="10">
+      <production unattended="true">
+        <output goods-type="model.goods.bells" value="2"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.bells" value="4"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="64"/>
+      <required-goods id="model.goods.tools"
+                      value="20"/>
+      <required-goods id="model.goods.stone"
+                      value="64"/>
+    </building-type>
+    
+    <building-type id="model.building.cityCouncil"
+                   extends="model.building.cityHall"
+                   upgrades-from="model.building.cityHall"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="10" upkeep="15">
+      <production unattended="true">
+        <output goods-type="model.goods.bells" value="3"/>
+      </production>
+      <production>
+        <output goods-type="model.goods.bells" value="5"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="160"/>
+      <required-goods id="model.goods.tools"
+                      value="100"/>
+      <required-goods id="model.goods.stone"
+                      value="240"/>
+    </building-type>
 
   </building-types>
 
@@ -2608,12 +2670,12 @@
     <nation id="model.nation.pirates" color="0x545454"
             nation-type="model.nationType.letterOfMarque"/>
 
-    <nation id="model.nation.holyromanempire" color="0xc4a022"
+    <nation id="model.nation.holyRomanEmpire" color="0xc4a022"
             nation-type="model.nationType.guilds" selectable="true"
             preferred-latitude="0" starts-on-east-coast="false"
-            ref="model.nation.holyromanempireREF"/>
+            ref="model.nation.holyRomanEmpireREF"/>
 
-    <nation id="model.nation.holyromanempireREF" color="0x68228b"
+    <nation id="model.nation.holyRomanEmpireREF" color="0x68228b"
             nation-type="model.nationType.ref"/>
 
   </nations>
