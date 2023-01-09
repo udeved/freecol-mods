@@ -16,13 +16,15 @@
 * Rope Binder House, Shop, Works
 * Jeweler House, Shop, Works
 * Tavern
+* City Hall, Federal Hall(limit 1)
 
 ### Units
 
 * Stone Cutter
 * Hunter
-* Perl diver
+* Pearl Diver
 * Hemp Planter
+* Gem Miner
 * Gold Miner
 * Rope Binder
 * Minter
@@ -40,6 +42,7 @@
 * Rope
 * Books
 * Pearls
+* Gems
 * Gold
 * Jewelry
 * Silver Coin
