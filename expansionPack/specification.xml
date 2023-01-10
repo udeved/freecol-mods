@@ -92,14 +92,14 @@
       <market initial-amount="1000" initial-price="1" price-difference="2"/>
     </goods-type>
 
-    <goods-type id="model.goods.muskets" is-farmed="false"
+    <!--<goods-type id="model.goods.muskets" is-farmed="false"
                 made-from="model.goods.tools"
                 production-weight="5.0" is-military="true">
       <market initial-amount="1000" initial-price="1" price-difference="2"/>
-    </goods-type>
+    </goods-type>-->
 
     <goods-type id="model.goods.swords" is-farmed="false"
-                made-from="model.goods.tools"
+                made-from="model.goods.ore"
                 production-weight="5.0" is-military="true">
       <market initial-amount="1000" initial-price="1" price-difference="2"/>
     </goods-type>
@@ -1112,8 +1112,6 @@
                         value="true"/>
       <required-ability id="model.ability.captureUnits"
                         value="true"/>
-      <required-goods id="model.goods.muskets"
-                      value="25"/>
       <required-goods id="model.goods.swords"
                       value="25"/>
 
@@ -1170,8 +1168,6 @@
                         value="true"/>
       <required-ability id="model.ability.captureUnits"
                         value="false"/>
-      <required-goods id="model.goods.muskets"
-                      value="25"/>
       <required-goods id="model.goods.swords"
                       value="25"/>
 
@@ -1227,8 +1223,6 @@
                         value="true"/>
       <required-ability id="model.ability.captureUnits"
                         value="true"/>
-      <required-goods id="model.goods.muskets"
-                      value="50"/>
       <required-goods id="model.goods.swords"
                       value="50"/>
 
@@ -2296,6 +2290,11 @@
     </building-type>
 
     <building-type id="model.building.blacksmithHouse">
+      <production>
+        <input goods-type="model.goods.ore" value="3"/>
+        <output goods-type="model.goods.tools" value="3"/>
+        <output goods-type="model.goods.swords" value="3"/>
+      </production>
       <required-goods id="model.goods.hammers" value="32" />
     </building-type>
 
@@ -2304,6 +2303,11 @@
                    upgrades-from="model.building.blacksmithHouse"
                    competence-factor="2"
                    upkeep="5">
+      <production>
+        <input goods-type="model.goods.ore" value="6"/>
+        <output goods-type="model.goods.tools" value="6"/>
+        <output goods-type="model.goods.swords" value="6"/>
+      </production>
       <required-goods id="model.goods.stone"
                       value="64"/>
     </building-type>
@@ -2314,6 +2318,11 @@
                    experts-with-connections-production="4"
                    competence-factor="3" rebel-factor="1.5"
                    required-population="8" upkeep="15">
+      <production>
+        <input goods-type="model.goods.ore" value="6"/>
+        <output goods-type="model.goods.tools" value="9"/>
+        <output goods-type="model.goods.swords" value="9"/>
+      </production>
       <required-goods id="model.goods.stone"
                       value="240"/>
     </building-type>
