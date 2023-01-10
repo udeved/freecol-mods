@@ -18,7 +18,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="expansionPack" version="0.4">
+<freecol-specification id="expansionPack" version="0.5">
 
   <goods-types>
 
@@ -985,7 +985,7 @@
                 type="additive" value="3"/>
     </role>
 
-    <!--Pirate roles-->
+    <!-- Pirate roles -->
     <role id="model.role.buccaneer"
           expert-unit="model.unit.pirate">
       <required-ability id="model.ability.canBeEquipped"
@@ -1052,7 +1052,7 @@
                 type="additive" value="9"/>
     </role>
 
-    <!--Convert Scout role-->
+    <!-- Convert Scout role -->
     <role id="model.role.tracker">
       <required-ability id="model.ability.canBeEquipped"
                         value="true"/>
@@ -1098,7 +1098,8 @@
       <modifier id="model.modifier.exploreLostCityRumour"
                 type="percentage" value="15"/>
     </role>
-
+    
+    <!-- pirateship roles -->
     <role id="model.role.pirateCrew">
       <required-ability id="model.ability.canBeEquipped"
                         value="true"/>
@@ -1121,11 +1122,10 @@
                value="true"/>
       <ability id="model.ability.captureEquipment"
                value="true"/>
-      <modifier id="model.modifier.offence" index="30"
+      <modifier id="model.modifier.defense" index="30"
                 type="additive" value="1"/>
     </role>
 
-    <!-- pirateShip roles-->
     <role id="model.role.pirateGuns"
           downgrade="model.role.pirateCrew"
           expert-unit="model.unit.privateer">
@@ -1151,10 +1151,10 @@
       <modifier id="model.modifier.defence" index="30"
                 type="additive" value="1"/>
       <modifier id="model.modifier.offence" index="30"
-                type="additive" value="2"/>
+                type="additive" value="1"/>
     </role>
 
-    <!--merchantShip roles-->
+    <!-- merchantship roles -->
     <role id="model.role.merchantShipCrew">
       <required-ability id="model.ability.canBeEquipped"
                         value="true"/>
@@ -1177,7 +1177,7 @@
                value="true"/>
       <ability id="model.ability.captureEquipment"
                value="true"/>
-      <modifier id="model.modifier.offence" index="30"
+      <modifier id="model.modifier.defense" index="30"
                 type="additive" value="1"/>
     </role>
 
@@ -1203,13 +1203,11 @@
                value="true"/>
       <ability id="model.ability.canBeCaptured"
                value="false"/>
-      <modifier id="model.modifier.defence" index="30"
-                type="additive" value="1"/>
       <modifier id="model.modifier.offence" index="30"
-                type="additive" value="2"/>
+                type="additive" value="1"/>
     </role>
 
-    <!--warShip roles-->
+    <!-- warship roles -->
     <role id="model.role.warShipCrew">
       <required-ability id="model.ability.canBeEquipped"
                         value="true"/>
@@ -1232,7 +1230,7 @@
                value="true"/>
       <ability id="model.ability.captureEquipment"
                value="true"/>
-      <modifier id="model.modifier.offence" index="30"
+      <modifier id="model.modifier.defense" index="30"
                 type="additive" value="1"/>
     </role>
 
@@ -2021,21 +2019,7 @@
       <modifier id="model.goods.tools"   index="30" type="additive" value="-2"/>
     </unit-type>
 
-    <!--<unit-type id="ship" abstract="true">
-      <ability id="model.ability.navalUnit"
-               value="true"/>
-      <ability id="model.ability.carryGoods"
-               value="true"/>
-      <ability id="model.ability.carryUnits"
-               value="true"/>
-      <ability id="model.ability.evadeAttack"
-               value="true"/>
-      <ability id="model.ability.foundColony"
-               value="false"/>
-      <modifier id="model.modifier.tradeVolumePenalty"
-                value="-75" type="percentage"/>
-    </unit-type>-->
-
+    <!-- Ships -->
     <unit-type id="warShip" abstract="true">
       <ability id="model.ability.navalUnit"
                value="true"/>
@@ -2142,6 +2126,7 @@
       <default-role id="model.role.pirateGuns"/>
     </unit-type>
 
+    <!-- Wagons -->
     <unit-type id="model.unit.wagonTrain" extends="wagon"
                offence="0" defence="1" movement="6"
                score-value="1" spaceTaken="6" space="2">
@@ -2157,8 +2142,7 @@
                value="true"/>
     </unit-type>
 
-    <!--Expansion Pack-->
-
+    <!-- Expansion Pack -->
     <unit-type id="model.unit.expertHunter" extends="colonist"
                price="700" skill="1" expert-production="model.goods.meat"
                recruit-probability="1" score-value="4">
@@ -2236,8 +2220,6 @@
       <default-role id="model.role.buccaneer"/>
       <required-goods id="model.goods.silvercoin"
                       value="128"/>
-      <!--<required-goods id="model.goods.rum"
-                      value="40"/>-->
       <required-goods id="model.goods.jewelry"
                       value="20"/>
       <ability id="model.ability.piracy"
@@ -2259,11 +2241,7 @@
                score-value="4" skill="0" recruit-probability="0">
       <required-goods id="model.goods.silvercoin"
                       value="64"/>
-      <!--<required-goods id="model.goods.coats"
-                      value="20"/>
       <required-goods id="model.goods.jewelry"
-                      value="10"/>-->
-      <required-goods id="model.goods.pearls"
                       value="10"/>
       <ability id="model.ability.canBeEquipped"
                value="false"/>
@@ -2554,7 +2532,7 @@
       <modifier id="model.goods.bells" delete="true"/>
     </building-type>
 
-    <!--Expansion Pack-->
+    <!-- Expansion Pack -->
 
     <building-type id="model.building.constructionYard"
                    extends="model.building.lumberMill"
