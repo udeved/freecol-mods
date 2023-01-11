@@ -45,8 +45,8 @@
     </goods-type>
 
     <goods-type id="model.goods.books" is-farmed="false"
-                ignore-limit="true" storable="false">
-      <modifier id="model.modifier.liberty"
+                ignore-limit="true" storable="false"> <!--made-from="model.goods.hemp"-->
+      <modifier id="model.modifier.bells"
                 type="multiplicative" value="1">
         <scope ability-id="model.ability.person" match-negated="true"/>
       </modifier>
@@ -2475,7 +2475,8 @@
     </building-type>
 
     <building-type id="model.building.printingPress"
-                   preserve="true">
+                   workplaces="3"
+                   upkeep="5">
       <production unattended="true">
         <output goods-type="model.goods.books" value="1"/>
       </production>
@@ -2743,7 +2744,7 @@
                       value="100"/>
       <required-goods id="model.goods.stone"
                       value="160"/>
-      <limit id="model.limit.federalHalls" operator="eq">
+      <limit id="model.limit.federalHalls" operator="le">
         <left-hand-side operand-type="buildings" scope-level="player"/>
         <right-hand-side value="1"/>
       </limit>
