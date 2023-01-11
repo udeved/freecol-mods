@@ -58,10 +58,12 @@
     </goods-type>
 
     <goods-type id="model.goods.intel" is-farmed="false"
-                stored-as="model.goods.silvercoin" storable="false"/>
+                stored-as="model.goods.silvercoin" storable="false"
+                made-from="model.goods.rum"/>
+            <!--made-from="model.goods.cigars"-->
 
     <goods-type id="model.goods.gems" is-farmed="true"
-                production-weight="5.0">
+                production-weight="5.0" new-world-goods="true">
       <market initial-amount="500" initial-price="17" price-difference="2"/>
     </goods-type>
 
@@ -76,7 +78,9 @@
     </goods-type>
 
     <goods-type id="model.goods.jewelry" is-farmed="false"
-                made-from="model.goods.gold"> <!--made-from="model.goods.pearls" made-from="model.goods.gems"-->
+                made-from="model.goods.gold">
+            <!--made-from="model.goods.pearls"
+                made-from="model.goods.gems"-->
       <market initial-amount="250" initial-price="22" price-difference="1"/>
     </goods-type>
 
@@ -381,11 +385,11 @@
            temperature-minimum="-5" temperature-maximum="5"
            altitude-minimum="1" altitude-maximum="3"/>
       <production unattended="true">
-        <output goods-type="model.goods.grain" value="3"/>
+        <output goods-type="model.goods.meat" value="3"/>
         <output goods-type="model.goods.ore" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.grain" value="3"/>
+        <output goods-type="model.goods.meat" value="3"/>
       </production>
       <production>
         <output goods-type="model.goods.ore" value="2"/>
@@ -413,11 +417,11 @@
       <modifier id="model.modifier.defence" index="50"
                 type="percentage" value="50"/>
       <production unattended="true">
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
         <output goods-type="model.goods.furs" value="3"/>
       </production>
       <production>
-        <output goods-type="model.goods.grain" value="3"/>
+        <output goods-type="model.goods.meat" value="3"/>
       </production>
       <production>
         <output goods-type="model.goods.hemp" value="3"/>
@@ -445,11 +449,11 @@
       <modifier id="model.modifier.defence" index="50"
                 type="percentage" value="50"/>
       <production unattended="true">
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
         <output goods-type="model.goods.furs" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
       </production>
       <production>
         <output goods-type="model.goods.hemp" value="2"/>
@@ -507,11 +511,11 @@
       <modifier id="model.modifier.defence" index="50"
                 type="percentage" value="50"/>
       <production unattended="true">
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
         <output goods-type="model.goods.furs" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.grain" value="3"/>
+        <output goods-type="model.goods.meat" value="3"/>
       </production>
       <production>
         <output goods-type="model.goods.hemp" value="3"/>
@@ -539,11 +543,11 @@
       <modifier id="model.modifier.defence" index="50"
                 type="percentage" value="50"/>
       <production unattended="true">
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
         <output goods-type="model.goods.furs" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
       </production>
       <production>
         <output goods-type="model.goods.hemp" value="2"/>
@@ -582,11 +586,11 @@
       <modifier id="model.modifier.defence" index="50"
                 type="percentage" value="75"/>
       <production unattended="true">
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
         <output goods-type="model.goods.sugar" value="1"/>
       </production>
       <production>
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
       </production>
       <production>
         <output goods-type="model.goods.hemp" value="2"/>
@@ -626,19 +630,19 @@
       <modifier id="model.modifier.defence" index="50"
                 type="percentage" value="50"/>
       <production unattended="true" production-level="veryHigh">
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
         <output goods-type="model.goods.furs" value="2"/>
       </production>
       <production unattended="true" production-level="veryLow">
-        <output goods-type="model.goods.grain" value="1"/>
+        <output goods-type="model.goods.meat" value="1"/>
         <output goods-type="model.goods.furs" value="2"/>
       </production>
       <production unattended="true">
-        <output goods-type="model.goods.grain" value="1"/>
+        <output goods-type="model.goods.meat" value="1"/>
         <output goods-type="model.goods.furs" value="2"/>
       </production>
       <production>
-        <output goods-type="model.goods.grain" value="2"/>
+        <output goods-type="model.goods.meat" value="2"/>
       </production>
       <production>
         <output goods-type="model.goods.cotton" value="1"/>
@@ -655,7 +659,7 @@
       <production>
         <output goods-type="model.goods.gold" value="1"/>
       </production>
-      <resource type="model.resource.oasis" probability="100"/>
+      <resource type="model.resource.game" probability="100"/>
       <disaster id="model.disaster.brushfire" probability="50"/>
       <disaster id="model.disaster.drought" probability="50"/>
       <ability id="model.ability.ambushTerrain"
@@ -1098,7 +1102,7 @@
       <modifier id="model.modifier.exploreLostCityRumour"
                 type="percentage" value="15"/>
     </role>
-    
+
     <!-- pirateship roles -->
     <role id="model.role.pirateCrew">
       <required-ability id="model.ability.canBeEquipped"
@@ -1346,7 +1350,31 @@
                 type="additive" value="1"/>
     </tile-improvement-type>
 
-    <tile-improvement-type id="model.improvement.pearlsBonusLand" natural="true"
+    <tile-improvement-type id="model.improvement.fishBonusLand" natural="true"
+                           zIndex="250">
+      <scope method-name="isWater" method-value="true" />
+      <scope type="model.tile.highSeas" match-negated="true" />
+      <modifier id="model.goods.fish" index="50"
+                type="additive" value="2"/>
+      <modifier id="model.goods.pearls" index="50"
+                type="additive" value="2"/>
+      <modifier id="model.goods.mussels" index="50"
+                type="additive" value="2"/>
+    </tile-improvement-type>
+
+    <tile-improvement-type id="model.improvement.fishBonusRiver" natural="true"
+                           zIndex="250">
+      <scope method-name="isWater" method-value="true" />
+      <scope type="model.tile.highSeas" match-negated="true" />
+      <modifier id="model.goods.fish" index="50"
+                type="additive" value="1"/>
+      <modifier id="model.goods.pearls" index="50"
+                type="additive" value="1"/>
+      <modifier id="model.goods.mussels" index="50"
+                type="additive" value="1"/>
+    </tile-improvement-type>
+
+    <!-- <tile-improvement-type id="model.improvement.pearlsBonusLand" natural="true"
                            zIndex="250">
       <scope method-name="isWater" method-value="true" />
       <scope type="model.tile.highSeas" match-negated="true" />
@@ -1364,7 +1392,7 @@
                 type="additive" value="1"/>
       <modifier id="model.goods.mussels" index="50"
                 type="additive" value="1"/>
-    </tile-improvement-type>
+    </tile-improvement-type> -->
 
   </tile-improvement-types>
 
@@ -2129,9 +2157,9 @@
     <!-- Wagons -->
     <unit-type id="model.unit.wagonTrain" extends="wagon"
                offence="0" defence="1" movement="6"
-               score-value="1" spaceTaken="6" space="2">
+               score-value="1" spaceTaken="6" space="2"/>
       <!--<required-goods id="model.goods.hammers"
-                      value="40"/>-->
+                      value="40"/>
       <limit id="model.limit.wagonTrains" operator="lt">
         <left-hand-side operand-type="units" scope-level="player" />
         <right-hand-side operand-type="settlements" scope-level="player" />
@@ -2140,7 +2168,7 @@
                value="true"/>
       <ability id="model.ability.canBeCaptured"
                value="true"/>
-    </unit-type>
+    </unit-type>-->
 
     <!-- Expansion Pack -->
     <unit-type id="model.unit.expertHunter" extends="colonist"
@@ -2241,7 +2269,7 @@
                score-value="4" skill="0" recruit-probability="0">
       <required-goods id="model.goods.silvercoin"
                       value="64"/>
-      <required-goods id="model.goods.jewelry"
+      <required-goods id="model.goods.coats"
                       value="10"/>
       <ability id="model.ability.canBeEquipped"
                value="false"/>
@@ -2258,16 +2286,14 @@
   <building-types>
 
     <building-type id="model.building.lumberMill"
-                   extends="model.building.carpenterHouse"
-                   upgrades-from="model.building.carpenterHouse"
-                   competence-factor="2" rebel-factor="2"
-                   required-population="3" upkeep="10">
+                   preserve="true">
       <required-goods id="model.goods.tools"
                       value="20"/>
       <modifier id="model.modifier.tileTypeChangeProduction" delete="true"/>
     </building-type>
 
-    <building-type id="model.building.blacksmithHouse">
+    <building-type id="model.building.blacksmithHouse"
+                   preserve="true">
       <production>
         <input goods-type="model.goods.ore" value="3"/>
         <output goods-type="model.goods.tools" value="3"/>
@@ -2277,10 +2303,7 @@
     </building-type>
 
     <building-type id="model.building.blacksmithShop"
-                   extends="model.building.blacksmithHouse"
-                   upgrades-from="model.building.blacksmithHouse"
-                   competence-factor="2"
-                   upkeep="5">
+                   preserve="true">
       <production>
         <input goods-type="model.goods.ore" value="6"/>
         <output goods-type="model.goods.tools" value="6"/>
@@ -2291,11 +2314,7 @@
     </building-type>
 
     <building-type id="model.building.ironWorks"
-                   extends="model.building.blacksmithShop"
-                   upgrades-from="model.building.blacksmithShop"
-                   experts-with-connections-production="4"
-                   competence-factor="3" rebel-factor="1.5"
-                   required-population="8" upkeep="15">
+                   preserve="true">
       <production>
         <input goods-type="model.goods.ore" value="6"/>
         <output goods-type="model.goods.tools" value="9"/>
@@ -2305,118 +2324,88 @@
                       value="240"/>
     </building-type>
 
-    <building-type id="model.building.tobacconistHouse">
+    <building-type id="model.building.tobacconistHouse"
+                   preserve="true">
       <required-goods id="model.goods.hammers" value="32" />
     </building-type>
 
     <building-type id="model.building.tobacconistShop"
-                   extends="model.building.tobacconistHouse"
-                   upgrades-from="model.building.tobacconistHouse"
-                   competence-factor="2"
-                   upkeep="5">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="64"/>
     </building-type>
 
     <building-type id="model.building.cigarFactory"
-                   extends="model.building.tobacconistShop"
-                   upgrades-from="model.building.tobacconistShop"
-                   experts-with-connections-production="4"
-                   competence-factor="3" rebel-factor="1.5"
-                   required-population="8" upkeep="15">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="160"/>
     </building-type>
 
-    <building-type id="model.building.weaverHouse">
+    <building-type id="model.building.weaverHouse"
+                   preserve="true">
       <required-goods id="model.goods.hammers" value="32" />
     </building-type>
 
     <building-type id="model.building.weaverShop"
-                   extends="model.building.weaverHouse"
-                   upgrades-from="model.building.weaverHouse"
-                   competence-factor="2"
-                   upkeep="5">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="64"/>
     </building-type>
 
     <building-type id="model.building.textileMill"
-                   extends="model.building.weaverShop"
-                   upgrades-from="model.building.weaverShop"
-                   experts-with-connections-production="4"
-                   competence-factor="3" rebel-factor="1.5"
-                   required-population="8" upkeep="15">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="160"/>
     </building-type>
 
-    <building-type id="model.building.distillerHouse">
+    <building-type id="model.building.distillerHouse"
+                   preserve="true">
       <required-goods id="model.goods.hammers" value="32" />
     </building-type>
 
     <building-type id="model.building.rumDistillery"
-                   extends="model.building.distillerHouse"
-                   upgrades-from="model.building.distillerHouse"
-                   competence-factor="2"
-                   upkeep="5">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="64"/>
     </building-type>
 
     <building-type id="model.building.rumFactory"
-                   extends="model.building.rumDistillery"
-                   upgrades-from="model.building.rumDistillery"
-                   experts-with-connections-production="4"
-                   competence-factor="3" rebel-factor="1.5"
-                   required-population="8" upkeep="15">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="160"/>
     </building-type>
 
-    <building-type id="model.building.furTraderHouse">
+    <building-type id="model.building.furTraderHouse"
+                   preserve="true">
       <required-goods id="model.goods.hammers" value="32" />
     </building-type>
 
     <building-type id="model.building.furTradingPost"
-                   extends="model.building.furTraderHouse"
-                   upgrades-from="model.building.furTraderHouse"
-                   competence-factor="2"
-                   upkeep="5">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="56"/>
     </building-type>
 
     <building-type id="model.building.furFactory"
-                   extends="model.building.furTradingPost"
-                   upgrades-from="model.building.furTradingPost"
-                   experts-with-connections-production="4"
-                   competence-factor="3" rebel-factor="1.5"
-                   required-population="6" upkeep="15">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="160"/>
     </building-type>
 
     <building-type id="model.building.college"
-                   extends="model.building.schoolhouse"
-                   workplaces="2" maximum-skill="2"
-                   upgrades-from="model.building.schoolhouse"
-                   required-population="8" upkeep="10">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="160"/>
     </building-type>
 
     <building-type id="model.building.university"
-                   extends="model.building.college"
-                   workplaces="3" maximum-skill="4"
-                   upgrades-from="model.building.college"
-                   required-population="10" upkeep="15">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="200"/>
     </building-type>
 
     <building-type id="model.building.armory"
-                   priority="400" upkeep="5">
+                   preserve="true">
       <production>
         <input goods-type="model.goods.tools" value="3"/>
         <output goods-type="model.goods.muskets" value="3"/>
@@ -2427,10 +2416,7 @@
     </building-type>
 
     <building-type id="model.building.magazine"
-                   extends="model.building.armory"
-                   upgrades-from="model.building.armory"
-                   competence-factor="2"
-                   required-population="8" upkeep="10">
+                   preserve="true">
       <production>
         <input goods-type="model.goods.tools" value="6"/>
         <output goods-type="model.goods.muskets" value="6"/>
@@ -2441,11 +2427,7 @@
     </building-type>
 
     <building-type id="model.building.arsenal"
-                   extends="model.building.magazine"
-                   upgrades-from="model.building.magazine"
-                   experts-with-connections-production="4"
-                   competence-factor="3" rebel-factor="1.5"
-                   upkeep="15">
+                   preserve="true">
       <production>
         <input goods-type="model.goods.tools" value="9"/>
         <output goods-type="model.goods.muskets" value="9"/>
@@ -2455,15 +2437,13 @@
                       value="240"/>
     </building-type>
 
-    <building-type id="model.building.chapel" workplaces="0">
+    <building-type id="model.building.chapel"
+                   preserve="true">
       <required-goods id="model.goods.hammers" value="32" />
     </building-type>
 
     <building-type id="model.building.church"
-                   extends="model.building.chapel"
-                   upgrades-from="model.building.chapel"
-                   workplaces="3"
-                   required-population="3" upkeep="5">
+                   preserve="true">
       <required-goods id="model.goods.tools"
                       value="50"/>
       <required-goods id="model.goods.stone"
@@ -2471,64 +2451,50 @@
     </building-type>
 
     <building-type id="model.building.cathedral"
-                   extends="model.building.church"
-                   upgrades-from="model.building.church"
-                   competence-factor="2" rebel-factor="2"
-                   required-population="8" upkeep="15">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="176"/>
     </building-type>
 
     <building-type id="model.building.fortress"
-                   extends="model.building.fort"
-                   upgrades-from="model.building.fort"
-                   required-population="8" upkeep="15">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="320"/>
     </building-type>
 
     <building-type id="model.building.drydock"
-                   extends="model.building.docks"
-                   upgrades-from="model.building.docks"
-                   required-population="4" upkeep="10">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="50"/>
     </building-type>
 
     <building-type id="model.building.shipyard"
-                   extends="model.building.drydock"
-                   upgrades-from="model.building.drydock"
-                   required-population="8" upkeep="15">
+                   preserve="true">
       <required-goods id="model.goods.stone"
                       value="240"/>
     </building-type>
 
     <building-type id="model.building.printingPress"
-                   workplaces="3"
-                   upkeep="15">
+                   preserve="true">
       <production unattended="true">
         <output goods-type="model.goods.books" value="1"/>
       </production>
       <production>
         <output goods-type="model.goods.books" value="2"/>
       </production>
-      <required-goods id="model.goods.hammers"
-                      value="52"/>
-      <required-goods id="model.goods.tools"
-                      value="20"/>
       <modifier id="model.goods.bells" delete="true"/>
     </building-type>
 
     <building-type id="model.building.newspaper"
-                   extends="model.building.printingPress"
-                   upgrades-from="model.building.printingPress"
-                   required-population="4" upkeep="20">
+                   preserve="true">
       <production unattended="true">
         <output goods-type="model.goods.books" value="2"/>
       </production>
       <production>
         <output goods-type="model.goods.books" value="3"/>
       </production>
+      <required-goods id="model.goods.stone"
+                      value="120"/>
       <modifier id="model.goods.bells" delete="true"/>
     </building-type>
 
@@ -2705,6 +2671,8 @@
         <output goods-type="model.goods.intel" value="1"/>
       </production>
       <production>
+        <input goods-type="model.goods.rum" value="3"/>
+        <input goods-type="model.goods.cigars" value="3"/>
         <output goods-type="model.goods.intel" value="3"/>
       </production>
       <required-ability id="model.ability.hasPort"
@@ -2774,7 +2742,7 @@
       <required-goods id="model.goods.tools"
                       value="100"/>
       <required-goods id="model.goods.stone"
-                      value="240"/>
+                      value="160"/>
       <limit id="model.limit.federalHalls" operator="eq">
         <left-hand-side operand-type="buildings" scope-level="player"/>
         <right-hand-side value="1"/>
@@ -2799,51 +2767,26 @@
     </indian-nation-type>
 
     <indian-nation-type id="village" abstract="true" extends="default">
-      <settlement id="model.settlement.village" capital="false"
-                  claimable-radius="1" extra-claimable-radius="2"
-                  minimum-size="6" maximum-size="8"
-                  minimum-growth="1" maximum-growth="8"
-                  trade-bonus="2" convert-threshold="100">
-        <plunder id="plunder.village" probability="50"
-                 minimum="3" maximum="8" factor="100">
-          <scope ability-id="model.ability.plunderNatives"
-                 ability-value="false"/>
-        </plunder>
-        <plunder id="plunder.village.extra" probability="100"
-                 minimum="4" maximum="12" factor="100">
-          <scope ability-id="model.ability.plunderNatives"
-                 ability-value="true"/>
-        </plunder>
-        <gifts probability="100" minimum="3" maximum="6" factor="100" />
-        <modifier id="model.modifier.defence" index="50"
-                  type="percentage" value="50"/>
-      </settlement>
-      <settlement id="model.settlement.village.capital" capital="true"
-                  claimable-radius="2" extra-claimable-radius="2"
-                  minimum-size="8" maximum-size="10"
-                  minimum-growth="2" maximum-growth="10"
-                  trade-bonus="3" convert-threshold="100">
-        <plunder id="plunder.village.capital" probability="100"
-                 minimum="3" maximum="8" factor="200">
-          <scope ability-id="model.ability.plunderNatives"
-                 ability-value="false"/>
-        </plunder>
-        <plunder id="plunder.village.capital.extra" probability="100"
-                 minimum="3" maximum="8" factor="300">
-          <scope ability-id="model.ability.plunderNatives"
-                 ability-value="true"/>
-        </plunder>
-        <gifts probability="100" minimum="4" maximum="8" factor="200" />
-        <modifier id="model.modifier.defence" index="50"
-                  type="percentage" value="100"/>
-      </settlement>
+      <skill id="model.unit.expertPearlDiver" probability="10"/>
     </indian-nation-type>
 
     <indian-nation-type id="model.nationType.arawak" extends="village"
                         number-of-settlements="low" aggression="low">
-      <skill id="model.unit.expertPearlDiver" probability="10"/>
     </indian-nation-type>
 
+    <indian-nation-type id="city" abstract="true" extends="default"
+                        number-of-settlements="high">
+      <skill id="model.unit.expertGemMiner" probability="10"/>
+    </indian-nation-type>
+    
+    <indian-nation-type id="model.nationType.inca" extends="city"
+                        aggression="low">
+    </indian-nation-type>
+    
+    <indian-nation-type id="model.nationType.aztec" extends="city"
+                        aggression="high">
+    </indian-nation-type>
+    
     <!--Expansion Pack-->
 
     <indian-nation-type id="corsair" abstract="true" extends="default"
