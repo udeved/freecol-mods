@@ -18,7 +18,7 @@
     In case of incompatible changes, please update version number and
     XSD schema for validation.
 -->
-<freecol-specification id="expansionPack" version="0.6">
+<freecol-specification id="expansionPack" version="0.7">
 
   <goods-types>
 
@@ -110,11 +110,21 @@
     
     <goods-type id="model.goods.cocoa" is-farmed="true"
                 production-weight="5.0" new-world-goods="true">
-      <market initial-amount="100" initial-price="14" price-difference="2"/>
+      <market initial-amount="100" initial-price="10" price-difference="2"/>
     </goods-type>
     
     <goods-type id="model.goods.coffee" is-farmed="true"
                 production-weight="5.0" new-world-goods="true">
+      <market initial-amount="1000" initial-price="10" price-difference="2"/>
+    </goods-type>
+    
+    <goods-type id="model.goods.coffeeBeans" is-farmed="false"
+                made-from="model.goods.coffee">
+      <market initial-amount="1000" initial-price="14" price-difference="2"/>
+    </goods-type>
+    
+    <goods-type id="model.goods.chocolate" is-farmed="false"
+                made-from="model.goods.cocoa"> <!--made-from="model.goods.sugarcane"-->
       <market initial-amount="1000" initial-price="14" price-difference="2"/>
     </goods-type>
 
@@ -1611,6 +1621,12 @@
       <unit-type-change id="model.unitChange.clearSkill.expertCoffeePlanter"
                         from="model.unit.expertCoffeePlanter"
                         to="model.unit.freeColonist" probability="100"/>
+      <unit-type-change id="model.unitChange.clearSkill.masterChocolateMaker"
+                        from="model.unit.masterChocolateMaker"
+                        to="model.unit.freeColonist" probability="100"/>
+      <unit-type-change id="model.unitChange.clearSkill.masterCoffeeRoaster"
+                        from="model.unit.masterCoffeeRoaster"
+                        to="model.unit.freeColonist" probability="100"/>
     </unit-change-type>
 
     <unit-change-type id="model.unitChange.demotion">
@@ -1772,6 +1788,14 @@
       <unit-type-change id="model.unitChange.education.expertCoffeePlanter"
                         from="model.unit.freeColonist"
                         to="model.unit.expertCoffeePlanter"
+                        probability="100" turns="6"/>
+      <unit-type-change id="model.unitChange.education.masterChocolateMaker"
+                        from="model.unit.freeColonist"
+                        to="model.unit.masterChocolateMaker"
+                        probability="100" turns="6"/>
+      <unit-type-change id="model.unitChange.education.masterCoffeeRoaster"
+                        from="model.unit.freeColonist"
+                        to="model.unit.masterCoffeeRoaster"
                         probability="100" turns="6"/>
     </unit-change-type>
 
@@ -1986,6 +2010,18 @@
       <unit-type-change id="model.unitChange.natives.freeColonist-expertCoffeePlanter"
                         from="model.unit.freeColonist"
                         to="model.unit.expertCoffeePlanter" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.indenturedServant-masterChocolateMaker"
+                        from="model.unit.indenturedServant"
+                        to="model.unit.masterChocolateMaker" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.freeColonist-masterChocolateMaker"
+                        from="model.unit.freeColonist"
+                        to="model.unit.masterChocolateMaker" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.indenturedServant-masterCoffeeRoaster"
+                        from="model.unit.indenturedServant"
+                        to="model.unit.masterCoffeeRoaster" probability="100"/>
+      <unit-type-change id="model.unitChange.natives.freeColonist-masterCoffeeRoaster"
+                        from="model.unit.freeColonist"
+                        to="model.unit.masterCoffeeRoaster" probability="100"/>
     </unit-change-type>
 
     <unit-change-type id="model.unitChange.undead" owner-change="true">
@@ -2114,6 +2150,12 @@
                         to="model.unit.undead" probability="100"/>
       <unit-type-change id="model.unitChange.undead.expertCoffeePlanter"
                         from="model.unit.expertCoffeePlanter"
+                        to="model.unit.undead" probability="100"/>
+      <unit-type-change id="model.unitChange.undead.masterChocolateMaker"
+                        from="model.unit.masterChocolateMaker"
+                        to="model.unit.undead" probability="100"/>
+      <unit-type-change id="model.unitChange.undead.masterCoffeeRoaster"
+                        from="model.unit.masterCoffeeRoaster"
                         to="model.unit.undead" probability="100"/>
     </unit-change-type>
 
@@ -2375,6 +2417,20 @@
                price="1100" skill="2" expert-production="model.goods.books"
                recruit-probability="1" score-value="5">
       <modifier id="model.goods.books" index="30"
+                type="multiplicative" value="2"/>
+    </unit-type>
+    
+    <unit-type id="model.unit.masterCoffeeRoaster" extends="colonist"
+               price="1700" skill="2" expert-production="model.goods.coffeeBeans"
+               recruit-probability="1" score-value="5">
+      <modifier id="model.goods.coffeeBeans" index="30"
+                type="multiplicative" value="2"/>
+    </unit-type>
+    
+    <unit-type id="model.unit.masterChocolateMaker" extends="colonist"
+               price="1700" skill="2" expert-production="model.goods.chocolate"
+               recruit-probability="1" score-value="5">
+      <modifier id="model.goods.chocolate" index="30"
                 type="multiplicative" value="2"/>
     </unit-type>
 
@@ -2883,6 +2939,103 @@
         <left-hand-side operand-type="buildings" scope-level="player"/>
         <right-hand-side value="1"/>
       </limit>
+    </building-type>
+    
+    <building-type id="model.building.coffeeHouse">
+      <production>
+        <input goods-type="model.goods.coffee" value="3"/>
+        <input goods-type="model.goods.coffeeBeans" value="3"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="64"/>
+    </building-type>
+
+    <building-type id="model.building.coffeeShop"
+                   extends="model.building.coffeeHouse"
+                   upgrades-from="model.building.coffeeHouse"
+                   competence-factor="2"
+                   upkeep="10">
+      <production>
+        <input goods-type="model.goods.coffee" value="6"/>
+        <output goods-type="model.goods.coffeeBeans" value="6"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="64"/>
+      <required-goods id="model.goods.tools"
+                      value="20"/>
+      <required-goods id="model.goods.stone"
+                      value="64"/>
+    </building-type>
+
+    <building-type id="model.building.coffeeRoasters"
+                   extends="model.building.coffeeShop"
+                   upgrades-from="model.building.coffeeShop"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="8" upkeep="15">
+      <production>
+        <input goods-type="model.goods.coffee" value="6"/>
+        <output goods-type="model.goods.coffeeBeans" value="9"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="160"/>
+      <required-goods id="model.goods.tools"
+                      value="100"/>
+      <required-goods id="model.goods.stone"
+                      value="160"/>
+      <required-ability id="model.ability.buildFactory"/>
+      <ability id="model.ability.expertsUseConnections"
+               value="true"/>
+    </building-type>
+    
+    <building-type id="model.building.chocolateHouse">
+      <production>
+        <input goods-type="model.goods.cocoa" value="3"/>
+        <input goods-type="model.goods.sugarcane" value="3"/>
+        <output goods-type="model.goods.chocolate" value="3"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="64"/>
+    </building-type>
+
+    <building-type id="model.building.chocolateShop"
+                   extends="model.building.chocolateHouse"
+                   upgrades-from="model.building.chocolateHouse"
+                   competence-factor="2"
+                   upkeep="15">
+      <production>
+        <input goods-type="model.goods.cocoa" value="6"/>
+        <input goods-type="model.goods.sugarcane" value="6"/>
+        <output goods-type="model.goods.chocolate" value="6"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="64"/>
+      <required-goods id="model.goods.tools"
+                      value="20"/>
+      <required-goods id="model.goods.stone"
+                      value="64"/>
+    </building-type>
+
+    <building-type id="model.building.chocolateFactory"
+                   extends="model.building.chocolateShop"
+                   upgrades-from="model.building.chocolateShop"
+                   experts-with-connections-production="4"
+                   competence-factor="3" rebel-factor="1.5"
+                   required-population="8" upkeep="20">
+      <production>
+        <input goods-type="model.goods.cocoa" value="6"/>
+        <input goods-type="model.goods.sugarcane" value="6"/>
+        <output goods-type="model.goods.chocolate" value="9"/>
+      </production>
+      <required-goods id="model.goods.hammers"
+                      value="160"/>
+      <required-goods id="model.goods.tools"
+                      value="100"/>
+      <required-goods id="model.goods.stone"
+                      value="160"/>
+      <required-ability id="model.ability.buildFactory"/>
+      <ability id="model.ability.expertsUseConnections"
+               value="true"/>
     </building-type>
 
   </building-types>
