@@ -2967,7 +2967,7 @@
     <building-type id="model.building.coffeeHouse">
       <production>
         <input goods-type="model.goods.coffee" value="3"/>
-        <input goods-type="model.goods.coffeeBeans" value="3"/>
+        <output goods-type="model.goods.coffeeBeans" value="3"/>
       </production>
       <required-goods id="model.goods.hammers"
                       value="64"/>
